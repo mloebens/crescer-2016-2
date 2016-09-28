@@ -37,7 +37,9 @@ public class ElfoTest
     public void elfoAtiraFlecha(){
         // Act
         Elfo elfoDoTeste = new Elfo("Legolas");
-        elfoDoTeste.atirarFlecha();
+        Dwarf dwarf = new Dwarf("Tyrion");
+        
+        elfoDoTeste.atirarFlecha(dwarf);
         // Assert
         assertEquals(1, elfoDoTeste.getArco().getQuantidade());
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
@@ -48,10 +50,12 @@ public class ElfoTest
     public void elfoAtiraVariasFlecha(){
         // Act
         Elfo elfoDoTeste = new Elfo("Legolas");
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
+        Dwarf dwarf = new Dwarf("Tyrion");
+        
+        elfoDoTeste.atirarFlecha(dwarf);
+        elfoDoTeste.atirarFlecha(dwarf);
+        elfoDoTeste.atirarFlecha(dwarf);
+        elfoDoTeste.atirarFlecha(dwarf);
         // Assert
         assertEquals(1, elfoDoTeste.getArco().getQuantidade());
         assertEquals(38, elfoDoTeste.getFlecha().getQuantidade());
@@ -70,53 +74,56 @@ public class ElfoTest
     public void elfoNaoTemFlechaNegativa(){
         // Act
         Elfo elfoDoTeste = new Elfo("Legolas");
-        // Assert
+        Dwarf dwarfTyrion = new Dwarf("Tyrion");
+        Dwarf dwarfMinimim = new Dwarf("Minimim");
+        Dwarf dwarfGimli = new Dwarf("Gimli");
+        
         // Podia liberar laço de repetição...
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
-
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfTyrion);
+        elfoDoTeste.atirarFlecha(dwarfGimli);
+        elfoDoTeste.atirarFlecha(dwarfMinimim);
+        // Assert
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
     }
 }
