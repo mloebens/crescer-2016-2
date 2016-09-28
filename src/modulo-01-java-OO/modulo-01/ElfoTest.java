@@ -25,6 +25,33 @@ public class ElfoTest
     }
 
     @Test
+    public void elfoNasceComUmaFlecha(){
+        // Act
+        Elfo elfoDoTeste = new Elfo("Legolas",1);
+        // Assert
+        assertEquals("Flechas", elfoDoTeste.getFlecha().getDescricao());
+        assertEquals(1, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void elfoNasceComDuasFlecha(){
+        // Act
+        Elfo elfoDoTeste = new Elfo("Legolas",2);
+        // Assert
+        assertEquals("Flechas", elfoDoTeste.getFlecha().getDescricao());
+        assertEquals(2, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void elfoNasceCom100Flecha(){
+        // Act
+        Elfo elfoDoTeste = new Elfo("Legolas",100);
+        // Assert
+        assertEquals("Flechas", elfoDoTeste.getFlecha().getDescricao());
+        assertEquals(100, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
     public void elfoNasceCom42Flechas(){
         // Act
         Elfo elfoDoTeste = new Elfo("Legolas");
