@@ -182,4 +182,25 @@ public class ElfoTest
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(0, elfoDoTeste.getExperiencia());
     }
+    
+    @Test
+    public void elfoToString(){
+        Elfo legolas = new Elfo("Legolas");
+        String fraseResposta = "Legolas possui 42 flechas e 0 níveis de experiência.";   
+        
+        assertEquals(fraseResposta, legolas.toString());
+    }
+    
+    public void eltoToStringAtirando5Flechas(){
+        Elfo legolas = new Elfo("Legolas");
+        String fraseResposta = "Legolas possui 37 flechas e 5 níveis de experiência.";
+        
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        
+        assertEquals(fraseResposta, legolas.toString());
+    }
 }
