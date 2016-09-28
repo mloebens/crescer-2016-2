@@ -8,6 +8,8 @@ public class Elfo {
         nome = n;
         arco = new Item("Arco", 1);
         flecha = new Item("Flechas", 42);
+    public Elfo(String nome) {
+        this(nome,42);
     }
     
     public Elfo(String nome, int quantidadeFlechas){
