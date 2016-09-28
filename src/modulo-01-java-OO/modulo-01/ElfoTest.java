@@ -23,7 +23,7 @@ public class ElfoTest
         assertEquals("Arco", elfoDoTeste.getArco().getDescricao());
         assertEquals(1, elfoDoTeste.getArco().getQuantidade());
     }
-    
+
     @Test
     public void elfoNasceComFlechas(){
         // Act
@@ -32,7 +32,7 @@ public class ElfoTest
         assertEquals("Flechas", elfoDoTeste.getFlecha().getDescricao());
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
-    
+
     @Test
     public void elfoAtiraFlecha(){
         // Act
@@ -43,7 +43,7 @@ public class ElfoTest
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(1, elfoDoTeste.getExperiencia());
     }
-    
+
     @Test
     public void elfoAtiraVariasFlecha(){
         // Act
@@ -57,12 +57,66 @@ public class ElfoTest
         assertEquals(38, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(4, elfoDoTeste.getExperiencia());
     }
-    
+
     @Test
-    public void ElfoNaoAtiraFlecha(){
-         // Act
+    public void elfoNaoAtiraFlecha(){
+        // Act
         Elfo elfoDoTeste = new Elfo("Legolas");
         // Assert
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
+    }
+
+    @Test
+    public void elfoNaoTemFlechaNegativa(){
+        // Act
+        Elfo elfoDoTeste = new Elfo("Legolas");
+        // Assert
+        // Podia liberar laço de repetição...
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
+
+        assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
     }
 }
