@@ -4,64 +4,61 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DwarfTest
-{
-  @Test
-   public void dwarfNasceComNome(){
-        // Arrange
-        String nomeEsperado = "Minimim";
-        // Act
-        Dwarf dwarf = new Dwarf(nomeEsperado);
-        // Assert
-        assertEquals(nomeEsperado, dwarf.getNome());
-    }
-    
+{  
     @Test
-    public void dwarfNasceComVida(){
+    public void dwarfNasceCom110Vida(){
         // Act
-        Dwarf dwarf = new Dwarf("Minimim");
+        Dwarf dwarf = new Dwarf();
         // Assert
         assertEquals(110, dwarf.getVida());
     }
     
     @Test
-    public void dwarfLevouFlechada(){
+    public void dwarfPerdeuVidaUmaVez(){
         // Act
-        Dwarf dwarf = new Dwarf("Minimim");
-        dwarf.levarFlechada();
+        Dwarf dwarf = new Dwarf();
+        dwarf.perderVida();
         // Assert
         assertEquals(100, dwarf.getVida());
     }
     
     @Test
-    public void dwarfLevouQuatroFlechadas(){
+    public void dwarfPerdeuVidaDuasVezes(){
         // Act
-        Dwarf dwarf = new Dwarf("Minimim");
-        dwarf.levarFlechada();
-        
+        Dwarf dwarf = new Dwarf();
+        dwarf.perderVida();
+        dwarf.perderVida();
         // Assert
-        assertEquals(100, dwarf.getVida());
+        assertEquals(90, dwarf.getVida());
     }
     
     @Test
     public void dwarfLevouMaisFlechadasQueVida(){
+        // Arrange
+        Dwarf dwarf = new Dwarf();
         // Act
-        Dwarf dwarf = new Dwarf("Minimim");
-       
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
-        dwarf.levarFlechada();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
         
          // Assert
-        assertEquals(0, dwarf.getVida());
+        assertEquals(-90, dwarf.getVida());
     }
 }
