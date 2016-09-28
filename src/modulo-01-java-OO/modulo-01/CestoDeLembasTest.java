@@ -20,7 +20,7 @@ public class CestoDeLembasTest
         // Act
         CestoDeLembas lembas = new CestoDeLembas(2);
         // Assert
-        assertEquals(false, lembas.podeDividirEmPares());
+        assertFalse(lembas.podeDividirEmPares());
     }
     
     @Test
@@ -28,7 +28,7 @@ public class CestoDeLembasTest
         // Act
         CestoDeLembas lembas = new CestoDeLembas(1);
         // Assert
-        assertEquals(false, lembas.podeDividirEmPares());
+        assertFalse(lembas.podeDividirEmPares());
     }
     
     @Test
@@ -36,7 +36,7 @@ public class CestoDeLembasTest
         // Act
         CestoDeLembas lembas = new CestoDeLembas(0);
         // Assert
-        assertEquals(false, lembas.podeDividirEmPares());
+        assertFalse(lembas.podeDividirEmPares());
     }
     
     @Test
@@ -44,7 +44,7 @@ public class CestoDeLembasTest
         // Act
         CestoDeLembas lembas = new CestoDeLembas(100);
         // Assert
-        assertEquals(true, lembas.podeDividirEmPares());
+        assertTrue(lembas.podeDividirEmPares());
     }
     
     @Test
@@ -52,7 +52,7 @@ public class CestoDeLembasTest
         // Act
         CestoDeLembas lembas = new CestoDeLembas(60);
         // Assert
-        assertEquals(true, lembas.podeDividirEmPares());
+        assertTrue(lembas.podeDividirEmPares());
     }
     
     @Test
@@ -60,6 +60,6 @@ public class CestoDeLembasTest
         // Act
         CestoDeLembas lembas = new CestoDeLembas(51);
         // Assert
-        assertEquals(false, lembas.podeDividirEmPares());
+        assertFalse(lembas.podeDividirEmPares());
     }
 }
