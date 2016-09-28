@@ -52,6 +52,24 @@ public class ElfoTest
     }
     
     @Test
+    public void elfoNasceComFlechasNegativas(){
+        // Act
+        Elfo elfoDoTeste = new Elfo("Legolas",-52);
+        // Assert
+        assertEquals("Flechas", elfoDoTeste.getFlecha().getDescricao());
+        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void elfoNasceComZeroFlechas(){
+        // Act
+        Elfo elfoDoTeste = new Elfo("Legolas",0);
+        // Assert
+        assertEquals("Flechas", elfoDoTeste.getFlecha().getDescricao());
+        assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
     public void elfoNasceCom42Flechas(){
         // Act
         Elfo elfoDoTeste = new Elfo("Legolas");
