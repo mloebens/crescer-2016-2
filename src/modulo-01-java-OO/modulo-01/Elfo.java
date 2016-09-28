@@ -37,7 +37,7 @@ public class Elfo {
         if(quantidadeFlechas > 0){
             flecha.setQuantidade(--quantidadeFlechas);
             
-            dwarf.levarFlechada();
+            dwarf.perderVida();
             
             experiencia++;
         }
