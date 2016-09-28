@@ -13,10 +13,7 @@ public class CestoDeLembas
      * Ambas as partes devem ser número par
      */
     public boolean podeDividirEmPares(){
-        if(quantidade <= 3 || quantidade > 100 || quantidade % 2 != 0){
-            return false;
-        }
-        return true;
+        return !(quantidade <= 3 || quantidade > 100 || quantidade % 2 != 0);
     }
     
     public int getQuantidade(){
