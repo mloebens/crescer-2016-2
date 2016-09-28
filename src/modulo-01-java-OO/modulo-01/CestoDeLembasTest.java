@@ -8,11 +8,10 @@ public class CestoDeLembasTest
 {
    @Test
    public void criarCestoDeLembas(){
-       
         // Act
         CestoDeLembas lembas = new CestoDeLembas(15);
         // Assert
-        assertEquals(15, lembas.getQuantidade());
+        assertEquals(15, lembas.getNumeroPaes());
     }
     
     @Test

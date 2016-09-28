@@ -1,10 +1,10 @@
 public class CestoDeLembas
 {
-    private int quantidade;
+    private int numeroPaes;
     
-    public CestoDeLembas(int quantidade)
+    public CestoDeLembas(int numeroPaes)
     {
-        this.quantidade = quantidade;
+        this.numeroPaes = numeroPaes;
     }
 
     /**
@@ -13,10 +13,10 @@ public class CestoDeLembas
      * Ambas as partes devem ser número par
      */
     public boolean podeDividirEmPares(){
-        return !(quantidade <= 3 || quantidade > 100 || quantidade % 2 != 0);
+        return (numeroPaes > 2 && numeroPaes <= 100 && numeroPaes % 2 == 0);
     }
     
-    public int getQuantidade(){
-        return quantidade;
+    public int getNumeroPaes(){
+        return numeroPaes;
     }
 }
