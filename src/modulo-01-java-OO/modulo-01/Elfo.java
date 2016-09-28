@@ -30,12 +30,15 @@ public class Elfo {
         return experiencia;
     }
     
-    public void atirarFlecha() {
+    public void atirarFlecha(Dwarf dwarf) {
         
         int quantidadeFlechas = flecha.getQuantidade();
         
         if(quantidadeFlechas > 0){
             flecha.setQuantidade(--quantidadeFlechas);
+            
+            dwarf.levarFlechada();
+            
             experiencia++;
         }
     }
