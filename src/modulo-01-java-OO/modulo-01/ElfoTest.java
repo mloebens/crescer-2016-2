@@ -218,6 +218,18 @@ public class ElfoTest
         assertEquals(fraseResposta, legolas.toString());
     }
     
+    
+    @Test
+    public void eltoToStringAtirandoUmaFlechas(){
+        Elfo legolas = new Elfo("Legolas");
+        String fraseResposta = "Legolas possui 41 flechas e 1 nível de experiência.";
+        
+        legolas.atirarFlecha(new Dwarf());
+        
+        assertEquals(fraseResposta, legolas.toString());
+    }
+    
+    @Test
     public void eltoToStringAtirando5Flechas(){
         Elfo legolas = new Elfo("Legolas");
         String fraseResposta = "Legolas possui 37 flechas e 5 níveis de experiência.";
