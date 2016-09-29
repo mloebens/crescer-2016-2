@@ -53,52 +53,67 @@ public class DwarfTest
     }
 
     @Test
-    public void dwarfPerdeuVidaUmaVez(){
+    public void dwarfMeirelesNaoBissextoNaoPerdeuVida(){
         // Act
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(1,01,2001));
+        dwarf.perderVida();
+        // Assert
+        assertEquals(110, dwarf.getVida());
+    }
+
+    @Test
+    public void dwarfMeirelesBissextoPerdeuVida(){
+        // Act
+        Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(1,01,2000));
         dwarf.perderVida();
         // Assert
         assertEquals(100, dwarf.getVida());
     }
 
     @Test
-    public void dwarfPerdeuVidaDuasVezes(){
+    public void dwarfSeixasBissextoPerdeuVida(){
         // Act
-        Dwarf dwarf = new Dwarf();
-        dwarf.perderVida();
+        Dwarf dwarf = new Dwarf("Seixas", new DataTerceiraEra(1,01,2000));
         dwarf.perderVida();
         // Assert
-        assertEquals(90, dwarf.getVida());
+        assertEquals(100, dwarf.getVida());
     }
 
     @Test
-    public void dwarfLevouMaisFlechadasQueVida(){
-        // Arrange
-        Dwarf dwarf = new Dwarf();
+    public void dwarfSeixasNaoBissextoNaoPerdeuVida(){
         // Act
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
-        dwarf.perderVida();
+        Dwarf dwarf = new Dwarf("Seixas", new DataTerceiraEra(1,01,2001));
         dwarf.perderVida();
         // Assert
-        assertEquals(-90, dwarf.getVida());
+        assertEquals(110, dwarf.getVida());
     }
+
+
+    @Test
+    public void dwarfBissextoPerdeuVidaUmaVezs(){
+        // Act
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,01,2000));
+        dwarf.perderVida();
+        // Assert
+        assertEquals(100, dwarf.getVida());
+    }
+
+    @Test
+    public void dwarfBissextoPerde20DeVidaEGanhou8Experiencia(){
+        // Act
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,01,2000));
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+
+        // Assert
+        assertEquals(90, dwarf.getVida());
+        assertEquals(8, dwarf.getExperiencia());
+    }
+
 
     @Test
     public void dwarfBissextoNumeroSorteVida110(){
