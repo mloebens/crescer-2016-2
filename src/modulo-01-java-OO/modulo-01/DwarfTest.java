@@ -41,7 +41,7 @@ public class DwarfTest
         assertEquals(10, dwarf.getDataNascimento().getMes());
         assertEquals(2000, dwarf.getDataNascimento().getAno());
     }
-    
+
     @Test
     public void dwarfNascidoDia111Mes50Ano2000Negativo(){
         DataTerceiraEra dataNascimento = new DataTerceiraEra(111,50,-2000);
@@ -96,8 +96,46 @@ public class DwarfTest
         dwarf.perderVida();
         dwarf.perderVida();
         dwarf.perderVida();
-
         // Assert
         assertEquals(-90, dwarf.getVida());
+    }
+
+    @Test
+    public void dwarfBissextoNumeroSorteVida110(){
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,01,2000));
+
+        assertEquals(101.0, dwarf.getNumeroSorte(),0);
+    }
+
+    @Test
+    public void dwarfBissextoNumeroSorteVida80(){
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,01,2000));
+
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+
+        assertEquals(-3333.0, dwarf.getNumeroSorte(),0);
+    }
+
+    @Test
+    public void dwarfNaoBissextoNumeroSorteNomeGimli(){
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,01,2001));
+
+        assertEquals(101.0, dwarf.getNumeroSorte(),0);
+    }
+
+    @Test
+    public void dwarfNaoBissextoNumeroSorteNomeMeireles(){
+        Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(1,01,2001));
+
+        assertEquals(33.0, dwarf.getNumeroSorte(),0);
+    }
+
+    @Test
+    public void dwarfNaoBissextoNumeroSorteNomeSeixas(){
+        Dwarf dwarf = new Dwarf("Seixas", new DataTerceiraEra(1,01,2001));
+
+        assertEquals(33.0, dwarf.getNumeroSorte(),0);
     }
 }
