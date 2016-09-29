@@ -260,4 +260,10 @@ public class ElfoTest
         
         assertEquals(fraseResposta, legolas.toString());
     }
+    
+    @Test
+    public void elfoNasceVivo(){
+        Elfo elfo = new Elfo("Cobaia");
+        assertEquals(Status.VIVO, elfo.getStatus());
+    }
 }
