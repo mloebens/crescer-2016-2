@@ -88,7 +88,6 @@ public class DwarfTest
         assertEquals(110, dwarf.getVida());
     }
 
-
     @Test
     public void dwarfBissextoPerdeuVidaUmaVezs(){
         // Act
@@ -113,7 +112,6 @@ public class DwarfTest
         assertEquals(90, dwarf.getVida());
         assertEquals(8, dwarf.getExperiencia());
     }
-
 
     @Test
     public void dwarfBissextoNumeroSorteVida110(){
@@ -152,5 +150,117 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Seixas", new DataTerceiraEra(1,01,2001));
 
         assertEquals(33.0, dwarf.getNumeroSorte(),0);
+    }
+
+    @Test
+    public void dwarfNasceVivo(){
+        Dwarf dwarf = new Dwarf();
+
+        assertEquals(Status.VIVO, dwarf.getStatus());
+    }
+
+    @Test
+    public void dwarfMorreuComDano100(){
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,1,1));
+
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+
+        assertEquals(Status.MORTO, dwarf.getStatus());
+        assertEquals(0, dwarf.getVida());
+
+    }
+
+    @Test
+    public void dwarfMorreuComDano200(){
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,1,1));
+
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+
+        assertEquals(Status.MORTO, dwarf.getStatus());
+        assertEquals(0, dwarf.getVida());   
+    }
+
+    @Test
+    public void dwarfMorreuComDano400(){
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,1,1));
+
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+        dwarf.perderVida();
+
+        assertEquals(Status.MORTO, dwarf.getStatus());
+        assertEquals(0, dwarf.getVida());
     }
 }

@@ -158,9 +158,9 @@ public class ElfoTest
         // Assert
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(42, elfoDoTeste.getExperiencia());
-        assertEquals(-50, dwarfTyrion.getVida());
-        assertEquals(-30, dwarfGimli.getVida());
-        assertEquals(-10, dwarfMinimim.getVida());
+        assertEquals(0, dwarfTyrion.getVida());
+        assertEquals(0, dwarfGimli.getVida());
+        assertEquals(0, dwarfMinimim.getVida());
     }
     
     @Test
