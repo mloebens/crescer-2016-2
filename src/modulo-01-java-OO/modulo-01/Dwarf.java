@@ -5,6 +5,7 @@ public class Dwarf
     private DataTerceiraEra dataNascimento;
     private int experiencia;
     private Status status;
+    private Inventario inventario;
 
     
     public Dwarf(){
@@ -15,6 +16,7 @@ public class Dwarf
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.vida = 110;
+        this.inventario = new Inventario();
         this.status = Status.VIVO;
     }
 
@@ -52,6 +54,14 @@ public class Dwarf
         }
         return valorInicial;
     }
+    
+    public void adicionarItem(Item item){
+        this.inventario.adicionarItem(item);
+    }
+    
+    public void perderItem(Item item){
+        this.inventario.removerItem(item);
+    }
 
     public String getNome(){
         return this.nome;
@@ -67,5 +77,9 @@ public class Dwarf
     
     public Status getStatus(){
         return this.status;
+    }
+    
+    public Inventario getInventario(){
+        return this.inventario;
     }
 }
