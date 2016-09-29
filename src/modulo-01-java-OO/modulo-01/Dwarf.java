@@ -19,13 +19,15 @@ public class Dwarf
     }
 
     public void perderVida(){
+        if(this.status == Status.MORTO) return;
+        
         double numeroSorte = getNumeroSorte();
 
         if(numeroSorte < 0){
             this.experiencia += 2;
         }
         
-        if(numeroSorte > 100 && this.vida > 0){
+        if(numeroSorte > 100){
             this.vida -= 10;
             
             if(this.vida <= 0) {

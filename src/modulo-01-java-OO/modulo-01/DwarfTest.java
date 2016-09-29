@@ -20,7 +20,14 @@ public class DwarfTest
         // Assert
         assertEquals(110, dwarf.getVida());
         assertEquals("Legolas", dwarf.getNome());
-    } 
+    }
+
+    @Test
+    public void dwarfNasceVivo(){
+        Dwarf dwarf = new Dwarf();
+
+        assertEquals(Status.VIVO, dwarf.getStatus());
+    }
 
     @Test
     public void dwarfNascidoDia12Mes12Ano1000(){
@@ -150,13 +157,6 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Seixas", new DataTerceiraEra(1,01,2001));
 
         assertEquals(33.0, dwarf.getNumeroSorte(),0);
-    }
-
-    @Test
-    public void dwarfNasceVivo(){
-        Dwarf dwarf = new Dwarf();
-
-        assertEquals(Status.VIVO, dwarf.getStatus());
     }
 
     @Test
