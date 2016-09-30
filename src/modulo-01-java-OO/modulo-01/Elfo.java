@@ -29,11 +29,11 @@ public class Elfo {
     }
     
     public Item getArco() {
-        return this.inventario.getAllItens().get(0);
+        return this.inventario.getTodosItens().get(0);
     }
     
     public Item getFlecha(){
-        return this.inventario.getAllItens().get(1);
+        return this.inventario.getTodosItens().get(1);
     }
 
     public int getExperiencia(){

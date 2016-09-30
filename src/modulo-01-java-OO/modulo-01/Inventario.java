@@ -12,7 +12,7 @@ public class Inventario
         this.itens.remove(item);
     }
     
-    public ArrayList<Item> getAllItens(){
+    public ArrayList<Item> getTodosItens(){
         return this.itens;
     }
     
