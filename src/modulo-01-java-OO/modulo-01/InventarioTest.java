@@ -11,7 +11,7 @@ public class InventarioTest
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Espada Z",1));
 
-        ArrayList<Item> todosItensDoInventario = inventario.getTodosItens();
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
 
         assertEquals("Espada Z", todosItensDoInventario.get(0).getDescricao());
         assertEquals(1, todosItensDoInventario.get(0).getQuantidade());  
@@ -23,7 +23,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Espada Z",1));
         inventario.adicionarItem(new Item("Espada Comum",2));
 
-        ArrayList<Item> todosItensDoInventario = inventario.getTodosItens();
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
 
         assertEquals("Espada Z", todosItensDoInventario.get(0).getDescricao());
         assertEquals(1, todosItensDoInventario.get(0).getQuantidade()); 
@@ -42,7 +42,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Bastão",10));
         inventario.adicionarItem(new Item("Flechas",5));
 
-        ArrayList<Item> todosItensDoInventario = inventario.getTodosItens();
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
 
         assertEquals("Espada Z", todosItensDoInventario.get(0).getDescricao());
         assertEquals(1, todosItensDoInventario.get(0).getQuantidade()); 
@@ -65,7 +65,7 @@ public class InventarioTest
 
         inventario.adicionarItem(espadaZ);
         inventario.removerItem(espadaZ);
-        ArrayList<Item> todosItensDoInventario = inventario.getTodosItens();
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
 
         assertFalse(todosItensDoInventario.contains(espadaZ));
     }
@@ -79,7 +79,7 @@ public class InventarioTest
         inventario.adicionarItem(espadaZ);
         inventario.adicionarItem(espadaBronze);
         inventario.removerItem(espadaZ);
-        ArrayList<Item> todosItensDoInventario = inventario.getTodosItens();
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
 
         assertFalse(todosItensDoInventario.contains(espadaZ));
     }
@@ -102,7 +102,7 @@ public class InventarioTest
         inventario.removerItem(espadaBronze);
         inventario.removerItem(bastao);
 
-        ArrayList<Item> todosItensDoInventario = inventario.getTodosItens();
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
 
         assertFalse(todosItensDoInventario.contains(espadaZ));
         assertFalse(todosItensDoInventario.contains(espadaBronze));

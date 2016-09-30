@@ -270,7 +270,7 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,1,1));
         dwarf.adicionarItem(new Item("Martelo",1));
 
-        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getTodosItens();
+        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getItens();
 
         assertEquals("Martelo", todosItensDoInventario.get(0).getDescricao());
         assertEquals(1, todosItensDoInventario.get(0).getQuantidade());  
@@ -282,7 +282,7 @@ public class DwarfTest
         dwarf.adicionarItem(new Item("Martelo",1));
         dwarf.adicionarItem(new Item("Escudo",2));
 
-        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getTodosItens();
+        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getItens();
 
         assertEquals("Martelo", todosItensDoInventario.get(0).getDescricao());
         assertEquals(1, todosItensDoInventario.get(0).getQuantidade()); 
@@ -301,7 +301,7 @@ public class DwarfTest
         dwarf.adicionarItem(new Item("Bastão",10));
         dwarf.adicionarItem(new Item("Flechas",5));
 
-        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getTodosItens();
+        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getItens();
 
         assertEquals("Martelo", todosItensDoInventario.get(0).getDescricao());
         assertEquals(1, todosItensDoInventario.get(0).getQuantidade()); 
@@ -325,7 +325,7 @@ public class DwarfTest
         dwarf.adicionarItem(martelo);
         dwarf.perderItem(martelo);
         
-        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getTodosItens();
+        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getItens();
 
         assertFalse(todosItensDoInventario.contains(martelo));
     }
@@ -339,7 +339,7 @@ public class DwarfTest
         dwarf.adicionarItem(new Item("Escudo", 1));
         dwarf.perderItem(martelo);
         
-        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getTodosItens();
+        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getItens();
 
         assertFalse(todosItensDoInventario.contains(martelo));
     }
@@ -362,7 +362,7 @@ public class DwarfTest
         dwarf.perderItem(escudo);
         dwarf.perderItem(bastao);
 
-        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getTodosItens();
+        ArrayList<Item> todosItensDoInventario = dwarf.getInventario().getItens();
 
         assertFalse(todosItensDoInventario.contains(martelo));
         assertFalse(todosItensDoInventario.contains(escudo));
