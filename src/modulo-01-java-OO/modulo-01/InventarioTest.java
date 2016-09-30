@@ -179,6 +179,28 @@ public class InventarioTest
 
         assertEquals(sementeDeuses, inventario.getItemMaisPopular());
     }
+    
+    @Test
+    public void ordernarInventarioUmItem(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 1));
+        
+        inventario.ordenarItens();
+        
+        assertEquals("Espada", inventario.getDescricoesItens());
+        
+    }
+    
+    @Test
+    public void ordernarInventario3Item(){
+        Inventario inventario = criarInventarioCom3Itens();
+        
+        inventario.ordenarItens();
+        
+        assertEquals("Espada de aço,Lucky egg,Poção polissuco", inventario.getDescricoesItens());
+        
+    }
+    
 
     private Inventario criarInventarioCom3Itens() {
         Inventario inventario = new Inventario();

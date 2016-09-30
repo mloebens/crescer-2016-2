@@ -48,4 +48,19 @@ public class Inventario
             item.aumentarUnidades(unidades, fatorSoma);
         }
     }
+
+    public void ordenarItens(){
+        int quantidadeItens = itens.size();
+
+        for(int i = 0; i < quantidadeItens ; i++){
+            for(int j = 0; j < quantidadeItens-1; j++){
+
+                if(itens.get(j).getDescricao().compareTo(itens.get(j+1).getDescricao()) > 0){
+                    Item aux = itens.get(j);
+                    itens.set(j,itens.get(j+1));
+                    itens.set(j+1, aux);
+                }
+            }
+        }      
+    }
 }
