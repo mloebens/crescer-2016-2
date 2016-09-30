@@ -110,6 +110,16 @@ public class InventarioTest
     }
 
     @Test
+    public void imprimirDescricoesUmItens(){
+        Inventario inv = new Inventario();
+        
+        inv.adicionarItem(new Item("Escudo",1));
+
+        assertEquals("Escudo",inv.getDescricoesItens());  
+    }
+    
+    
+    @Test
     public void imprimirDescricoesDoisItens(){
         Inventario inv = new Inventario();
 
