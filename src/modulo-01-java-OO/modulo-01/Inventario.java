@@ -21,7 +21,8 @@ public class Inventario
         int quantidadeItens = itens.size();
         
         for(int i = 0; i < quantidadeItens; i++){
-            String nomeItem = itens.get(i).getDescricao(); 
+            String nomeItem = itens.get(i).getDescricao();
+            //armazena descrição do item e só adiciona virgula se não for o último item da lista.
             descricaoItens += i < quantidadeItens-1  ?  String.format("%s,",nomeItem) : nomeItem;
         }
         
