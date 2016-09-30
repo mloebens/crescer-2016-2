@@ -1,4 +1,4 @@
-public class Dwarf
+public class IrishDwarf
 {
     private String nome;
     private int vida;
@@ -7,11 +7,11 @@ public class Dwarf
     private Status status;
     private Inventario inventario;
 
-    public Dwarf(){
+    public IrishDwarf(){
         this(null,new DataTerceiraEra(1,1,1));
     }
 
-    public Dwarf(String nome, DataTerceiraEra dataNascimento){
+    public IrishDwarf(String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.vida = 110;
@@ -55,8 +55,8 @@ public class Dwarf
     public void tentarSorte(){
         boolean teveSorte = getNumeroSorte() == -3333.0;
         
-        if(teveSorte){
-            inventario.aumentarUnidadesDosItens(1000, false);
+        if(teveSorte){           
+            inventario.aumentarUnidadesDosItens(1000,true);
         }
     }
     
