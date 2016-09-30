@@ -112,13 +112,12 @@ public class InventarioTest
     @Test
     public void imprimirDescricoesUmItens(){
         Inventario inv = new Inventario();
-        
+
         inv.adicionarItem(new Item("Escudo",1));
 
         assertEquals("Escudo",inv.getDescricoesItens());  
     }
-    
-    
+
     @Test
     public void imprimirDescricoesDoisItens(){
         Inventario inv = new Inventario();
@@ -158,26 +157,34 @@ public class InventarioTest
         Inventario inventario = new Inventario();
         Item excalibur = new Item("Excalibur",1);
         Item sementeDeuses = new Item("Semente dos Deuses",55);
-        
+
         inventario.adicionarItem(excalibur);
         inventario.adicionarItem(sementeDeuses);
-        
+
         assertEquals(sementeDeuses, inventario.getItemMaisPopular());
     }
-    
-     @Test
+
+    @Test
     public void itemMaisPopularDeQuatroItens(){
         Inventario inventario = new Inventario();
         Item excalibur = new Item("Excalibur",1);
         Item sementeDeuses = new Item("Semente dos Deuses",55);
         Item flecha = new Item("Flecha",20);
         Item lanca = new Item("Lança",54);
-        
+
         inventario.adicionarItem(excalibur);
         inventario.adicionarItem(sementeDeuses);
         inventario.adicionarItem(flecha);
         inventario.adicionarItem(lanca);
-        
+
         assertEquals(sementeDeuses, inventario.getItemMaisPopular());
+    }
+
+    private Inventario criarInventarioCom3Itens() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada de aço", 2));
+        inventario.adicionarItem(new Item("Poção polissuco", 45));
+        inventario.adicionarItem(new Item("Lucky egg", 3));
+        return inventario;
     }
 }

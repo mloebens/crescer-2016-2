@@ -42,4 +42,10 @@ public class Inventario
         
         return itemMaisPopular;
     }
+    
+    public void aumentarUnidadesDosItens(int unidades){
+        for (Item item: itens){
+            item.aumentarUnidades(unidades);
+        }
+    }
 }

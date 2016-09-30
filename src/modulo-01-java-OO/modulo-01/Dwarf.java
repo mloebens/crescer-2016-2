@@ -7,7 +7,6 @@ public class Dwarf
     private Status status;
     private Inventario inventario;
 
-    
     public Dwarf(){
         this(null,new DataTerceiraEra(1,1,1));
     }
@@ -38,10 +37,6 @@ public class Dwarf
         }
     }
 
-    public DataTerceiraEra getDataNascimento(){
-        return this.dataNascimento;
-    }
-
     public double getNumeroSorte(){
         double valorInicial = 101.0;
 
@@ -55,6 +50,14 @@ public class Dwarf
             }
         }
         return valorInicial;
+    }
+    
+    public void tentarSorte(){
+        boolean teveSorte = getNumeroSorte() == -3333.0;
+        
+        if(teveSorte){
+            inventario.aumentarUnidadesDosItens(1000);
+        }
     }
     
     public void adicionarItem(Item item){
@@ -83,5 +86,9 @@ public class Dwarf
     
     public Inventario getInventario(){
         return this.inventario;
+    }
+    
+    public DataTerceiraEra getDataNascimento(){
+        return this.dataNascimento;
     }
 }
