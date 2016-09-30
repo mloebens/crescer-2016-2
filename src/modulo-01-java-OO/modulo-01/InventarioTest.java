@@ -136,4 +136,38 @@ public class InventarioTest
         assertEquals("",inv.getDescricoesItens());  
     }
 
+    @Test
+    public void itemMaisPopularSemItem(){
+        Inventario inventario = new Inventario();
+
+        assertEquals(null, inventario.getItemMaisPopular());
+    }
+
+    @Test
+    public void itemMaisPopularDeDoisItens(){
+        Inventario inventario = new Inventario();
+        Item excalibur = new Item("Excalibur",1);
+        Item sementeDeuses = new Item("Semente dos Deuses",55);
+        
+        inventario.adicionarItem(excalibur);
+        inventario.adicionarItem(sementeDeuses);
+        
+        assertEquals(sementeDeuses, inventario.getItemMaisPopular());
+    }
+    
+     @Test
+    public void itemMaisPopularDeQuatroItens(){
+        Inventario inventario = new Inventario();
+        Item excalibur = new Item("Excalibur",1);
+        Item sementeDeuses = new Item("Semente dos Deuses",55);
+        Item flecha = new Item("Flecha",20);
+        Item lanca = new Item("Lança",54);
+        
+        inventario.adicionarItem(excalibur);
+        inventario.adicionarItem(sementeDeuses);
+        inventario.adicionarItem(flecha);
+        inventario.adicionarItem(lanca);
+        
+        assertEquals(sementeDeuses, inventario.getItemMaisPopular());
+    }
 }
