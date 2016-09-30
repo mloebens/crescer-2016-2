@@ -15,4 +15,16 @@ public class Inventario
     public ArrayList<Item> getAllItens(){
         return this.itens;
     }
+    
+    public String getDescricoesItens(){
+        String descricaoItens = "";
+        int quantidadeItens = itens.size();
+        
+        for(int i = 0; i < quantidadeItens; i++){
+            String nomeItem = itens.get(i).getDescricao(); 
+            descricaoItens += i < quantidadeItens-1  ?  String.format("%s,",nomeItem) : nomeItem;
+        }
+        
+        return descricaoItens;
+    }
 }
