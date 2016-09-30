@@ -1,7 +1,6 @@
 public class Elfo {
     private String nome;
-    private Item arco;
-    private Item flecha;
+    private Inventario inventario;
     private int experiencia;
     private Status status;
 
@@ -11,8 +10,9 @@ public class Elfo {
     
     public Elfo(String nome, int quantidadeFlechas){
         this.nome = nome;
-        this.arco = new Item("Arco", 1);
-        this.flecha = new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42);
+        this.inventario = new Inventario();
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
         status = Status.VIVO;
     }
 
@@ -29,11 +29,11 @@ public class Elfo {
     }
     
     public Item getArco() {
-        return arco;
+        return this.inventario.getTodosItens().get(0);
     }
     
     public Item getFlecha(){
-        return flecha;
+        return this.inventario.getTodosItens().get(1);
     }
 
     public int getExperiencia(){
@@ -41,11 +41,11 @@ public class Elfo {
     }
     
     public void atirarFlecha(Dwarf dwarf) {
-        
-        int quantidadeFlechas = flecha.getQuantidade();
+        Item flechas = getFlecha();
+        int quantidadeFlechas = flechas.getQuantidade();
         
         if(quantidadeFlechas > 0){
-            flecha.setQuantidade(--quantidadeFlechas);
+            flechas.setQuantidade(--quantidadeFlechas);
             
             dwarf.perderVida();
             
@@ -54,13 +54,13 @@ public class Elfo {
     }
     
     public String toString(){
-        
-        boolean flechaNoSingular = this.flecha.getQuantidade() == 1;
+        Item flechas = getFlecha();
+        boolean flechaNoSingular = flechas.getQuantidade() == 1;
         boolean experienciaNoSingular = this.experiencia == 1;
         
         return String.format("%s possui %d %s e %d %s de experiência.", 
             this.nome, 
-            this.flecha.getQuantidade(),
+            flechas.getQuantidade(),
             flechaNoSingular ? "flecha" : "flechas",
             this.experiencia,
             experienciaNoSingular ? "nível" : "níveis");
