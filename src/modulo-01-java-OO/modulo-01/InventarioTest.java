@@ -112,22 +112,28 @@ public class InventarioTest
     @Test
     public void imprimirDescricoesDoisItens(){
         Inventario inv = new Inventario();
-        
+
         inv.adicionarItem(new Item("Machado",1));
         inv.adicionarItem(new Item("Escudo",1));
-       
-       assertEquals("Machado,Escudo",inv.getDescricoesItens());  
+
+        assertEquals("Machado,Escudo",inv.getDescricoesItens());  
     }
-    
-        @Test
+
+    @Test
     public void imprimirDescricoesTresItens(){
         Inventario inv = new Inventario();
-        
+
         inv.adicionarItem(new Item("Machado",1));
         inv.adicionarItem(new Item("Escudo",1));
         inv.adicionarItem(new Item("Martelo",1));
-       
-       assertEquals("Machado,Escudo,Martelo",inv.getDescricoesItens());  
+
+        assertEquals("Machado,Escudo,Martelo",inv.getDescricoesItens());  
+    }
+
+    @Test
+    public void imprimirDescricoesNenhumItens(){
+        Inventario inv = new Inventario();
+        assertEquals("",inv.getDescricoesItens());  
     }
 
 }
