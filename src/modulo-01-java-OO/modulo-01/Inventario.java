@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Inventario
 {
@@ -49,18 +49,28 @@ public class Inventario
         }
     }
 
-    public void ordenarItens(){
+    public void ordenarItens(TipoOrdenacao ordenacao){
         int quantidadeItens = itens.size();
 
         for(int i = 0; i < quantidadeItens ; i++){
             for(int j = 0; j < quantidadeItens-1; j++){
 
-                if(itens.get(j).getDescricao().compareTo(itens.get(j+1).getDescricao()) > 0){
-                    Item aux = itens.get(j);
-                    itens.set(j,itens.get(j+1));
-                    itens.set(j+1, aux);
+				int comparacao = itens.get(j).getDescricao().compareTo(itens.get(j+1).getDescricao());
+                if( comparacao > 0 && ordenacao == TipoOrdenacao.ASCENDENTE){
+                    inverterPosicaoDoItem(j,j+1);
                 }
+
+				if( comparacao < 0 && ordenacao == TipoOrdenacao.DESCENDENTE){
+					inverterPosicaoDoItem(j+1,j);
+				}
             }
         }      
     }
+
+    public void inverterPosicaoDoItem(int posicaoItem1, int posicaoItem2){
+		Item aux = itens.get(posicaoItem1);
+		itens.set(posicaoItem1, itens.get(posicaoItem2));
+		itens.set(posicaoItem2, aux);
+    }
+
 }

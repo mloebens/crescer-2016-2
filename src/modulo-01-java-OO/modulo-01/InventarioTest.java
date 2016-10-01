@@ -179,28 +179,68 @@ public class InventarioTest
 
         assertEquals(sementeDeuses, inventario.getItemMaisPopular());
     }
-    
+
     @Test
-    public void ordernarInventarioUmItem(){
+    public void ordernarInventarioUmItemAscendente(){
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Espada", 1));
-        
-        inventario.ordenarItens();
-        
+
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+
         assertEquals("Espada", inventario.getDescricoesItens());
-        
+
     }
-    
+
     @Test
-    public void ordernarInventario3Item(){
+    public void ordernarInventario3ItemAscendente(){
         Inventario inventario = criarInventarioCom3Itens();
-        
-        inventario.ordenarItens();
-        
+
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+
         assertEquals("Espada de aço,Lucky egg,Poção polissuco", inventario.getDescricoesItens());
-        
+    }
+
+    @Test
+    public void ordernarInventario5ItemAscendente(){
+        Inventario inventario = criarInventarioCom3Itens();
+        inventario.adicionarItem(new Item("Pedra",5));
+        inventario.adicionarItem(new Item("Martelo", 1));
+
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+
+        assertEquals("Espada de aço,Lucky egg,Martelo,Pedra,Poção polissuco", inventario.getDescricoesItens());
+    }
+
+    @Test
+    public void ordernarInventarioUmItemDescendente(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 1));
+
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+
+        assertEquals("Espada", inventario.getDescricoesItens());
+
+    }
+
+    @Test
+    public void ordernarInventario3ItemDescendente(){
+        Inventario inventario = criarInventarioCom3Itens();
+
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+
+        assertEquals("Poção polissuco,Lucky egg,Espada de aço", inventario.getDescricoesItens());
     }
     
+     @Test
+    public void ordernarInventario5ItemDescendente(){
+        Inventario inventario = criarInventarioCom3Itens();
+        inventario.adicionarItem(new Item("Pedra",5));
+        inventario.adicionarItem(new Item("Martelo", 1));
+
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+
+        assertEquals("Poção polissuco,Pedra,Martelo,Lucky egg,Espada de aço", inventario.getDescricoesItens());
+    }
 
     private Inventario criarInventarioCom3Itens() {
         Inventario inventario = new Inventario();
@@ -209,4 +249,5 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Lucky egg", 3));
         return inventario;
     }
+
 }
