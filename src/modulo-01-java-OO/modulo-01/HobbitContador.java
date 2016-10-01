@@ -4,33 +4,28 @@ import java.util.*;
 public class HobbitContador
 {
     public int calcularDiferenca(ArrayList<ArrayList<Integer>> dividas){
+        int resultado = 0;
+
         for(ArrayList<Integer> subArray : dividas){
-            for(Integer valor : subArray){
-                
-            }
+            int valor1 = subArray.get(0);
+            int valor2 = subArray.get(1); 
+            int produto = valor1 * valor2;
+            resultado += produto - calcularMMC(valor1,valor2);
         }
+
+        return resultado;
     }
-    
-    public int calcularMMC(int valor1, int valor2){
-        
-        int resultado = 1;
-        int coeficienteDivisao = 2;
-        
-        while(valor1 > 1 && valor2 > 1){
-            boolean calculou = false;
-            
-            if (valor1 % coeficienteDivisao == 0){
-                calculou = true;
-            }
-            if (valor2 % coeficienteDivisao == 0){
-                calculou = true;
-            }
-            
-            if(calculou){
-                resultado * coeficienteDivisao;
-            }
-        }
+
+    private int calcularMMC(int valor1, int valor2){
+        return (valor1*valor2) / getMDC(valor1,valor2);
     }
-    
-    return resultado;
+
+    private int getMDC(int valor1, int valor2){
+        while (valor2 != 0) {  
+            int resto = valor1 % valor2;  
+            valor1 = valor2;  
+            valor2 = resto;  
+        }  
+        return valor1;
+    }
 }
