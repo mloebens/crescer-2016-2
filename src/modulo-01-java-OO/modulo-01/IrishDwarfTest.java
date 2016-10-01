@@ -370,18 +370,31 @@ public class IrishDwarfTest
     }
     
     @Test
-    public void aumentar1000Unidades3Itens() {
+    public void tentarSorteSucessoCom3Itens() {
         IrishDwarf irishDwarf = new IrishDwarf("Sortudo", new DataTerceiraEra(1, 1, 2016));
         irishDwarf.perderVida();
         irishDwarf.perderVida();
         irishDwarf.perderVida();
         irishDwarf.adicionarItem(new Item("Espada de aço", 2));
-        irishDwarf.adicionarItem(new Item("Poção polissuco", 45));
+        irishDwarf.adicionarItem(new Item("Poção polissuco", 5));
         irishDwarf.adicionarItem(new Item("Lucky egg", 3));
         irishDwarf.tentarSorte();
         ArrayList<Item> itens = irishDwarf.getInventario().getItens();
-        assertEquals(1002, itens.get(0).getQuantidade());
-        assertEquals(1045, itens.get(1).getQuantidade());
-        assertEquals(1003, itens.get(2).getQuantidade());
+        assertEquals(3002, itens.get(0).getQuantidade());
+        assertEquals(15005, itens.get(1).getQuantidade());
+        assertEquals(6003, itens.get(2).getQuantidade());
+    }
+    
+    @Test
+    public void tentarSorteFracassoCom3Itens() {
+        IrishDwarf irishDwarf = new IrishDwarf("Sortudo", new DataTerceiraEra(1, 1, 2016));
+        irishDwarf.adicionarItem(new Item("Espada de aço", 2));
+        irishDwarf.adicionarItem(new Item("Poção polissuco", 5));
+        irishDwarf.adicionarItem(new Item("Lucky egg", 3));
+        irishDwarf.tentarSorte();
+        ArrayList<Item> itens = irishDwarf.getInventario().getItens();
+        assertEquals(2, itens.get(0).getQuantidade());
+        assertEquals(5, itens.get(1).getQuantidade());
+        assertEquals(3, itens.get(2).getQuantidade());
     }
 }

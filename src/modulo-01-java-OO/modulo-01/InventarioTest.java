@@ -230,8 +230,8 @@ public class InventarioTest
 
         assertEquals("Poção polissuco,Lucky egg,Espada de aço", inventario.getDescricoesItens());
     }
-    
-     @Test
+
+    @Test
     public void ordernarInventario5ItemDescendente(){
         Inventario inventario = criarInventarioCom3Itens();
         inventario.adicionarItem(new Item("Pedra",5));
@@ -240,6 +240,61 @@ public class InventarioTest
         inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
 
         assertEquals("Poção polissuco,Pedra,Martelo,Lucky egg,Espada de aço", inventario.getDescricoesItens());
+    }
+
+    @Test
+    public void aumentar1000unidadesItemFatorSomaFalse(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", 7));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarUnidades(1000,false);
+
+        assertEquals(1007, itens.get(0).getQuantidade());
+    }
+
+    @Test
+    public void aumentar1000unidadesItemFatorSomaTrue(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", 7));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarUnidades(1000,true);
+
+        assertEquals(28007, itens.get(0).getQuantidade());
+    }
+
+    @Test
+    public void aumentarMenosOitounidadesItemFatorSomaFalse(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", -8));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarUnidades(1000,false);
+
+        assertEquals(992, itens.get(0).getQuantidade());
+    }
+
+    @Test
+    public void aumentarMenosOitounidadesItemFatorSomaTrue(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", -8));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarUnidades(1000,true);
+
+        assertEquals(35992, itens.get(0).getQuantidade());
+    }
+
+    @Test
+    public void aumentarUnidadeNegativaItemFatorSomaFalse() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", 7));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarUnidades(-1,false);
+
+        assertEquals(6, itens.get(0).getQuantidade());
     }
 
     private Inventario criarInventarioCom3Itens() {
