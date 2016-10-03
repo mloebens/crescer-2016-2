@@ -1,32 +1,15 @@
-public class Elfo {
-    private String nome;
-    private Inventario inventario;
-    private int experiencia;
-    private Status status;
+public class Elfo extends Personagem {
 
     public Elfo(String nome) {
         this(nome,42);
     }
     
     public Elfo(String nome, int quantidadeFlechas){
-        this.nome = nome;
-        this.inventario = new Inventario();
+        super(nome);
         this.inventario.adicionarItem(new Item("Arco", 1));
         this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
-        status = Status.VIVO;
-    }
-
-    public void setNome(String n) {
-        nome = n;
-    }
-
-    public String getNome() {
-        return nome;
     }
     
-    public Status getStatus(){
-        return status;
-    }
     
     public Item getArco() {
         return this.inventario.getItens().get(0);
@@ -36,10 +19,6 @@ public class Elfo {
         return this.inventario.getItens().get(1);
     }
 
-    public int getExperiencia(){
-        return experiencia;
-    }
-    
     public void atirarFlecha(Dwarf dwarf) {
         Item flechas = getFlecha();
         int quantidadeFlechas = flechas.getQuantidade();
