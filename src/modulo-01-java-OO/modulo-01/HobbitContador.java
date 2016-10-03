@@ -1,6 +1,5 @@
 import java.util.*;
 
-//Incompleto
 public class HobbitContador
 {
     public int calcularDiferenca(ArrayList<ArrayList<Integer>> dividas){
