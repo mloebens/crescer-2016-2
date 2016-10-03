@@ -55,7 +55,7 @@ public class Inventario
         for(int i = 0; i < quantidadeItens ; i++){
             for(int j = 0; j < quantidadeItens-1; j++){
 
-                if(itens.get(j).getDescricao().compareTo(itens.get(j+1).getDescricao()) > 0){
+                if(itens.get(j).getQuantidade() > itens.get(j+1).getQuantidade()){
                     Item aux = itens.get(j);
                     itens.set(j,itens.get(j+1));
                     itens.set(j+1, aux);
@@ -70,12 +70,12 @@ public class Inventario
         for(int i = 0; i < quantidadeItens ; i++){
             for(int j = 0; j < quantidadeItens-1; j++){
 
-                int comparacao = itens.get(j).getDescricao().compareTo(itens.get(j+1).getDescricao());
-                if( comparacao > 0 && ordenacao == TipoOrdenacao.ASCENDENTE){
+                
+                if( itens.get(j).getQuantidade() > itens.get(j+1).getQuantidade() && ordenacao == TipoOrdenacao.ASCENDENTE){
                     inverterPosicaoDoItem(j,j+1);
                 }
 
-                if( comparacao < 0 && ordenacao == TipoOrdenacao.DESCENDENTE){
+                if( itens.get(j).getQuantidade() < itens.get(j+1).getQuantidade() && ordenacao == TipoOrdenacao.DESCENDENTE){
                     inverterPosicaoDoItem(j+1,j);
                 }
             }

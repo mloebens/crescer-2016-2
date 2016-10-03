@@ -227,7 +227,7 @@ public class InventarioTest
 
         inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
 
-        assertEquals("Espada de aço,Lucky egg,Martelo,Pedra,Poção polissuco", inventario.getDescricoesItens());
+        assertEquals("Martelo,Espada de aço,Lucky egg,Pedra,Poção polissuco", inventario.getDescricoesItens());
     }
 
     @Test
@@ -257,8 +257,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Martelo", 1));
 
         inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
-
-        assertEquals("Poção polissuco,Pedra,Martelo,Lucky egg,Espada de aço", inventario.getDescricoesItens());
+        assertEquals("Poção polissuco,Pedra,Lucky egg,Espada de aço,Martelo", inventario.getDescricoesItens());
     }
 
     @Test
