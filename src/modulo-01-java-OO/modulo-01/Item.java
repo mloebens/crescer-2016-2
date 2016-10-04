@@ -19,29 +19,30 @@ public class Item {
         return descricao;
     }
 
-    public void aumentarUnidades(int unidades, boolean fatorSoma){
-        this.quantidade += fatorSoma ? (unidades * fatorSoma()) : unidades;
-        int i = 0;
+    public void aumentarUnidades(int unidades) {
+        quantidade += unidades;
     }
 
-    private int fatorSoma(){
-        int soma = 0;
+    public void aumentarProporcionalQuantidade() {
+        /*int resultado = 0;
+        for (int i = 1; i <= this.quantidade; i++) {
+        resultado += i;
+        }*/
+        // Usando PA:
+        int quantidadeAbsoluta = Math.abs(this.quantidade);
+        int resultado = quantidadeAbsoluta * (quantidadeAbsoluta + 1) / 2;
+        this.quantidade += (resultado * 1000);
+    }
 
-        if(quantidade > 0){
-            for(int i = 1; i <= quantidade; i++){
-                soma += i;
-            }
-        }
+    @Override
+    public boolean equals(Object obj){
+        Item outro = (Item) obj;
 
-        if(quantidade < 0){
-            for(int i = -1; i >= quantidade; i--){
-                soma -= i;
-            }
-        }
-            return soma;
-        }
-    
+        return
+        this.descricao.equals(outro.descricao) &&
+        this.quantidade == outro.quantidade;
+
+    }
 
 }
-
 

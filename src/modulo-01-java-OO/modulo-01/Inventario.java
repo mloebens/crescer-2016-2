@@ -54,9 +54,15 @@ public class Inventario
         return itemMaisPopular;
     }
 
-    public void aumentarUnidadesDosItens(int unidades, boolean fatorSoma){
-        for (Item item: itens){
-            item.aumentarUnidades(unidades, fatorSoma);
+    public void aumentarUnidadesDosItens(int unidades) {
+        for (Item item : itens) {
+            item.aumentarUnidades(unidades);
+        }
+    }
+
+    public void aumentarUnidadesProporcionalQuantidadePorItem() {
+        for (Item item : this.itens) {
+            item.aumentarProporcionalQuantidade();
         }
     }
 
@@ -65,21 +71,24 @@ public class Inventario
     }
 
     public void ordenarItens(TipoOrdenacao ordenacao){
-        int quantidadeItens = itens.size();
+        boolean posicoesSendoTrocadas;
+        boolean ascendente = ordenacao == TipoOrdenacao.ASCENDENTE;
+        do {
+            posicoesSendoTrocadas = false;
+            for (int j = 0; j < this.itens.size() - 1; j++) {
+                Item itemAtual = this.itens.get(j);
+                Item proximo = this.itens.get(j + 1);
 
-        for(int i = 0; i < quantidadeItens ; i++){
-            for(int j = 0; j < quantidadeItens-1; j++){
+                boolean precisaTrocar = 
+                    ascendente ? itemAtual.getQuantidade() > proximo.getQuantidade() : itemAtual.getQuantidade() < proximo.getQuantidade();
 
-                
-                if( itens.get(j).getQuantidade() > itens.get(j+1).getQuantidade() && ordenacao == TipoOrdenacao.ASCENDENTE){
-                    inverterPosicaoDoItem(j,j+1);
-                }
-
-                if( itens.get(j).getQuantidade() < itens.get(j+1).getQuantidade() && ordenacao == TipoOrdenacao.DESCENDENTE){
-                    inverterPosicaoDoItem(j+1,j);
+                if (precisaTrocar) {
+                    this.itens.set(j, proximo);
+                    this.itens.set(j + 1, itemAtual);
+                    posicoesSendoTrocadas = true;
                 }
             }
-        }      
+        } while (posicoesSendoTrocadas);
     }
 
     public void inverterPosicaoDoItem(int posicaoItem1, int posicaoItem2){

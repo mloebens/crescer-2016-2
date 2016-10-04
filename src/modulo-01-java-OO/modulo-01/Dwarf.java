@@ -48,7 +48,7 @@ public class Dwarf extends Personagem
         boolean teveSorte = getNumeroSorte() == -3333.0;
         
         if(teveSorte){
-            inventario.aumentarUnidadesDosItens(1000, false);
+            inventario.aumentarUnidadesDosItens(1000);
         }
     }
     

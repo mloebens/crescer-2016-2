@@ -13,7 +13,7 @@ public class IrishDwarf extends Dwarf
         boolean teveSorte = getNumeroSorte() == -3333.0;
         
         if(teveSorte){           
-            inventario.aumentarUnidadesDosItens(1000,true);
+            this.inventario.aumentarUnidadesProporcionalQuantidadePorItem();
         }
     }   
 }

@@ -308,7 +308,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Elder Scroll", 7));
 
         ArrayList<Item> itens  = inventario.getItens();
-        itens.get(0).aumentarUnidades(1000,false);
+        inventario.aumentarUnidadesDosItens(1000);
 
         assertEquals(1007, itens.get(0).getQuantidade());
     }
@@ -319,7 +319,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Elder Scroll", 7));
 
         ArrayList<Item> itens  = inventario.getItens();
-        itens.get(0).aumentarUnidades(1000,true);
+        itens.get(0).aumentarProporcionalQuantidade();
 
         assertEquals(28007, itens.get(0).getQuantidade());
     }
@@ -330,7 +330,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Elder Scroll", -8));
 
         ArrayList<Item> itens  = inventario.getItens();
-        itens.get(0).aumentarUnidades(1000,false);
+        itens.get(0).aumentarUnidades(1000);
 
         assertEquals(992, itens.get(0).getQuantidade());
     }
@@ -341,7 +341,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Elder Scroll", -8));
 
         ArrayList<Item> itens  = inventario.getItens();
-        itens.get(0).aumentarUnidades(1000,true);
+        inventario.aumentarUnidadesProporcionalQuantidadePorItem();
 
         assertEquals(35992, itens.get(0).getQuantidade());
     }
@@ -352,7 +352,7 @@ public class InventarioTest
         inventario.adicionarItem(new Item("Elder Scroll", 7));
 
         ArrayList<Item> itens  = inventario.getItens();
-        itens.get(0).aumentarUnidades(-1,false);
+        itens.get(0).aumentarUnidades(-1);
 
         assertEquals(6, itens.get(0).getQuantidade());
     }
