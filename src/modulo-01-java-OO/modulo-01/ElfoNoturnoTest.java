@@ -73,7 +73,7 @@ public class ElfoNoturnoTest
     }
 
     @Test
-    public void elfoAtira42FlechasEmDwarf(){
+    public void elfoAtira45FlechasEmDwarf(){
         // Arrange
         ElfoNoturno elfoDoTeste = new ElfoNoturno("Legolas");
         Dwarf dwarfTyrion = new Dwarf();
