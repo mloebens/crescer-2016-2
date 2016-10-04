@@ -100,7 +100,7 @@ public class ElfoNoturnoTest
             elfoDoTeste.atirarFlecha(dwarfTyrion);
         }
         // Assert
-        assertEquals(0, elfoDoTeste.getVida(),0.1);
+        assertTrue(elfoDoTeste.getVida()< 1 );
         assertEquals(Status.MORTO, elfoDoTeste.getStatus());
 
     }
