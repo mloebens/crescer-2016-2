@@ -4,12 +4,14 @@ public class Personagem
     protected Inventario inventario;
     protected Status status;
     protected int experiencia;
+    protected int vida;
 
-    public Personagem(String nome)
+    public Personagem(String nome, int vida)
     {
         this.nome = nome;
         this.inventario = new Inventario();
         this.status = Status.VIVO;
+        this.vida = vida;
     }
 
     public void setNome(String n) {
@@ -30,5 +32,9 @@ public class Personagem
 
     public int getExperiencia(){
         return experiencia;
+    }
+    
+        public int getVida(){
+        return this.vida;
     }
 }

@@ -1,6 +1,5 @@
 public class Dwarf extends Personagem
 {
-    protected int vida;
     protected DataTerceiraEra dataNascimento;
 
     public Dwarf(){
@@ -8,10 +7,8 @@ public class Dwarf extends Personagem
     }
 
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
-        super(nome);
-        this.dataNascimento = dataNascimento;
-        this.vida = 110;
-        
+        super(nome,110);
+        this.dataNascimento = dataNascimento;        
     }
 
     public void perderVida(){
@@ -61,10 +58,6 @@ public class Dwarf extends Personagem
     
     public void perderItem(Item item){
         this.inventario.removerItem(item);
-    }
-
-    public int getVida(){
-        return this.vida;
     }
     
     public DataTerceiraEra getDataNascimento(){

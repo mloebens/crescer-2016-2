@@ -9,7 +9,7 @@ public class Elfo extends Personagem {
     }
 
     public Elfo(String nome, int quantidadeFlechas, String nomeArco, String nomeFlecha){
-        super(nome);
+        super(nome,100);
         this.inventario.adicionarItem(new Item(nomeArco, 1));
         this.inventario.adicionarItem(new Item(nomeFlecha, quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
     }

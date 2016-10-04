@@ -18,6 +18,17 @@ public class ElfoVerdeTest
     }
 
     @Test
+    public void elfoNasceCom100DeVida() {
+        // Arrange
+        String nomeEsperado = "Bruce Wayne";
+        // Act
+        Elfo elfoDoTeste = new Elfo(nomeEsperado);
+        // Assert
+        assertEquals(nomeEsperado, elfoDoTeste.getNome());
+        assertEquals(100, elfoDoTeste.getVida());
+    }
+
+    @Test
     public void elfoVerdeNasceCom2Flechas() {
         ElfoVerde elfoDoTeste = new ElfoVerde("Duende Verde",2);
 
@@ -31,8 +42,8 @@ public class ElfoVerdeTest
 
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
     }
-    
-     @Test
+
+    @Test
     public void adicionarUmItemComRestricoesComSucesso(){
         ElfoVerde elfoDoTeste = new ElfoVerde("Duende Verde");
         elfoDoTeste.adicionarItem(new Item("Arco de Vidro",1));
@@ -68,13 +79,13 @@ public class ElfoVerdeTest
         assertEquals("Flecha de Vidro", todosItensDoInventario.get(4).getDescricao());
         assertEquals(12, todosItensDoInventario.get(4).getQuantidade());  
     }
-    
-     @Test
+
+    @Test
     public void elfoAtiraUmaFlechaEmUmDwarf(){
         // Act
         ElfoVerde elfoDoTeste = new ElfoVerde("Legolas");
         Dwarf dwarf = new Dwarf();
-        
+
         elfoDoTeste.atirarFlecha(dwarf);
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
@@ -96,7 +107,7 @@ public class ElfoVerdeTest
         assertEquals(90, dwarf.getVida());
     }
 
-        @Test
+    @Test
     public void elfoAtira42FlechasEm3Dwarves(){
         // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Legolas");
@@ -153,7 +164,7 @@ public class ElfoVerdeTest
         assertEquals(0, dwarfGimli.getVida());
         assertEquals(0, dwarfMinimim.getVida());
     }
-    
+
     @Test
     public void elfoNaoTemFlechaNegativa(){
         // Arrange
@@ -209,7 +220,7 @@ public class ElfoVerdeTest
         // Assert
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
     }
-    
+
     @Test
     public void elfoNaoAtiraFlecha(){
         // Act
@@ -218,6 +229,5 @@ public class ElfoVerdeTest
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(0, elfoDoTeste.getExperiencia());
     }
-       
 
 }

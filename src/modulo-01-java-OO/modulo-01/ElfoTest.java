@@ -14,6 +14,17 @@ public class ElfoTest
         // Assert
         assertEquals(nomeEsperado, elfoDoTeste.getNome());
     }
+    
+     @Test
+    public void elfoNasceCom100DeVida() {
+        // Arrange
+        String nomeEsperado = "Bruce Wayne";
+        // Act
+        Elfo elfoDoTeste = new Elfo(nomeEsperado);
+        // Assert
+        assertEquals(nomeEsperado, elfoDoTeste.getNome());
+        assertEquals(100, elfoDoTeste.getVida());
+    }
 
     @Test
     public void elfoNasceComArco() {
