@@ -5,8 +5,8 @@ public class Personagem
     protected Status status;
     protected int experiencia;
     protected double vida;
-
-    public Personagem(String nome, int vida)
+    
+    public Personagem(String nome, double vida)
     {
         this.nome = nome;
         this.inventario = new Inventario();

@@ -3,15 +3,18 @@ public class Elfo extends Personagem {
     public Elfo(String nome) {
         this(nome,42);
     }
-
+    
     public Elfo(String nome, int quantidadeFlechas){
-        this(nome, quantidadeFlechas, "Arco", "Flechas");
-    }
-
-    public Elfo(String nome, int quantidadeFlechas, String nomeArco, String nomeFlecha){
         super(nome,100);
-        this.inventario.adicionarItem(new Item(nomeArco, 1));
-        this.inventario.adicionarItem(new Item(nomeFlecha, quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
+    }
+    
+    // TODO precisa ser melhorado
+    public Elfo(String nome, Item item){
+        super(nome,100);
+        this.inventario.adicionarItem(item);
+        this.inventario.adicionarItem(item);
     }
 
     public Item getArco() {

@@ -11,9 +11,9 @@ public class ElfoVerdeTest
         ElfoVerde elfoDoTeste = new ElfoVerde("Duende Verde");
 
         assertEquals("Duende Verde", elfoDoTeste.getNome());
-        assertEquals("Arco de Vidro", elfoDoTeste.getArco().getDescricao());
-        assertEquals(1, elfoDoTeste.getArco().getQuantidade());
-        assertEquals("Flecha de Vidro", elfoDoTeste.getFlecha().getDescricao());
+        assertEquals("Arco e Flecha de Vidro", elfoDoTeste.getArco().getDescricao());
+        assertEquals(42, elfoDoTeste.getArco().getQuantidade());
+        assertEquals("Arco e Flecha de Vidro", elfoDoTeste.getFlecha().getDescricao());
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
 
@@ -29,27 +29,12 @@ public class ElfoVerdeTest
     }
 
     @Test
-    public void elfoVerdeNasceCom2Flechas() {
-        ElfoVerde elfoDoTeste = new ElfoVerde("Duende Verde",2);
-
-        assertEquals(2, elfoDoTeste.getFlecha().getQuantidade());
-    }
-
-    @Test
-    public void elfoVerdeNasceSemFlechas() {
-        ElfoVerde elfoDoTeste = new ElfoVerde("Duende Verde",0);
-        ArrayList<Item> todosItensDoInventario = elfoDoTeste.getInventario().getItens();
-
-        assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
-    }
-
-    @Test
     public void adicionarUmItemComRestricoesComSucesso(){
         ElfoVerde elfoDoTeste = new ElfoVerde("Duende Verde");
-        elfoDoTeste.adicionarItem(new Item("Arco de Vidro",1));
+        elfoDoTeste.adicionarItem(new Item("Espada de aço valiriano",1));
 
-        assertEquals("Arco de Vidro", elfoDoTeste.getArco().getDescricao());
-        assertEquals(1, elfoDoTeste.getArco().getQuantidade());  
+        assertEquals("Espada de aço valiriano", elfoDoTeste.getInventario().getItens().get(2).getDescricao());
+        assertEquals(1, elfoDoTeste.getInventario().getItens().get(2).getQuantidade());  
     }
 
     @Test
@@ -67,17 +52,15 @@ public class ElfoVerdeTest
         elfoDoTeste.adicionarItem(new Item("Espada de aço valiriano",2));
         elfoDoTeste.adicionarItem(new Item("Bastão",4));
         elfoDoTeste.adicionarItem(new Item("Arco de Vidro",1));
-        elfoDoTeste.adicionarItem(new Item("Flecha de Vidro",12));
+        elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro",12));
 
         ArrayList<Item> todosItensDoInventario = elfoDoTeste.getInventario().getItens();
 
-        assertEquals(5, todosItensDoInventario.size());
+        assertEquals(4, todosItensDoInventario.size());
         assertEquals("Espada de aço valiriano", todosItensDoInventario.get(2).getDescricao());
         assertEquals(2, todosItensDoInventario.get(2).getQuantidade());
-        assertEquals("Arco de Vidro", todosItensDoInventario.get(3).getDescricao());
-        assertEquals(1, todosItensDoInventario.get(3).getQuantidade());  
-        assertEquals("Flecha de Vidro", todosItensDoInventario.get(4).getDescricao());
-        assertEquals(12, todosItensDoInventario.get(4).getQuantidade());  
+        assertEquals("Arco e Flecha de Vidro", todosItensDoInventario.get(3).getDescricao());
+        assertEquals(12, todosItensDoInventario.get(3).getQuantidade());  
     }
 
     @Test
