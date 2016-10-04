@@ -17,7 +17,10 @@ public class ElfoNoturno extends Elfo
     public boolean atirarFlecha(Dwarf dwarf) {
         boolean atirou = atirarFlecha(dwarf, 3);
         if(atirou){
-            this.vida = this.vida - (this.vida * .05) ;
+            this.vida -= (this.vida * .05) ;
+            if(this.vida < 0.1){
+                this.status = Status.MORTO;
+            }
             return true;
         }
         return false;

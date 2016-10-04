@@ -88,6 +88,22 @@ public class ElfoNoturnoTest
         assertEquals(11.59822, elfoDoTeste.getVida(),0.00001);
         assertEquals(0, dwarfTyrion.getVida(),0);
     }
+    
+    @Test
+    public void elfoAtira135FlechasEmDwarfEMorre(){
+        // Arrange
+        ElfoNoturno elfoDoTeste = new ElfoNoturno("Legolas",135);
+        Dwarf dwarfTyrion = new Dwarf();
+
+        // Act
+        for(int i = 1; i <= 135;i++){
+            elfoDoTeste.atirarFlecha(dwarfTyrion);
+        }
+        // Assert
+        assertEquals(0, elfoDoTeste.getVida(),0.1);
+        assertEquals(Status.MORTO, elfoDoTeste.getStatus());
+
+    }
 
     @Test
     public void elfoNaoTemFlechaNegativa(){
