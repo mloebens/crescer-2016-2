@@ -1,61 +1,57 @@
 public class Elfo extends Personagem {
 
-    public Elfo(String nome) {
-        this(nome,42);
+    public Elfo(String n) {
+        // Chamando construtor debaixo
+        this(n, 42);
     }
-    
-    public Elfo(String nome, int quantidadeFlechas){
-        super(nome,100);
-        this.inventario.adicionarItem(new Item("Arco", 1));
-        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
-    }
-    
-    // TODO precisa ser melhorado
-    public Elfo(String nome, Item item){
-        super(nome,100);
-        this.inventario.adicionarItem(item);
-        this.inventario.adicionarItem(item);
+
+    public Elfo(String nome, int quantidadeFlechas) {
+        super(nome);
+        this.vida = 100;
+        this.inicializarInventario(quantidadeFlechas);
     }
 
     public Item getArco() {
         return this.inventario.getItens().get(0);
     }
 
-    public Item getFlecha(){
+    public Item getFlecha() {
         return this.inventario.getItens().get(1);
     }
 
     public void atirarFlecha(Dwarf dwarf) {
-        atirarFlecha(dwarf, 1);
+        atirarFlechas(dwarf, 1);
     }
 
-    public void atirarFlecha(Dwarf dwarf, int multiplicadorDeExperiencia) {
-        Item flechas = getFlecha();
-        int quantidadeFlechas = flechas.getQuantidade();
-
-        if(quantidadeFlechas > 0){
-            flechas.setQuantidade(--quantidadeFlechas);
+    protected void atirarFlechas(Dwarf dwarf, int fatorExperiencia) {
+        int quantidadeFlechas = getFlecha().getQuantidade();
+        boolean temFlecha = quantidadeFlechas > 0;
+        if (temFlecha) {
+            getFlecha().setQuantidade(quantidadeFlechas - 1);
+            experiencia += 1 * fatorExperiencia;
             dwarf.perderVida();
-            experiencia += 1 * multiplicadorDeExperiencia;
         }
     }
 
-    public String toString(){
-        Item flechas = getFlecha();
-        boolean flechaNoSingular = flechas.getQuantidade() == 1;
-        boolean experienciaNoSingular = this.experiencia == 1;
-
-        return String.format("%s possui %d %s e %d %s de experiência.", 
-            this.nome, 
-            flechas.getQuantidade(),
-            flechaNoSingular ? "flecha" : "flechas",
-            this.experiencia,
-            experienciaNoSingular ? "nível" : "níveis");
+    protected void inicializarInventario(int quantidadeFlechas) {
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
     }
 
-    /*public void atirarFlechaRefactory() {
-    experiencia++;
-    flecha.setQuantidade(flecha.getQuantidade()-1);
-    }*/
-}
+    public String toString() {
+        //return "<nome> possui <flechas> flechas e <exp> níveis de experiência.";
 
+        int quantidadeFlechas = this.getFlecha().getQuantidade();
+        boolean flechaNoSingular = quantidadeFlechas == 1;
+        boolean experienciaNoSingular = this.experiencia == 0 || this.experiencia == 1;
+
+        return String.format("%s possui %d %s e %d %s de experiência.",
+            this.nome,
+            quantidadeFlechas,
+            // ?:
+            flechaNoSingular ? "flecha" : "flechas",
+            this.experiencia,
+            experienciaNoSingular ? "nível" : "níveis"
+        );
+    }
+}

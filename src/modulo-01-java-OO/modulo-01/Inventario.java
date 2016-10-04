@@ -8,17 +8,6 @@ public class Inventario
         this.itens.add(item);
     }
     
-    //restricaoDeItens: somente os itens deste array podem ser adicionados no inventário.
-    public void adicionarItem(Item item, ArrayList<String> restricaoDeItens){
-        for(String nomeItemRestrito : restricaoDeItens){
-            String nomeItemNovo = item.getDescricao(); 
-            if (nomeItemNovo != null && nomeItemNovo.equals(nomeItemRestrito)){
-                adicionarItem(item);
-                break;
-            }
-        }
-    }
-
     public void removerItem(Item item){
         this.itens.remove(item);
     }
@@ -90,11 +79,4 @@ public class Inventario
             }
         } while (posicoesSendoTrocadas);
     }
-
-    public void inverterPosicaoDoItem(int posicaoItem1, int posicaoItem2){
-        Item aux = itens.get(posicaoItem1);
-        itens.set(posicaoItem1, itens.get(posicaoItem2));
-        itens.set(posicaoItem2, aux);
-    }
-
 }

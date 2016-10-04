@@ -59,48 +59,6 @@ public class InventarioTest
     }
 
     @Test
-    public void adicionarUmItemComRestricoesComSucesso(){
-        Inventario inventario = new Inventario();
-        inventario.adicionarItem(new Item("Espada Z",1), new ArrayList<String>(Arrays.asList("Espada Z")));
-
-        ArrayList<Item> todosItensDoInventario = inventario.getItens();
-
-        assertEquals("Espada Z", todosItensDoInventario.get(0).getDescricao());
-        assertEquals(1, todosItensDoInventario.get(0).getQuantidade());  
-    }
-
-    @Test
-    public void adicionarUmItemComRestricoesSemSucesso(){
-        Inventario inventario = new Inventario();
-        inventario.adicionarItem(new Item("Espada Z",1), new ArrayList<String>(Arrays.asList("Espada")));
-
-        assertTrue(inventario.getItens().isEmpty());
-    }
-
-    @Test
-    public void adicionar5ItensComRestricoesComSucesso(){
-        Inventario inventario = new Inventario();
-        ArrayList<String> restricaoDeItens = new ArrayList<String>(
-                Arrays.asList("Espada de aço valiriano","Arco de Vidro","Flecha de Vidro"));
-
-        inventario.adicionarItem(new Item("Espada Z",1), restricaoDeItens);
-        inventario.adicionarItem(new Item("Espada de aço valiriano",2), restricaoDeItens);
-        inventario.adicionarItem(new Item("Bastão",4), restricaoDeItens);
-        inventario.adicionarItem(new Item("Arco de Vidro",1), restricaoDeItens);
-        inventario.adicionarItem(new Item("Flecha de Vidro",12), restricaoDeItens);
-
-        ArrayList<Item> todosItensDoInventario = inventario.getItens();
-
-        assertEquals(3, todosItensDoInventario.size());
-        assertEquals("Espada de aço valiriano", todosItensDoInventario.get(0).getDescricao());
-        assertEquals(2, todosItensDoInventario.get(0).getQuantidade());
-        assertEquals("Arco de Vidro", todosItensDoInventario.get(1).getDescricao());
-        assertEquals(1, todosItensDoInventario.get(1).getQuantidade());  
-        assertEquals("Flecha de Vidro", todosItensDoInventario.get(2).getDescricao());
-        assertEquals(12, todosItensDoInventario.get(2).getQuantidade());  
-    }
-
-    @Test
     public void removerUmItemDeUm(){
         Inventario inventario = new Inventario();
         Item espadaZ = new Item("Espada Z",1);
