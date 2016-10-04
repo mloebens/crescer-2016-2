@@ -11,7 +11,7 @@ public class IrishDwarfTest
         // Act
         IrishDwarf irishDwarf = new IrishDwarf();
         // Assert
-        assertEquals(110, irishDwarf.getVida());
+        assertEquals(110, irishDwarf.getVida(),0);
     }
 
     @Test
@@ -19,7 +19,7 @@ public class IrishDwarfTest
         // Act
         IrishDwarf irishDwarf = new IrishDwarf("Legolas", new DataTerceiraEra(1,10,2000));
         // Assert
-        assertEquals(110, irishDwarf.getVida());
+        assertEquals(110, irishDwarf.getVida(),0);
         assertEquals("Legolas", irishDwarf.getNome());
     }
 
@@ -66,7 +66,7 @@ public class IrishDwarfTest
         IrishDwarf irishDwarf = new IrishDwarf("Meireles", new DataTerceiraEra(1,01,2001));
         irishDwarf.perderVida();
         // Assert
-        assertEquals(110, irishDwarf.getVida());
+        assertEquals(110, irishDwarf.getVida(),0);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class IrishDwarfTest
         IrishDwarf irishDwarf = new IrishDwarf("Meireles", new DataTerceiraEra(1,01,2000));
         irishDwarf.perderVida();
         // Assert
-        assertEquals(100, irishDwarf.getVida());
+        assertEquals(100, irishDwarf.getVida(),0);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class IrishDwarfTest
         IrishDwarf irishDwarf = new IrishDwarf("Seixas", new DataTerceiraEra(1,01,2000));
         irishDwarf.perderVida();
         // Assert
-        assertEquals(100, irishDwarf.getVida());
+        assertEquals(100, irishDwarf.getVida(),0);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class IrishDwarfTest
         IrishDwarf irishDwarf = new IrishDwarf("Seixas", new DataTerceiraEra(1,01,2001));
         irishDwarf.perderVida();
         // Assert
-        assertEquals(110, irishDwarf.getVida());
+        assertEquals(110, irishDwarf.getVida(),0);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class IrishDwarfTest
         IrishDwarf irishDwarf = new IrishDwarf("Gimli", new DataTerceiraEra(1,01,2000));
         irishDwarf.perderVida();
         // Assert
-        assertEquals(100, irishDwarf.getVida());
+        assertEquals(100, irishDwarf.getVida(),0);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class IrishDwarfTest
         irishDwarf.perderVida();
 
         // Assert
-        assertEquals(90, irishDwarf.getVida());
+        assertEquals(90, irishDwarf.getVida(),0);
         assertEquals(8, irishDwarf.getExperiencia());
     }
 
@@ -177,7 +177,7 @@ public class IrishDwarfTest
         irishDwarf.perderVida();
 
         assertEquals(Status.MORTO, irishDwarf.getStatus());
-        assertEquals(0, irishDwarf.getVida());
+        assertEquals(0, irishDwarf.getVida(),0);
 
     }
 
@@ -209,7 +209,7 @@ public class IrishDwarfTest
         irishDwarf.perderVida();
 
         assertEquals(Status.MORTO, irishDwarf.getStatus());
-        assertEquals(0, irishDwarf.getVida());   
+        assertEquals(0, irishDwarf.getVida(),0);   
     }
 
     @Test
@@ -262,7 +262,7 @@ public class IrishDwarfTest
         irishDwarf.perderVida();
 
         assertEquals(Status.MORTO, irishDwarf.getStatus());
-        assertEquals(0, irishDwarf.getVida());
+        assertEquals(0, irishDwarf.getVida(),0);
     }
 
     @Test

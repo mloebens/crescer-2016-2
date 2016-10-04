@@ -4,7 +4,7 @@ public class Personagem
     protected Inventario inventario;
     protected Status status;
     protected int experiencia;
-    protected int vida;
+    protected double vida;
 
     public Personagem(String nome, int vida)
     {
@@ -33,8 +33,8 @@ public class Personagem
     public int getExperiencia(){
         return experiencia;
     }
-    
-        public int getVida(){
+
+    public double getVida(){
         return this.vida;
     }
 }

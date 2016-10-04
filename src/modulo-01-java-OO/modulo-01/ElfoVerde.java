@@ -17,7 +17,7 @@ public class ElfoVerde extends Elfo
         this.inventario.adicionarItem(item,restricaoDeItens);
     }
 
-    public void atirarFlecha(Dwarf dwarf) {
-        atirarFlecha(dwarf, 2);
+    public boolean atirarFlecha(Dwarf dwarf) {
+        return atirarFlecha(dwarf, 2);
     }
 }

@@ -25,7 +25,7 @@ public class ElfoVerdeTest
         Elfo elfoDoTeste = new Elfo(nomeEsperado);
         // Assert
         assertEquals(nomeEsperado, elfoDoTeste.getNome());
-        assertEquals(100, elfoDoTeste.getVida());
+        assertEquals(100, elfoDoTeste.getVida(),0);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class ElfoVerdeTest
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(2, elfoDoTeste.getExperiencia());
-        assertEquals(100, dwarf.getVida());
+        assertEquals(100, dwarf.getVida(),0);
     }
 
     @Test
@@ -104,7 +104,7 @@ public class ElfoVerdeTest
         // Assert
         assertEquals(40, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(4, elfoDoTeste.getExperiencia());
-        assertEquals(90, dwarf.getVida());
+        assertEquals(90, dwarf.getVida(),0);
     }
 
     @Test
@@ -160,9 +160,9 @@ public class ElfoVerdeTest
         // Assert
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(84, elfoDoTeste.getExperiencia());
-        assertEquals(0, dwarfTyrion.getVida());
-        assertEquals(0, dwarfGimli.getVida());
-        assertEquals(0, dwarfMinimim.getVida());
+        assertEquals(0, dwarfTyrion.getVida(),0);
+        assertEquals(0, dwarfGimli.getVida(),0);
+        assertEquals(0, dwarfMinimim.getVida(),0);
     }
 
     @Test

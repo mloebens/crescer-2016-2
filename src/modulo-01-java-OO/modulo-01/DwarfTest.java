@@ -11,7 +11,7 @@ public class DwarfTest
         // Act
         Dwarf dwarf = new Dwarf();
         // Assert
-        assertEquals(110, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(),0);
     }
 
     @Test
@@ -19,7 +19,7 @@ public class DwarfTest
         // Act
         Dwarf dwarf = new Dwarf("Legolas", new DataTerceiraEra(1,10,2000));
         // Assert
-        assertEquals(110, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(),0);
         assertEquals("Legolas", dwarf.getNome());
     }
 
@@ -66,7 +66,7 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(1,01,2001));
         dwarf.perderVida();
         // Assert
-        assertEquals(110, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(),0);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(1,01,2000));
         dwarf.perderVida();
         // Assert
-        assertEquals(100, dwarf.getVida());
+        assertEquals(100, dwarf.getVida(),0);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Seixas", new DataTerceiraEra(1,01,2000));
         dwarf.perderVida();
         // Assert
-        assertEquals(100, dwarf.getVida());
+        assertEquals(100, dwarf.getVida(),0);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Seixas", new DataTerceiraEra(1,01,2001));
         dwarf.perderVida();
         // Assert
-        assertEquals(110, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(),0);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,01,2000));
         dwarf.perderVida();
         // Assert
-        assertEquals(100, dwarf.getVida());
+        assertEquals(100, dwarf.getVida(),0);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class DwarfTest
         dwarf.perderVida();
 
         // Assert
-        assertEquals(90, dwarf.getVida());
+        assertEquals(90, dwarf.getVida(),0);
         assertEquals(8, dwarf.getExperiencia());
     }
 
@@ -177,7 +177,7 @@ public class DwarfTest
         dwarf.perderVida();
 
         assertEquals(Status.MORTO, dwarf.getStatus());
-        assertEquals(0, dwarf.getVida());
+        assertEquals(0, dwarf.getVida(),0);
 
     }
 
@@ -209,7 +209,7 @@ public class DwarfTest
         dwarf.perderVida();
 
         assertEquals(Status.MORTO, dwarf.getStatus());
-        assertEquals(0, dwarf.getVida());   
+        assertEquals(0, dwarf.getVida(),0);   
     }
 
     @Test
@@ -262,7 +262,7 @@ public class DwarfTest
         dwarf.perderVida();
 
         assertEquals(Status.MORTO, dwarf.getStatus());
-        assertEquals(0, dwarf.getVida());
+        assertEquals(0, dwarf.getVida(),0);
     }
 
     @Test
