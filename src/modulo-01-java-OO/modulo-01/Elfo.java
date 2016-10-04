@@ -25,11 +25,11 @@ public class Elfo extends Personagem {
         return this.inventario.getItens().get(1);
     }
 
-    public boolean atirarFlecha(Dwarf dwarf) {
-        return atirarFlecha(dwarf, 1);
+    public void atirarFlecha(Dwarf dwarf) {
+        atirarFlecha(dwarf, 1);
     }
 
-    public boolean atirarFlecha(Dwarf dwarf, int multiplicadorDeExperiencia) {
+    public void atirarFlecha(Dwarf dwarf, int multiplicadorDeExperiencia) {
         Item flechas = getFlecha();
         int quantidadeFlechas = flechas.getQuantidade();
 
@@ -37,9 +37,7 @@ public class Elfo extends Personagem {
             flechas.setQuantidade(--quantidadeFlechas);
             dwarf.perderVida();
             experiencia += 1 * multiplicadorDeExperiencia;
-            return true;
         }
-        return false;
     }
 
     public String toString(){
