@@ -1,3 +1,8 @@
+/*
+ * 5.2 - Não morrerá, ficará infinitamente perto de 0 mas nunca chegará realmente ao zero
+ * 
+ */
+
 public class ElfoNoturno extends Elfo
 {
 
