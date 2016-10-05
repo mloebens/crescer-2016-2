@@ -4,10 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 
-public class ExercitoElfoTest {
+public class ExercitoElfosTest {
     @Test
     public void alistarEBuscarElfoVerdePeloNome(){
-        ExercitoElfo exercito = new ExercitoElfo();
+        ExercitoElfos exercito = new ExercitoElfos();
 
         exercito.alistar(new ElfoVerde("Legolas"));
         assertEquals("Legolas", exercito.buscar("Legolas").getNome());
@@ -15,15 +15,23 @@ public class ExercitoElfoTest {
 
     @Test
     public void alistarEBuscarElfoNoturnoPeloNome(){
-        ExercitoElfo exercito = new ExercitoElfo();
+        ExercitoElfos exercito = new ExercitoElfos();
 
         exercito.alistar(new ElfoNoturno("Legolas"));
         assertEquals("Legolas", exercito.buscar("Legolas").getNome());
     }
+    
+    @Test
+    public void alistarElfoNaoDeveFuncionar(){
+        ExercitoElfos exercito = new ExercitoElfos();
+
+        exercito.alistar(new Elfo("Legolas"));
+        assertNull(exercito.buscar("Legolas"));
+    }
 
     @Test
     public void alistarEBuscarElfosPeloNome(){
-        ExercitoElfo exercito = new ExercitoElfo();
+        ExercitoElfos exercito = new ExercitoElfos();
 
         exercito.alistar(new ElfoNoturno("Elfo Noturno"));
         exercito.alistar(new ElfoVerde("Elfo Verde"));
@@ -34,20 +42,19 @@ public class ExercitoElfoTest {
 
     @Test
     public void buscarPrimeiroElfoQuandoNomesIguais(){
-        ExercitoElfo exercito = new ExercitoElfo();
+        ExercitoElfos exercito = new ExercitoElfos();
 
-        exercito.alistar(new ElfoVerde("Elfo",5));
+        ElfoVerde recruta = new ElfoVerde("Elfo");
+        exercito.alistar(recruta);
         exercito.alistar(new ElfoVerde("Elfo"));
-        Elfo elfoEncontrado = exercito.buscar("Elfo");
-
-        assertEquals("Elfo", elfoEncontrado.getNome());
-        assertEquals(5, elfoEncontrado.getFlecha().getQuantidade());
+        
+        assertEquals(recruta, exercito.buscar("Elfo"));
 
     }
 
     @Test
     public void buscarElfoVivo(){
-        ExercitoElfo exercito = new ExercitoElfo();
+        ExercitoElfos exercito = new ExercitoElfos();
 
         exercito.alistar(new ElfoVerde("Elfo 1"));
         exercito.alistar(new ElfoVerde("Elfo 2"));
@@ -62,7 +69,7 @@ public class ExercitoElfoTest {
 
     @Test
     public void buscarElfoMorto(){
-        ExercitoElfo exercito = new ExercitoElfo();
+        ExercitoElfos exercito = new ExercitoElfos();
 
         Elfo elfoMorto = new ElfoNoturno("Elfo 1", 200);
         exercito.alistar(elfoMorto);
@@ -70,13 +77,10 @@ public class ExercitoElfoTest {
         
         Dwarf dwarfAlvo = new Dwarf();
         
-       // while(elfoMorto.getStatus() == Status.VIVO){
-         for(int i = 0; i < 100;i++){
+       while(elfoMorto.getStatus() == Status.VIVO){
            elfoMorto.atirarFlecha(dwarfAlvo);
         }
         
-        System.out.println(elfoMorto.getVida());
-
         ArrayList<Elfo> elfos = exercito.buscar(Status.MORTO);
 
         assertEquals(1, elfos.size());
