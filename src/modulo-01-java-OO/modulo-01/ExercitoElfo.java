@@ -20,4 +20,15 @@ public class ExercitoElfo
         }
         return null;
     }
+    
+    public ArrayList<Elfo> buscar(Status status){
+        ArrayList<Elfo> resultado = new ArrayList<>();
+        
+        for(Elfo elfo : exercito){
+            if(elfo.getStatus() == status){
+                resultado.add(elfo);
+            }
+        }
+        return resultado;
+    }
 }
