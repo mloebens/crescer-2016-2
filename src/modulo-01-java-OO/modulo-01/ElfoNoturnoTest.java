@@ -6,6 +6,11 @@ import java.util.*;
 
 public class ElfoNoturnoTest
 {
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+
     @Test
     public void elfoNoturnoNasceComNome1ArcoE42Flechas() {
         ElfoNoturno elfoDoTeste = new ElfoNoturno("Elfo Noturno");
@@ -88,7 +93,7 @@ public class ElfoNoturnoTest
         assertEquals(11.59822, elfoDoTeste.getVida(),0.00001);
         assertEquals(0, dwarfTyrion.getVida(),0);
     }
-    
+
     @Test
     public void elfoAtira135FlechasEmDwarfEMorre(){
         // Arrange
@@ -170,5 +175,29 @@ public class ElfoNoturnoTest
         // Assert
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(0, elfoDoTeste.getExperiencia());
+    }
+
+    @Test
+    public void contar1ElfoNoturno(){
+        new ElfoNoturno("Legolas");
+
+        assertEquals(1, Elfo.getContadorDeElfos());
+    }
+
+    @Test
+    public void contar1ElfoE1ElfoNoturno(){
+        new ElfoNoturno("Legolas");
+        new Elfo("Legolas");
+
+        assertEquals(2, Elfo.getContadorDeElfos());
+    }
+
+    @Test
+    public void contar5ElfosNoturno(){
+        for(int i = 1; i <= 5;i++){
+            new ElfoNoturno("Legolas");
+        }
+
+        assertEquals(5, Elfo.getContadorDeElfos());
     }
 }

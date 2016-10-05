@@ -5,6 +5,12 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class ExercitoElfosTest {
+
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+
     @Test
     public void alistarEBuscarElfoVerdePeloNome(){
         ExercitoElfos exercito = new ExercitoElfos();
@@ -20,7 +26,7 @@ public class ExercitoElfosTest {
         exercito.alistar(new ElfoNoturno("Legolas"));
         assertEquals("Legolas", exercito.buscar("Legolas").getNome());
     }
-    
+
     @Test
     public void alistarElfoNaoDeveFuncionar(){
         ExercitoElfos exercito = new ExercitoElfos();
@@ -47,7 +53,7 @@ public class ExercitoElfosTest {
         ElfoVerde recruta = new ElfoVerde("Elfo");
         exercito.alistar(recruta);
         exercito.alistar(new ElfoVerde("Elfo"));
-        
+
         assertEquals(recruta, exercito.buscar("Elfo"));
 
     }
@@ -56,14 +62,16 @@ public class ExercitoElfosTest {
     public void buscarElfoVivo(){
         ExercitoElfos exercito = new ExercitoElfos();
 
-        exercito.alistar(new ElfoVerde("Elfo 1"));
-        exercito.alistar(new ElfoVerde("Elfo 2"));
+        Elfo recruta1 = new ElfoVerde("Elfo 1");
+        Elfo recruta2 = new ElfoVerde("Elfo 2");
+        exercito.alistar(recruta1);
+        exercito.alistar(recruta2);
 
         ArrayList<Elfo> elfos = exercito.buscar(Status.VIVO);
 
         assertEquals(2, elfos.size());
-        assertEquals("Elfo 1", elfos.get(0).getNome());
-        assertEquals("Elfo 2", elfos.get(1).getNome());
+        assertEquals(recruta1, elfos.get(0));
+        assertEquals(recruta2, elfos.get(1));
 
     }
 
@@ -71,20 +79,20 @@ public class ExercitoElfosTest {
     public void buscarElfoMorto(){
         ExercitoElfos exercito = new ExercitoElfos();
 
-        Elfo elfoMorto = new ElfoNoturno("Elfo 1", 200);
-        exercito.alistar(elfoMorto);
-        exercito.alistar(new ElfoNoturno("Elfo 2"));
-        
+        Elfo recruta1 = new ElfoNoturno("Elfo 1",200);
+        Elfo recruta2 = new ElfoVerde("Elfo 2");
+        exercito.alistar(recruta1);
+        exercito.alistar(recruta2);
+
         Dwarf dwarfAlvo = new Dwarf();
-        
-       while(elfoMorto.getStatus() == Status.VIVO){
-           elfoMorto.atirarFlecha(dwarfAlvo);
+        while(recruta1.getStatus() == Status.VIVO){
+            recruta1.atirarFlecha(dwarfAlvo);
         }
-        
+
         ArrayList<Elfo> elfos = exercito.buscar(Status.MORTO);
 
         assertEquals(1, elfos.size());
-        assertEquals("Elfo 1", elfos.get(0).getNome());
+        assertEquals(recruta1, elfos.get(0));
     }
 
 }

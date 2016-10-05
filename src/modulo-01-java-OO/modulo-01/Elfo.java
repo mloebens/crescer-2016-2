@@ -1,5 +1,11 @@
 public class Elfo extends Personagem {
 
+    private static int contadorDeElfos = 0;
+
+    {
+        contadorDeElfos++;
+    }
+
     public Elfo(String n) {
         // Chamando construtor debaixo
         this(n, 42);
@@ -9,6 +15,10 @@ public class Elfo extends Personagem {
         super(nome);
         this.vida = 100;
         this.inicializarInventario(quantidadeFlechas);
+    }
+
+    public void finalize(){
+        contadorDeElfos--;
     }
 
     public Item getArco() {
@@ -53,5 +63,9 @@ public class Elfo extends Personagem {
             this.experiencia,
             experienciaNoSingular ? "nível" : "níveis"
         );
+    }
+
+    public static int getContadorDeElfos(){
+        return contadorDeElfos;
     }
 }

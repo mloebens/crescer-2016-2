@@ -6,6 +6,11 @@ import java.util.*;
 
 public class ElfoVerdeTest
 {
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+
     @Test
     public void elfoVerdeNasceComNome1ArcoE42Flechas() {
         ElfoVerde elfoDoTeste = new ElfoVerde("Duende Verde");
@@ -213,6 +218,30 @@ public class ElfoVerdeTest
         // Assert
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(0, elfoDoTeste.getExperiencia());
+    }
+
+    @Test
+    public void contar1ElfoVerde(){
+        new ElfoVerde("Legolas");
+
+        assertEquals(1, Elfo.getContadorDeElfos());
+    }
+
+    @Test
+    public void contar1ElfoE1ElfoVerde(){
+        new ElfoVerde("Legolas");
+        new Elfo("Legolas");
+
+        assertEquals(2, Elfo.getContadorDeElfos());
+    }
+
+    @Test
+    public void contar5ElfosVerde(){
+        for(int i = 1; i <= 5;i++){
+            new ElfoVerde("Legolas");
+        }
+
+        assertEquals(5, Elfo.getContadorDeElfos());
     }
 
 }
