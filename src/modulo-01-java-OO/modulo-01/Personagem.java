@@ -1,4 +1,4 @@
-public class Personagem
+public abstract class Personagem
 {
     protected String nome;
     protected Inventario inventario;
@@ -6,14 +6,15 @@ public class Personagem
     protected int experiencia;
     protected double vida;
     
-    public Personagem(String nome, double vida)
+    public Personagem(String nome)
     {
         this.nome = nome;
         this.inventario = new Inventario();
         this.status = Status.VIVO;
-        this.vida = vida;
     }
 
+    abstract void inicializarInventario(int quantidadeFlechas);
+    
     public void setNome(String n) {
         nome = n;
     }

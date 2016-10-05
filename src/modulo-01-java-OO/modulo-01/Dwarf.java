@@ -64,4 +64,6 @@ public class Dwarf extends Personagem
     public DataTerceiraEra getDataNascimento(){
         return this.dataNascimento;
     }
+    
+    public void inicializarInventario(int quantidadeFlechas) { }
 }
