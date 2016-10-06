@@ -2,129 +2,131 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
+import java.util.*;
 
-public class BatalhaoEspecialDeElfosTest
-{
+public class BatalhaoEspecialDeElfosTest {
     @Test
-    public void alistarUmElfoVerde() {
+    public void alistarElfoNoBatalhaoEspecial() {
         BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo elfoVerde = new ElfoVerde("Elfo Verde");
-        batalhao.alistar(elfoVerde);
-        assertEquals(elfoVerde, batalhao.getContingente()[0]);
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
+        //Elfo recruta2 = new ElfoNoturno("Sinnafain Leothyra");
+        batalhao.alistar(recruta1);
+        assertEquals(recruta1, batalhao.getContingente()[0]);
     }
 
     @Test
-    public void alistarUmElfoNoturno() {
+    public void alistarDoisElfosNoBatalhaoEspecial() {
         BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo elfoNoturno = new ElfoNoturno("Night Elf");
-        batalhao.alistar(elfoNoturno);
-        assertEquals(elfoNoturno, batalhao.getContingente()[0]);
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
+        Elfo recruta2 = new ElfoNoturno("Sinnafain Leothyra");
+        batalhao.alistar(recruta1);
+        batalhao.alistar(recruta2);
+        Elfo[] elfos = batalhao.getContingente();
+        assertTrue(contem(elfos, recruta1));
+        assertTrue(contem(elfos, recruta2));
     }
 
     @Test
-    public void alistarUmElfoNormal() {
+    public void alistarDoisElfosValidosEUmInvalidoNoBatalhaoEspecial() {
         BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo elfoNormal = new Elfo("Elfo Normal");
-        batalhao.alistar(elfoNormal);
-        assertEquals(0, batalhao.getContingente().length);
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
+        Elfo recruta2 = new ElfoNoturno("Sinnafain Leothyra");
+        batalhao.alistar(recruta1);
+        batalhao.alistar(new Elfo("Taredd Oriwraek"));
+        batalhao.alistar(recruta2);
+        Elfo[] elfos = batalhao.getContingente();
+        assertEquals(2, elfos.length);
+        assertTrue(contem(elfos, recruta1));
+        assertTrue(contem(elfos, recruta2));
     }
 
     @Test
-    public void alistarDosTresTiposSoEntramVerdesENoturnos() {
+    public void buscarElfoQueNaoFoiAlistado() {
         BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo elfoVerde = new ElfoVerde("Elfo Verde");
-        Elfo elfoNormal = new Elfo("Elfo Normal");
-        Elfo elfoNoturno = new ElfoNoturno("Night Elf");
-        batalhao.alistar(elfoVerde);
-        batalhao.alistar(elfoNormal);
-        batalhao.alistar(elfoNoturno);
-        assertEquals(2, batalhao.getContingente().length);
-        assertEquals(elfoVerde, batalhao.getContingente()[1]);
-        assertEquals(elfoNoturno, batalhao.getContingente()[0]);
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
+        Elfo recruta2 = new ElfoNoturno("Sinnafain Leothyra");
+        batalhao.alistar(recruta1);
+        batalhao.alistar(new Elfo("Taredd Oriwraek"));
+        batalhao.alistar(recruta2);
+        assertNull(batalhao.buscar("Taredd Oriwraek"));
     }
 
     @Test
-    public void buscarbatalhaoVazio() {
-        assertNull(new BatalhaoEspecialDeElfos().buscar("Nenhum"));
+    public void buscarElfoAlistado() {
+        BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
+        Elfo recruta2 = new ElfoNoturno("Zezinho de Valfenda");
+        batalhao.alistar(recruta1);
+        batalhao.alistar(recruta2);
+        assertEquals(recruta2, batalhao.buscar("Zezinho de Valfenda"));
     }
 
     @Test
-    public void buscarPorNomeTendoApenasUmComAqueleNome() {
+    public void buscarElfoAlistadoComNomeDuplicado() {
         BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo recruta1 = new ElfoVerde("Elfo Recruta 1");
-        Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
-        Elfo recruta3 = new ElfoVerde("Elfo Recruta 3");
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
+        Elfo recruta2 = new ElfoNoturno("Zezinho de Valfenda", 1);
+        Elfo recruta3 = new ElfoNoturno("Zezinho de Valfenda", 2);
         batalhao.alistar(recruta1);
         batalhao.alistar(recruta2);
         batalhao.alistar(recruta3);
-        assertEquals(recruta2, batalhao.buscar("Elfo Recruta 2"));
+        assertEquals(recruta2, batalhao.buscar("Zezinho de Valfenda"));
     }
 
     @Test
-    public void buscarPorNomeTendoVariosComAqueleNome() {
+    public void alistarDoisElfosVivos() {
         BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo recruta1 = new ElfoVerde("Elfo Recruta");
-        Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
-        Elfo recruta3 = new ElfoVerde("Elfo Recruta");
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
+        Elfo recruta2 = new ElfoNoturno("Zezinho de Valfenda", 1);
         batalhao.alistar(recruta1);
         batalhao.alistar(recruta2);
-        batalhao.alistar(recruta3);
-        assertEquals(2, batalhao.getContingente().length);
-        assertEquals(recruta3, batalhao.buscar("Elfo Recruta"));
-    }
-
-    @Test
-    public void buscarPorStatusVivo() {
-        BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo recruta1 = new ElfoVerde("Elfo Recruta");
-        Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
-        Elfo recruta3 = new ElfoVerde("Elfo Recruta");
-        batalhao.alistar(recruta1);
-        batalhao.alistar(recruta2);
-        batalhao.alistar(recruta3);
+        batalhao.agruparPorStatus();
         ArrayList<Elfo> resultado = batalhao.buscar(Status.VIVO);
         assertEquals(2, resultado.size());
-        assertEquals(recruta3, resultado.get(0));
-        assertEquals(recruta2, resultado.get(1));
+        assertTrue(resultado.contains(recruta1));
+        assertTrue(resultado.contains(recruta2));
     }
 
     @Test
-    public void buscarPorStatusMorto() {
+    public void alistarDoisElfosMortos() {
         BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo recruta1 = new ElfoVerde("Elfo Recruta1");
-        Elfo recruta2 = criarElfoNoturnoEMatalo();
-        Elfo recruta3 = new ElfoVerde("Elfo Recruta 3");
-        batalhao.alistar(recruta1);
-        batalhao.alistar(recruta2);
-        batalhao.alistar(recruta3);
-        ArrayList<Elfo> resultado = batalhao.buscar(Status.MORTO);
-        assertEquals(1, resultado.size());
-        assertEquals(recruta2, resultado.get(0));
-    }
-
-    @Test
-    public void buscarPorStatusMortoNenhumMorto() {
-        BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
-        Elfo recruta1 = new ElfoVerde("Elfo Recruta1");
-        Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
-        Elfo recruta3 = new ElfoVerde("Elfo Recruta 3");
-        batalhao.alistar(recruta1);
-        batalhao.alistar(recruta2);
-        batalhao.alistar(recruta3);
-        assertTrue(batalhao.buscar(Status.MORTO).isEmpty());
-    }
-
-    @Test
-    public void buscarPorStatusVivoNenhumVivo() {
-        BatalhaoEspecialDeElfos  batalhao = new BatalhaoEspecialDeElfos();
-        Elfo recruta1 = criarElfoNoturnoEMatalo();
+        Elfo recruta1 = new ElfoVerde("Folluin Qindove");
         Elfo recruta2 = criarElfoNoturnoEMatalo();
         Elfo recruta3 = criarElfoNoturnoEMatalo();
         batalhao.alistar(recruta1);
         batalhao.alistar(recruta2);
         batalhao.alistar(recruta3);
-        assertTrue(batalhao.buscar(Status.VIVO).isEmpty());
+        batalhao.agruparPorStatus();
+        ArrayList<Elfo> resultado = batalhao.buscar(Status.MORTO);
+        assertEquals(2, resultado.size());
+        assertTrue(resultado.contains(recruta2));
+        assertTrue(resultado.contains(recruta3));
+    }
+
+    @Test
+    public void alistarUmElfoVivoEDepoisMatalo() {
+        BatalhaoEspecialDeElfos batalhao = new BatalhaoEspecialDeElfos();
+        Elfo recruta1 = new ElfoNoturno("Folluin Qindove", 91);
+        Elfo recruta2 = new ElfoVerde("Phaendar Holabanise");
+        batalhao.alistar(recruta1);
+        batalhao.agruparPorStatus();        
+        ArrayList<Elfo> resultado = batalhao.buscar(Status.VIVO);
+        batalhao.alistar(recruta2);
+        for (int i = 0; i < 91; i++) recruta1.atirarFlecha(new Dwarf());
+        ArrayList<Elfo> buscaAposMorte = batalhao.buscar(Status.VIVO);
+        assertEquals(1, buscaAposMorte.size());
+        assertEquals(recruta2, buscaAposMorte.get(0));
+    }
+
+    private boolean contem(Elfo[] elfos, Elfo elfo) {
+        // correto: length
+        // errado: lenght
+        for (int i = 0; i < elfos.length; i++) {
+            if (elfos[i].equals(elfo)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private ElfoNoturno criarElfoNoturnoEMatalo() {
