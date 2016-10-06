@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
-public class ExercitoElfos
-{
+public class ExercitoElfos implements Exercito {
     private ArrayList<Elfo> contingente;
 
     public ExercitoElfos(){
