@@ -19,9 +19,9 @@ public class AtaqueIntercalado implements Estrategia {
             //Elfo deve ser Verde ou Noturno e estar vivo, caso contrario, ignorar(descartar)
             if(!elfoVivo || !elfoVerdeOuNoturno) continue;            
 
-            //Se elfo for verde, o ultimo elfo adicionado deve ser null ou noturno
+            //Se elfo for verde, o ultimo elfo adicionado deve ser verde(null ou noturno)
             boolean podeAdicionarVerde = elfo instanceof ElfoVerde && !"Verde".equals(ultimoElfoAdicionado);
-            //Se elfo for noturno, o ultimo elfo adicionado deve ser null ou verde
+            //Se elfo for noturno, o ultimo elfo adicionado deve ser noturno(null ou verde)
             boolean podeAdicionarNoturno = elfo instanceof ElfoNoturno && !"Noturno".equals(ultimoElfoAdicionado);
 
             if(podeAdicionarVerde || podeAdicionarNoturno){
@@ -38,8 +38,7 @@ public class AtaqueIntercalado implements Estrategia {
         return ordemDeAtaque;
     }
 
-	
-	//Este méotodo somente considera os elfos que estão vivos.
+    //Este méotodo somente considera os elfos que estão vivos.
     private boolean elfosEstaoBalanceados(List<Elfo> elfos){
         int quantidadeElfosVerde = 0;
         int quantidadeElfosNoturno = 0;
