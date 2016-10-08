@@ -10,7 +10,7 @@ public class AtaqueIntercalado implements Estrategia {
         }
 
         while(!atacantes.isEmpty()){
-            //retira o elfo da lista original e armazena na variavel elfo
+            //retira o primeiro elfo da lista original e armazena na variavel elfo
             Elfo elfo = atacantes.remove(0);
 
             boolean elfoVivo = elfo.getStatus() == Status.VIVO;
@@ -31,7 +31,7 @@ public class AtaqueIntercalado implements Estrategia {
                 continue;
             }
 
-            //Caso o elfo seja do mesmo tipo do elfo adicionado anteriormente, adiciona novamente no final da fila;
+            //Caso o elfo seja do mesmo tipo do elfo adicionado anteriormente, adiciona novamente no final da lista original
             atacantes.add(elfo);
         }
 
