@@ -1,5 +1,5 @@
 import java.util.*;
-public class NoturnosPorUltimo implements Estrategias {
+public class NoturnosPorUltimo implements Estrategia {
 
     public List<Elfo> getOrdemDeAtaque(List<Elfo> atacantes, List<Dwarf> alvos){
         List<Elfo> resultado = new ArrayList<>();

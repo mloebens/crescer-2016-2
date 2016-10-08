@@ -7,8 +7,8 @@ import java.util.*;
 public class NoturnosPorUltimoTest {
 
     @Test
-    public void ordenarNenhumElfo(){
-        Estrategias estrategia = new NoturnosPorUltimo();
+    public void ordenarNenhumElfo() throws ContingenteDesproporcionalException{
+        Estrategia estrategia = new NoturnosPorUltimo();
 
         List<Elfo> elfos = new ArrayList<>();
         List<Dwarf> dwarves = new ArrayList<>();
@@ -19,8 +19,8 @@ public class NoturnosPorUltimoTest {
     }
 
     @Test
-    public void ordenarUmElfoNoturnoEUmElfoVerde(){
-        Estrategias estrategia = new NoturnosPorUltimo();
+    public void ordenarUmElfoNoturnoEUmElfoVerde() throws ContingenteDesproporcionalException{
+        Estrategia estrategia = new NoturnosPorUltimo();
 
         List<Elfo> elfos = new ArrayList<>(
                 Arrays.asList(new ElfoNoturno("Noturno"), new ElfoVerde("Verdinho"))
@@ -34,8 +34,8 @@ public class NoturnosPorUltimoTest {
     }
 
     @Test
-    public void ordenarTresElfosNoturnoETresElfosVerde(){
-        Estrategias estrategia = new NoturnosPorUltimo();
+    public void ordenarTresElfosNoturnoETresElfosVerde() throws ContingenteDesproporcionalException{
+        Estrategia estrategia = new NoturnosPorUltimo();
 
         List<Elfo> elfos = new ArrayList<>(
                 Arrays.asList(
@@ -60,8 +60,8 @@ public class NoturnosPorUltimoTest {
     }
 
     @Test
-    public void ordenarDoisElfoNoturnoUmVivoEUmMortoEUmElfoVerde(){
-        Estrategias estrategia = new NoturnosPorUltimo();
+    public void ordenarDoisElfoNoturnoUmVivoEUmMortoEUmElfoVerde() throws ContingenteDesproporcionalException{
+        Estrategia estrategia = new NoturnosPorUltimo();
 
         ElfoNoturno elfoNoturno = new ElfoNoturno("Noturno", 100);
         List<Elfo> elfos = new ArrayList<>();
