@@ -7,9 +7,8 @@ from Cidade;
 -- 2
 truncate table CidadeAux
 
-select * 
-into CidadeAux
-from Cidade;
+insert into CidadeAux (IDCidade, Nome, UF)
+	select IDCidade, Nome, UF from Cidade;
 
 -- 3
 create table Produto (
