@@ -1,21 +1,35 @@
 -- Exercício 1
-SELECT count(1) 
+SELECT count(1) as TotalPedidos
 FROM pedido
 WHERE MONTH(datapedido) = 9
 	AND YEAR(datapedido) = 2016
 
+-- ou
+SELECT count(1) as TotalPedidos
+FROM pedido
+WHERE DataPedido BETWEEN convert(datetime, '01/09/2016',103)
+					AND	 convert(datetime, '30/09/2016',103)+.99999
+
 -- Exercício 2
-SELECT p.Nome
+SELECT p.IDProduto, p.Nome
 FROM produto p
 INNER JOIN ProdutoMaterial pm ON pm.IDProduto = p.IDProduto
-INNER JOIN Material m ON m.IDMaterial = pm.IDMaterial
-WHERE m.IDMaterial = 15836
+WHERE pm.IDMaterial = 15836
+
+--ou
+SELECT p.IDProduto, p.Nome
+FROM produto p
+WHERE Exists (SELECT 1
+				FROM ProdutoMaterial pm
+				WHERE pm.IDproduto = p.IDProduto
+					AND pm.IDMaterial = 15836)
+
 
 -- Exercício 3
 SELECT Nome
 FROM Cliente
-WHERE UPPER(Nome) like '%LTDA%'
-	OR UPPER(RazaoSocial) like '%LTDA%'
+WHERE Nome like '%LTDA%'
+	OR RazaoSocial like '%LTDA%'
 
 -- Exercício 4
 INSERT INTO produto(nome, DataCadastro, PrecoCusto, PrecoVenda, Situacao)
@@ -25,6 +39,13 @@ VALUES('Galocha Maragato', GETDATE(), 33.67, 77.95, 'A')
 SELECT distinct Nome
 FROM Produto
 WHERE IDProduto not in (select IDProduto from PedidoItem)
+--ou
+SELECT IDProduto, Nome
+FROM Produto pro
+WHERE not exists(SELECT 1
+					FROM PedidoItem item
+					WHERE pro.IDProduto = item.IDProduto)
+
 
 -- Exercício 6
 select MenosClientes.UF as MenosClientes,
@@ -74,8 +95,7 @@ UPDATE p
 SET p.situacao='F'
 from Produto p
 INNER JOIN ProdutoMaterial pm ON pm.IDProduto = p.IDProduto
-INNER JOIN Material m ON m.IDMaterial = pm.IDMaterial
-where m.IDMaterial IN (14650,15703,15836,16003,16604,17226)
+where pm.IDMaterial IN (14650,15703,15836,16003,16604,17226)
 
 UPDATE p
 SET p.situacao='Q'
@@ -83,10 +103,9 @@ from Produto p
 INNER JOIN PedidoItem pit ON pit.IDProduto = p.IDProduto
 INNER JOIN Pedido ped ON ped.IDPedido = pit.IDPedido
 where p.IDProduto not in
-	(select pm.IDProduto
-		FROM ProdutoMaterial pm
-		INNER JOIN Material m ON m.IDMaterial = pm.IDMaterial
-		where m.IDMaterial IN (14650,15703,15836,16003,16604,17226)
+	(select IDProduto
+		FROM ProdutoMaterial
+		where IDMaterial IN (14650,15703,15836,16003,16604,17226)
 		)
 	AND DATEDIFF(day, ped.DataPedido, GETDATE()) <= 60
 
@@ -98,10 +117,9 @@ WHERE p.IDProduto not in (select p.IDProduto
 							INNER JOIN PedidoItem pit ON pit.IDProduto = p.IDProduto
 							INNER JOIN Pedido ped ON ped.IDPedido = pit.IDPedido
 							where p.IDProduto not in
-								(select pm.IDProduto
-									FROM ProdutoMaterial pm
-									INNER JOIN Material m ON m.IDMaterial = pm.IDMaterial
-									where m.IDMaterial IN (14650,15703,15836,16003,16604,17226)
+								(select IDProduto
+									FROM ProdutoMaterial
+									where IDMaterial IN (14650,15703,15836,16003,16604,17226)
 									)
 								AND DATEDIFF(day, ped.DataPedido, GETDATE()) <= 60
 								)
