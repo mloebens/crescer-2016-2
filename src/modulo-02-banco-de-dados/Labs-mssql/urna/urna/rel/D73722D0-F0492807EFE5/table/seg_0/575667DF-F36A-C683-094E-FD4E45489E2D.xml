@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="575667DF-F36A-C683-094E-FD4E45489E2D" name="Cidade">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:50:17 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCidade" id="2270183E-D318-F18E-9C60-D31527320124">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:50:48 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="6FD8A684-E63F-2944-6E5B-A257418D61B6">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:50:48 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80</dataTypeSize>
+<ownDataTypeParameters>80,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDEstado" id="D96C6E1F-8CCB-2323-FFD0-B0DD1A2626D1">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:51:01 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BA2E92E6-0E13-EBEA-37DA-909143CF2CF7" referredColumn="B7C4BDDC-39DF-A6CC-93F6-D88718E7181A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BAB3AACC-46C0-04FD-4D5A-F0796B8A442C" name="Cidade_PK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:50:48 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2270183E-D318-F18E-9C60-D31527320124"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="53BCB9E9-F59A-B532-5F43-52CB93FD8136" name="FK_Cidade_Estado">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:51:25 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D96C6E1F-8CCB-2323-FFD0-B0DD1A2626D1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

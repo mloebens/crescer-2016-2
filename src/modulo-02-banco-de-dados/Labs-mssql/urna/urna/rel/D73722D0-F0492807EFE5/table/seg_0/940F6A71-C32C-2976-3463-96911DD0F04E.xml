@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="940F6A71-C32C-2976-3463-96911DD0F04E" name="SecaoZona">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:03:51 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<ordsAlias>table_9</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDSecaoZona" id="737C1EB3-7910-0421-7FB9-A24E237BA152">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:04:25 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDSecao" id="7CC19153-BAF5-C14C-AA6E-2F049ADA9926">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:04:25 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6069F4D8-47E0-26DC-0271-D93167CB5196" referredColumn="F3680F87-B241-762A-A413-D5C1C7AE9D5D"/>
+</associations>
+</Column>
+<Column name="IDZona" id="AD8DA00A-9D91-F844-74E8-8096F8A602FD">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:04:36 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A1392591-ED32-666F-9846-E798815B32E5" referredColumn="FFAC8C5A-09C6-FD4B-4831-667340D7A382"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DAC89EFE-8291-527B-D864-FE096E8ABDE0" name="SecaoZona_PK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:04:25 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="737C1EB3-7910-0421-7FB9-A24E237BA152"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8A2118F0-484F-BC36-FD9C-9D56FA2EDAA8" name="UK_SecaoZona">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:04:57 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7CC19153-BAF5-C14C-AA6E-2F049ADA9926"/>
+<colUsage columnID="AD8DA00A-9D91-F844-74E8-8096F8A602FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A018F116-994E-C5E9-A6D0-FCB79E51D3F3" name="FK_SecaoZona_Secao">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:05:12 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7CC19153-BAF5-C14C-AA6E-2F049ADA9926"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1925E9EA-973A-5CE3-ED87-3499D97F2756" name="FK_SecaoZona_Zona">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:05:12 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AD8DA00A-9D91-F844-74E8-8096F8A602FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

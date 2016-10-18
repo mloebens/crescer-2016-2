@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ACEAC828-D7E0-5B5A-F5E7-33692C9582EE" name="Voto">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:13:04 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDVoto" id="AB7DDCE7-4896-F31E-3CEC-29FDAEF5C749">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:13:34 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumeroEscolha" id="92950360-1CDE-4605-D7C8-AAE151D08B31">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:16:21 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="516E52CF-B775-1B1E-9708-14E8B02FB7DE" name="Voto_PK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:13:34 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AB7DDCE7-4896-F31E-3CEC-29FDAEF5C749"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
