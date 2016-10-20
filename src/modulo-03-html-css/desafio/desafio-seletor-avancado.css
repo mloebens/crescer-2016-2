@@ -1,0 +1,15 @@
+div.box > p:first-child {
+    color: pink;
+}
+
+div.box > p:last-child {
+    color: blue;
+}
+
+div.box > p:nth-of-type(4) {
+    background-color: yellow;
+}
+
+div.box  > h2 + p {
+    background-color: red;
+}
