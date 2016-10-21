@@ -16,7 +16,7 @@ ORDER BY Pedidos DESC
 select cli.idcliente, cli.nome, cid.nome, cid.uf
 from cidade cid
 inner join cliente cli on cli.idcidade = cid.idcidade
-where exists (select 1 
+where exists (SELECT 1 
 				FROM Cidade c
 				where c.nome = cid.nome
 				GROUP BY nome, uf
@@ -24,3 +24,10 @@ where exists (select 1
 
 
 -- Exercício 3
+SELECT min(idcidade), Nome,UF FROM Cidade
+GROUP BY Nome, UF
+HAVING count(1) > 1
+ORDER BY Nome, UF
+
+
+-- Exercício 4
