@@ -31,3 +31,16 @@ ORDER BY Nome, UF
 
 
 -- Exercício 4
+SELECT TOP 30
+		pro.IDProduto,
+		pro.Nome,
+		FORMAT((pro.PrecoVenda - pro.PrecoCusto ) * sum(pit.quantidade),'C', 'pt-br') as Total_lucro
+FROM Produto pro
+INNER JOIN PedidoItem pit ON pit.IDProduto = pro.IDProduto
+WHERE EXISTS (SELECT 1
+				FROM Pedido ped
+				WHERE ped.IDPedido = pit.IDPedido AND
+				ped.DataPedido BETWEEN convert(datetime, '01/01/2016', 103) AND 
+										convert(datetime, '31/12/2016', 103)+.99999)
+GROUP BY pro.IDProduto, pro.Nome, pro.PrecoCusto,pro.PrecoVenda
+ORDER BY (pro.PrecoVenda - pro.PrecoCusto ) * sum(pit.quantidade) desc
