@@ -1,48 +1,42 @@
 //Exercício 1
-var gerarPiramide = function(niveis){
-  var texto = 'R$';
-  for(var i = 1; i <= niveis; i++){
-    console.log(texto);
-    texto += 'R$';
+let gerarPiramide = function(niveis){
+  for(let i = 1; i <= niveis; i++){
+    console.log(Array(i+1).join('R$'));
   }
 }
 gerarPiramide(5);
 
-
 //Exercício 2
-var diglettDig = function(){
-  for(var i = 1; i <= 100; i++){
+let diglettDig = function(){
+  for(let i = 1; i <= 100; i++){
 
-    var divisivelPor3 = i%3 === 0;
-    var divisivelPor5 = i%5 === 0;
+    let divisivelPor3 = i%3 === 0;
+    let divisivelPor5 = i%5 === 0;
+    let texto;
 
     if(divisivelPor3 && divisivelPor5){
-      console.log('Diglett dig, trio trio trio');
+      texto = 'Diglett dig, trio trio trio';
+    } else if(divisivelPor3){
+      texto = 'Diglett dig';
+    } else if(divisivelPor5){
+      texto = 'trio trio trio';
     } else {
-      if(divisivelPor3){
-        console.log('Diglett dig');
-      }
-
-      if(divisivelPor5){
-        console.log('trio trio trio');
-      }
-
-      if(!divisivelPor5 && !divisivelPor3){
-        console.log(i);
-      }
+      texto = i;
     }
+    console.log(texto);
   }
 };
 diglettDig();
 
 //Exercício 3
-var find = function(arrayDeElementos, funcao){
-  if(typeof funcao !== 'function'){
+let find = function(arrayDeElementos, fnFiltro){
+  if(typeof fnFiltro !== 'function'){
     return;
   }
-  var resultado = Array();
-  for(var i = 0, len = arrayDeElementos.length; i < len ; i++){
-    if (funcao(arrayDeElementos[i])){
+  let resultado = Array();
+  for(let i = 0, len = arrayDeElementos.length; i < len ; i++){
+    let encontrou = fnFiltro(arrayDeElementos[i]);
+    if (encontrou){
       resultado.push(arrayDeElementos[i]);
     }
   }
@@ -50,7 +44,7 @@ var find = function(arrayDeElementos, funcao){
 }
 
 //Exercício 4
-var subtrair = function(valor1){
+let subtrair = function(valor1){
   return function(valor2){
     return valor1 - valor2;
   }
@@ -58,53 +52,47 @@ var subtrair = function(valor1){
 
 
 //Exercício 5
-var iguais = function(x, y){
-  if(x === y) return true;
+function ehObjeto(obj) {
+  return typeof obj === 'object';
+}
 
-  if( !(x instanceof Object) || !(y instanceof Object )) return false;
+function iguais(obj1, obj2) {
 
-  for(var indice in x) {
-    if (!x.hasOwnProperty(indice)) continue;
+  if (ehObjeto(obj1) && ehObjeto(obj2)) {
+    // se tiverem quantidades de campos diferentes, já retorna falso
+    if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+      return false;
+    }
 
-    if (!y.hasOwnProperty(indice)) return false;
-
-    if (x[indice] === y[indice]) continue;
-
-    if (typeof(x[indice]) !== "object") return false;
-
-    if (!iguais(x[indice],  y[indice])) return false;
+    // comparando recursivamente propriedades;
+    for (let prop in obj1) {
+      let saoIguais = iguais(obj1[prop], obj2[prop]);
+      if (!saoIguais) return false;
+    }
+    return true;
   }
 
-  for ( indice in y ) {
-    if (y.hasOwnProperty(indice) && !x.hasOwnProperty(indice)) return false;
-  }
-  return true;
+  return obj1 === obj2;
 }
 
 //Exercício 6
-var ctrlC = function(valor){
-  var copia = Object.assign({},valor);
+let ctrlC = function(valor){
+  let copia = Object.assign({},valor);
   return copia;
 }
 
-
 //Exercício 6
-var mesclar = function(objeto1, objeto2, recursivo){
-  
-    for (var indice in objeto2){
-      var objeto2TemAtributo = objeto2.hasOwnProperty(indice);
-      var atributoDoobjeto2EObjeto = typeof objeto2[indice] === "object";
-      if(!!recursivo){
-        if (objeto2TemAtributo) {
+let mesclar = function(objeto1, objeto2, recursivo){
 
+    for (let indice in objeto2){
+      let atributoDoobjeto2EObjeto = typeof objeto2[indice] === "object";
+      if(!!recursivo){
           if(atributoDoobjeto2EObjeto){
               mesclar(objeto1[indice], objeto2[indice], true);
           }
-        }
       }
       if(!recursivo || !atributoDoobjeto2EObjeto ){
         objeto1[indice] = objeto2[indice];
       }
   }
 }
-

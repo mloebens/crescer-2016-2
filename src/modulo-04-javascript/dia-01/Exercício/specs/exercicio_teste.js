@@ -2,27 +2,20 @@
 describe('find()', function() {
   it('Deve retornar valores maiores ou igual a 2', function() {
 
-    var maiorIgualADois = function(elemento) {
-      return elemento >= 2;
-    };
 
-    var resultado = find([ 1, 2, 3 ], maiorIgualADois);
+    var resultado = find([ 1, 2, 3 ], elemento => elemento >= 2);
     expect(resultado).toEqual([2,3]);
   });
 
   it('Deve retornar valores "String"', function() {
 
-    var resultado = find([ 'a', 5, null, false, 'false' ], function(elem) {
-      return typeof elem === 'string';
-    });
+    var resultado = find([ 'a', 5, null, false, 'false' ], elemento => typeof elemento === 'string');
     expect(resultado).toEqual([ 'a', 'false' ]);
   });
 
   it('Deve retornar obj vazio', function() {
 
-    var resultado = find([ { nome: 'a' }, { nome: 'b' }  ], function(elem) {
-      return typeof elem.nome === 'c';
-    });
+    var resultado = find([ { nome: 'a' }, { nome: 'b' }  ], elemento => typeof elemento.nome === 'c');
     expect(resultado).toEqual([]);
   });
 });
@@ -75,7 +68,7 @@ describe('iguais()', function() {
     var obj = { a: { a: 'a' }, b: 2 };
     var resultado = iguais({ a: 1 }, { a: 1, b: 2 });
     expect(resultado).toEqual(false);
-  });  
+  });
 });
 
 //Exercício 6
@@ -128,13 +121,13 @@ describe('mesclar()', function() {
       damasco: 100
     };
     mesclar(objeto1, objeto2, true);
-    expect(objeto1).toEqual({ 
-        abacaxi: 0,  
-        banana: { 
-          peso: 52, 
-          preco: 200, 
-          origem: {  
-            cidade: 'cachoeira do sul', 
+    expect(objeto1).toEqual({
+        abacaxi: 0,
+        banana: {
+          peso: 52,
+          preco: 200,
+          origem: {
+            cidade: 'cachoeira do sul',
             estado: 'rs'
           }
         },
