@@ -1,107 +1,62 @@
 class Herois {
 	constructor(arrayDeHerois){
-		this._herois = arrayDeHerois;
+		this.herois = arrayDeHerois;
 	}
 
 	get foraDaGuerraCivil(){
-		let heroisForaDaGuerra = new Array();
 
-		for (let chaveHeroi in this._herois){
-			let heroi = this._herois[chaveHeroi];
-			let eventos = this._herois[chaveHeroi]['events']['items'];
-			let estaNaGuerra = false;
+		let resultado = this.herois.filter(heroi =>
+				heroi.events.items.filter(e => e.name.indexOf('Civil War') !== -1
+				).length === 0
+		);
 
-			for(let chaveEvento in eventos ){
-				let evento = eventos[chaveEvento];
-
-				if(evento.name === 'Civil War'){
-					estaNaGuerra = true;
-				}
-			}
-
-			if(!estaNaGuerra){
-				heroisForaDaGuerra.push(heroi);
-			}
-		}
-		return heroisForaDaGuerra;
+		return resultado;
 	}
 
 	get maisPublicado(){
-		let heroiMaisPublicado;
 
-		for (let chaveHeroi in this._herois){
-			let heroi = this._herois[chaveHeroi];
-			let publicacoes = this._herois[chaveHeroi]['comics']['available'];
-
-			if(!heroiMaisPublicado || publicacoes > heroiMaisPublicado['comics']['available'] ){
-				heroiMaisPublicado = heroi;
-			}
-		}
-		return heroiMaisPublicado;
+		return this.herois.sort((h1, h2) => {
+			return h2.comics.available - h1.comics.available
+		})[0];
 	}
 
 	get mediaPaginas(){
-		let totalPaginas = 0;
-		let quantidadeComics = 0;
+		let totalPaginas =
+		this.herois
+			.map(heroi =>
+				heroi.comics.items.reduce((acum, comic) => acum + comic.pageCount, 0)
+			 )
+			.reduce((acum, paginas) => acum + paginas, 0);
 
-		for (let chaveHeroi in this._herois){
-			let heroi = this._herois[chaveHeroi];
-			let comics = this._herois[chaveHeroi]['comics']['items'];
-			let estaNaGuerra = false;
-
-			for(let chaveComic in comics ){
-
-				let paginas = comics[chaveComic]['pageCount'];
-
-				totalPaginas += paginas;
-				quantidadeComics++;
-
-			}
-		}
-
-		let resultadosZerados = totalPaginas === 0 || quantidadeComics === 0 ;
-		return resultadosZerados ? 0 : parseInt(totalPaginas / quantidadeComics);
+			return totalPaginas / this.herois.length;
 	}
 
 	get seriesPorLongevidade(){
 		let arraySeries = [];
 
-		for (let chaveHeroi in this._herois){
-			let series = this._herois[chaveHeroi]['series']['items'];
+		this.herois.forEach(heroi => {
+			arraySeries = arraySeries.concat(heroi.series.items);
+		})
 
-			for(let chaveSerie in series ){
-				arraySeries.push(series[chaveSerie]);
-			}
-		}
+		let diff = serie => serie.endYear - serie.startYear;
 
-		arraySeries.sort(function(a,b){
-			let aTempo = a['endYear'] - a['startYear'];
-			let bTempo = b['endYear'] - b['startYear'];
-			return aTempo > bTempo ? -1 : 1;
+		arraySeries.sort(function(serie2,serie1){
+			return diff(serie2) - diff(serie1);
 		});
-
-		return arraySeries;
 	}
 
 	get comicMaisCara(){
 
-		let comicMaisCara;
+		let todasComics = [];
 
-		for (let chaveHeroi in this._herois){
-			let heroi = this._herois[chaveHeroi];
-			let comics = this._herois[chaveHeroi]['comics']['items'];
+		this.herois.forEach(heroi => {
+			todasComics = todasComics.concat(heroi.comics.items);
+		})
 
-			for(let chaveComic in comics ){
+		let totalizarPrecos = comic => comic.prices.reduce((acc, chavePreco) => acc + chavePreco.price, 0);
 
-				let comicAtual = comics[chaveComic];
-				let comicAtualValor = comicAtual['prices'][0]['price'];
-				let comicMaisCaraValor = !!comicMaisCara ? comicMaisCara['prices'][0]['price'] : 0;
-
-				comicMaisCara = comicAtualValor > comicMaisCaraValor ? comicAtual : comicMaisCara;
-			}
-		}
-
-		return comicMaisCara;
+		return todasComics
+			.sort((comic1, comic2) => totalizarPrecos(comic2) - totalizarPrecos(comic1));
 	}
 
 }
