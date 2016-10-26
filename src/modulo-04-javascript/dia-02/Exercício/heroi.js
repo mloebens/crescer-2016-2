@@ -3,10 +3,6 @@ class Herois {
 		this._herois = arrayDeHerois;
 	}
 
-	get listar() {
-		return this._herois;
-	}
-
 	get foraDaGuerraCivil(){
 		let heroisForaDaGuerra = new Array();
 
@@ -54,7 +50,7 @@ class Herois {
 			let estaNaGuerra = false;
 
 			for(let chaveComic in comics ){
-				
+
 				let paginas = comics[chaveComic]['pageCount'];
 
 				totalPaginas += paginas;
@@ -96,10 +92,10 @@ class Herois {
 			let comics = this._herois[chaveHeroi]['comics']['items'];
 
 			for(let chaveComic in comics ){
-				
+
 				let comicAtual = comics[chaveComic];
 				let comicAtualValor = comicAtual['prices'][0]['price'];
-				let comicMaisCaraValor = !!comicMaisCara ? comicMaisCara['prices'][0]['price'] : 0; 
+				let comicMaisCaraValor = !!comicMaisCara ? comicMaisCara['prices'][0]['price'] : 0;
 
 				comicMaisCara = comicAtualValor > comicMaisCaraValor ? comicAtual : comicMaisCara;
 			}
