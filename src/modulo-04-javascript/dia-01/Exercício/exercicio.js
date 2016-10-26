@@ -86,12 +86,10 @@ let mesclar = function(objeto1, objeto2, recursivo){
 
     for (let indice in objeto2){
       let atributoDoobjeto2EObjeto = typeof objeto2[indice] === "object";
-      if(!!recursivo){
-          if(atributoDoobjeto2EObjeto){
-              mesclar(objeto1[indice], objeto2[indice], true);
-          }
+      if(!!recursivo && atributoDoobjeto2EObjeto){
+          mesclar(objeto1[indice], objeto2[indice], true);
       }
-      if(!recursivo || !atributoDoobjeto2EObjeto ){
+      else {
         objeto1[indice] = objeto2[indice];
       }
   }
