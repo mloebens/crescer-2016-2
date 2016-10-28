@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioKart
 {
-    public class Kart
+    public abstract class Kart
     {
         public Kart(Corredor corredor)
         {
@@ -19,7 +19,8 @@ namespace MarioKart
 
         public List<IEquipamento> Equipamentos { get; }
 
-        public int Velocidade {
+        private int velocidade;
+        public virtual int Velocidade {
             get
             {
                 int bonusDosEquipamentos = 0;
@@ -33,6 +34,10 @@ namespace MarioKart
 
                 return velocidadeTotal;
             }
+            protected set
+            {
+                this.velocidade = value;
+            }
         }
 
         public void Equipar(IEquipamento equipamento)
@@ -42,7 +47,7 @@ namespace MarioKart
 
         //Retorna o bônus de velocidade dependendo da habilidade do corredor
         //Caso o corredor seja Profissional, deve acrescentar 1 ponto de velocidade para cada equipamento.
-        private int BonusPorNivelDeHabilidade()
+        protected int BonusPorNivelDeHabilidade()
         {
             Boolean EhCorredorProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
             int quantidadeDeEquipamentos = this.Equipamentos.Count;
