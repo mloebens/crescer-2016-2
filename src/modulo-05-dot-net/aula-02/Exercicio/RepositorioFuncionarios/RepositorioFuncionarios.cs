@@ -85,12 +85,14 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            throw new NotImplementedException();
+            return Funcionarios.Where(funcionario => funcionario.Cargo.Titulo == cargo.Titulo).ToList();
         }
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            throw new NotImplementedException();
+            return Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo)
+                .ThenBy(funcionario => funcionario.Nome)
+                .ToList();
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
