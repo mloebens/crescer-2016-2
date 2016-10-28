@@ -15,7 +15,7 @@ namespace MarioKart
             this.NivelDeHabilidade = nivelDeHabilidade;
         }
 
-        public string Nome { get; private set; }
+        public string Nome { get; }
 
         public NivelDeHabilidade NivelDeHabilidade { get; set; }
     }

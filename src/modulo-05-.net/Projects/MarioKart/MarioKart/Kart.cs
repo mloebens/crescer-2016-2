@@ -17,7 +17,7 @@ namespace MarioKart
 
         public Corredor Corredor { get; set; }
 
-        public List<IEquipamento> Equipamentos { get; set; }
+        public List<IEquipamento> Equipamentos { get; }
 
         public int Velocidade {
             get
