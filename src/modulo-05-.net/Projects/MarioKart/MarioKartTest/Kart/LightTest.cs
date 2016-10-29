@@ -7,37 +7,37 @@ using MarioKart.Karts;
 namespace MarioKartTest
 {
     [TestClass]
-    public class SonnarTest
+    public class LightTest
     {
 
         [TestMethod]
-        public void CorredorNoobComKartSonnarSemEquipamentoTem6DeVelocidade()
+        public void KartLightCorredorNoobSemEquipamentoTem9DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Noob);
-            var kart = new Sonnar(corredor);
+            var kart = new Light(corredor);
 
             Assert.AreEqual(0, kart.Equipamentos.Count);
-            Assert.AreEqual(6, kart.Velocidade);
+            Assert.AreEqual(9, kart.Velocidade);
         }
 
         [TestMethod]
-        public void CorredorNoobComKartSonnarCom1EquipamentoTem11DeVelocidade()
+        public void KartLightCorredorNoobCom1EquipamentoTem12DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Noob);
-            var kart = new Sonnar(corredor);
+            var kart = new Light(corredor);
             var motor = new MotorABaseDeLava();
             kart.Equipar(motor);
 
             Assert.AreEqual(1, kart.Equipamentos.Count);
             Assert.AreEqual(motor, kart.Equipamentos[0]);
-            Assert.AreEqual(11, kart.Velocidade);
+            Assert.AreEqual(12, kart.Velocidade);
         }
 
         [TestMethod]
-        public void CorredorNoobComKartSonnarCom2EquipamentoTem13DeVelocidade()
+        public void KartLightCorredorNoobCom2EquipamentoTem14DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Noob);
-            var kart = new Sonnar(corredor);
+            var kart = new Light(corredor);
             var pneus = new PneusDeCouroDeDragao();
             var motor = new MotorABaseDeLava();
 
@@ -47,29 +47,27 @@ namespace MarioKartTest
             Assert.AreEqual(2, kart.Equipamentos.Count);
             Assert.AreEqual(pneus, kart.Equipamentos[0]);
             Assert.AreEqual(motor, kart.Equipamentos[1]);
-            Assert.AreEqual(13, kart.Velocidade);
+            Assert.AreEqual(14, kart.Velocidade);
         }
 
-      
-
         [TestMethod]
-        public void CorredorMedianoComKartSonnarCom1EquipamentoTem12DeVelocidade()
+        public void KartLightCorredorMedianoCom1EquipamentoTem10DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Mediano);
-            var kart = new Sonnar(corredor);
+            var kart = new Light(corredor);
             var pneus = new PneusDeCouroDeDragao();
 
             kart.Equipar(pneus);
 
             Assert.AreEqual(1, kart.Equipamentos.Count);
             Assert.AreEqual(pneus, kart.Equipamentos[0]);
-            Assert.AreEqual(12, kart.Velocidade);
+            Assert.AreEqual(10, kart.Velocidade);
         }
         [TestMethod]
-        public void CorredorProfissionalComKartSonnarCom2EquipamentosTem18DeVelocidade()
+        public void KartLightCorredorProfissionalCom2EquipamentosTem15DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Profissional);
-            var kart = new Sonnar(corredor);
+            var kart = new Light(corredor);
             var pneus = new PneusDeCouroDeDragao();
             var motor = new MotorABaseDeLava();
 
@@ -79,7 +77,7 @@ namespace MarioKartTest
             Assert.AreEqual(2, kart.Equipamentos.Count);
             Assert.AreEqual(pneus, kart.Equipamentos[0]);
             Assert.AreEqual(motor, kart.Equipamentos[1]);
-            Assert.AreEqual(18, kart.Velocidade);
+            Assert.AreEqual(15, kart.Velocidade);
         }
     }
 }

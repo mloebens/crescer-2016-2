@@ -7,24 +7,24 @@ using MarioKart.Karts;
 namespace MarioKartTest
 {
     [TestClass]
-    public class LightTest
+    public class DinamTeste
     {
 
         [TestMethod]
-        public void CorredorNoobComKartLightSemEquipamentoTem9DeVelocidade()
+        public void KartDinamCorredorNoobSemEquipamentoTem9DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Noob);
-            var kart = new Light(corredor);
+            var kart = new Dinam(corredor);
 
             Assert.AreEqual(0, kart.Equipamentos.Count);
             Assert.AreEqual(9, kart.Velocidade);
         }
 
         [TestMethod]
-        public void CorredorNoobComKartLightCom1EquipamentoTem12DeVelocidade()
+        public void KartDinamCorredorNoobCom1EquipamentoTem12DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Noob);
-            var kart = new Light(corredor);
+            var kart = new Dinam(corredor);
             var motor = new MotorABaseDeLava();
             kart.Equipar(motor);
 
@@ -34,10 +34,10 @@ namespace MarioKartTest
         }
 
         [TestMethod]
-        public void CorredorNoobComKartLightCom2EquipamentoTem14DeVelocidade()
+        public void KartDinamCorredorNoobCom2EquipamentoTem14DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Noob);
-            var kart = new Light(corredor);
+            var kart = new Dinam(corredor);
             var pneus = new PneusDeCouroDeDragao();
             var motor = new MotorABaseDeLava();
 
@@ -51,23 +51,23 @@ namespace MarioKartTest
         }
 
         [TestMethod]
-        public void CorredorMedianoComKartLightCom1EquipamentoTem10DeVelocidade()
+        public void KartDinamCorredorMedianoCom1EquipamentoTem15DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Mediano);
-            var kart = new Light(corredor);
+            var kart = new Dinam(corredor);
             var pneus = new PneusDeCouroDeDragao();
 
             kart.Equipar(pneus);
 
             Assert.AreEqual(1, kart.Equipamentos.Count);
             Assert.AreEqual(pneus, kart.Equipamentos[0]);
-            Assert.AreEqual(10, kart.Velocidade);
+            Assert.AreEqual(15, kart.Velocidade);
         }
         [TestMethod]
-        public void CorredorProfissionalComKartLightCom2EquipamentosTem15DeVelocidade()
+        public void KartDinamCorredorProfissionalCom2EquipamentosTem24DeVelocidade()
         {
             var corredor = new Corredor("Yoshi", NivelDeHabilidade.Profissional);
-            var kart = new Light(corredor);
+            var kart = new Dinam(corredor);
             var pneus = new PneusDeCouroDeDragao();
             var motor = new MotorABaseDeLava();
 
@@ -77,7 +77,7 @@ namespace MarioKartTest
             Assert.AreEqual(2, kart.Equipamentos.Count);
             Assert.AreEqual(pneus, kart.Equipamentos[0]);
             Assert.AreEqual(motor, kart.Equipamentos[1]);
-            Assert.AreEqual(15, kart.Velocidade);
+            Assert.AreEqual(24, kart.Velocidade);
         }
     }
 }

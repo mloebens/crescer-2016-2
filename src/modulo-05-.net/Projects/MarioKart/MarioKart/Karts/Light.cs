@@ -17,8 +17,8 @@ namespace MarioKart.Karts
             get
             {
                 int novaVelocidade = base.Velocidade;
-                Boolean corredorNivelHabilidadeNoob = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Noob;
-                Boolean corredorNivelHabilidadeProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
+                bool corredorNivelHabilidadeNoob = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Noob;
+                bool corredorNivelHabilidadeProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
 
                 if (corredorNivelHabilidadeNoob)
                 {
