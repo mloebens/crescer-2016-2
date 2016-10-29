@@ -16,10 +16,14 @@ namespace MarioKart.Karts
         {
             get
             {
-                Boolean aumentarVelocidade = this.Equipamentos.Count >= 1;
-                int novaVelocidade = base.Velocidade += aumentarVelocidade ? 2 : 0;
-                return novaVelocidade;
+                return bonusDeEquipamento();
             }
+        }
+
+        private int bonusDeEquipamento()
+        {
+            bool aumentarVelocidade = this.Equipamentos.Count >= 1;
+            return base.Velocidade += aumentarVelocidade ? 2 : 0;
         }
     }
 }

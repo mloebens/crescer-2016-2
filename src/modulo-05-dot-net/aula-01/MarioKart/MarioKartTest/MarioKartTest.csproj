@@ -53,12 +53,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CorredorTest.cs" />
-    <Compile Include="DinamTeste.cs" />
+    <Compile Include="Equipamento\UltraPackTest.cs" />
+    <Compile Include="Kart\DinamTeste.cs" />
+    <Compile Include="Kart\SkyFusionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LightTest.cs" />
-    <Compile Include="SonnarTest.cs" />
-    <Compile Include="FogueteDePlutonioTest.cs" />
-    <Compile Include="UltraPackTest.cs" />
+    <Compile Include="Kart\LightTest.cs" />
+    <Compile Include="Kart\SonnarTest.cs" />
+    <Compile Include="Equipamento\FogueteDePlutonioTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MarioKart\MarioKart.csproj">

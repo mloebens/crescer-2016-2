@@ -48,6 +48,7 @@
     <Compile Include="Karts\Kart.cs" />
     <Compile Include="Karts\Dinam.cs" />
     <Compile Include="Karts\Light.cs" />
+    <Compile Include="Karts\SkyFusion.cs" />
     <Compile Include="Karts\Sonnar.cs" />
     <Compile Include="NivelDeHabilidade.cs" />
     <Compile Include="Corredor.cs" />

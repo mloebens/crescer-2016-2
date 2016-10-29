@@ -9,6 +9,7 @@ namespace MarioKart
 {
     public abstract class Kart
     {
+
         public Kart(Corredor corredor)
         {
             this.Corredor = corredor;
@@ -20,7 +21,8 @@ namespace MarioKart
         public List<IEquipamento> Equipamentos { get; }
 
         private int velocidade;
-        public virtual int Velocidade {
+        public virtual int Velocidade
+        {
             get
             {
                 int bonusDosEquipamentos = 0;
@@ -49,7 +51,7 @@ namespace MarioKart
         //Caso o corredor seja Profissional, deve acrescentar 1 ponto de velocidade para cada equipamento.
         protected int BonusPorNivelDeHabilidade()
         {
-            Boolean EhCorredorProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
+            bool EhCorredorProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
             int quantidadeDeEquipamentos = this.Equipamentos.Count;
             int bonusNivelHabilidade = (int)this.Corredor.NivelDeHabilidade;
 
@@ -58,6 +60,4 @@ namespace MarioKart
             return bonusNivelHabilidade;
         }
     }
-
-
 }

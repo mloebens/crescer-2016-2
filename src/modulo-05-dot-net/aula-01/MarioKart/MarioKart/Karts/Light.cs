@@ -17,17 +17,18 @@ namespace MarioKart.Karts
             get
             {
                 int novaVelocidade = base.Velocidade;
-                Boolean corredorNivelHabilidadeNoob = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Noob;
-                Boolean corredorNivelHabilidadeProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
+                bool corredorNivelHabilidadeNoob = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Noob;
+                bool corredorNivelHabilidadeProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
 
                 if (corredorNivelHabilidadeNoob)
                 {
                     novaVelocidade += 3;
-                } else
+                }
+                else
                     if (corredorNivelHabilidadeProfissional)
-                    {
-                        novaVelocidade -= 1;
-                    }
+                {
+                    novaVelocidade -= 1;
+                }
 
                 return novaVelocidade;
             }
