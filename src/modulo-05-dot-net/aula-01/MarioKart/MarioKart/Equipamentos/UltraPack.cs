@@ -20,10 +20,10 @@ namespace MarioKart.Equipamentos
         {
             get
             {
-                double bonus = 0.2; // 20%
+                double bonus = 1.2; // 20%
                 int bonusEquipamento = this.Equipamento.BonusDeVelocidade;
 
-                int novoBonusDeVelocidade = (int) Math.Ceiling((bonusEquipamento * bonus) + bonusEquipamento);
+                int novoBonusDeVelocidade = (int) Math.Ceiling(bonusEquipamento * bonus);
 
                 return novoBonusDeVelocidade;
             }

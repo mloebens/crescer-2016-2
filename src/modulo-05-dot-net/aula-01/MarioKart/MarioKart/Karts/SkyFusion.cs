@@ -18,9 +18,10 @@ namespace MarioKart.Karts
         {
             get
             {
+                int velocidadeMinimaParaBonus = 13;
                 int bonusExtra = 5;
                 int bonusVelocidade = this.bonusDeEquipamento() + this.bonusDeNivelDeCorredor();
-                bool adicionarBonusExtra = bonusVelocidade > 12;
+                bool adicionarBonusExtra = bonusVelocidade >= velocidadeMinimaParaBonus;
 
                 if (adicionarBonusExtra)
                 {

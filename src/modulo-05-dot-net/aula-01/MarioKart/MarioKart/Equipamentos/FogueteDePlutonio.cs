@@ -22,7 +22,7 @@ namespace MarioKart.Equipamentos
             }
             private set
             {
-                Boolean nivelValido = value >= 1 || value <= 5;
+                bool nivelValido = value >= 1 || value <= 5;
                 int nivelPadrao = 2;
 
                 if (nivelValido)

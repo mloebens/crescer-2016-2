@@ -23,7 +23,8 @@ namespace MarioKart.Karts
         private int bonusDeEquipamento()
         {
             bool aumentarVelocidade = this.Equipamentos.Count >= 1;
-            return base.Velocidade += aumentarVelocidade ? 2 : 0;
+            int novaVelocidade = base.Velocidade += aumentarVelocidade ? 2 : 0;
+            return novaVelocidade;
         }
     }
 }
