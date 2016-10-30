@@ -20,5 +20,23 @@ namespace Repositorio
             this.Nome = nome;
             this.DataNascimento = dataNascimento;
         }
+
+        public int Idade()
+        {
+            DateTime dataAtual = DateTime.Now;
+            int idade = dataAtual.Year - this.DataNascimento.Year;
+
+            bool mesAtualMenorQueMesNascimento = dataAtual.Month < this.DataNascimento.Month;
+            bool mesAtualIgualMesNascimento = dataAtual.Month == this.DataNascimento.Month;
+            bool diaAtualMenorQueDiaNascimento = dataAtual.Day < this.DataNascimento.Day;
+
+            if (mesAtualMenorQueMesNascimento || 
+                    (mesAtualIgualMesNascimento && diaAtualMenorQueDiaNascimento))
+            {
+                idade--;
+            }
+
+            return idade;
+        }
     }
 }
