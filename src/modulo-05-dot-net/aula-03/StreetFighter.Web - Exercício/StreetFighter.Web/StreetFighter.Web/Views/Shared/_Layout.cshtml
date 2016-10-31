@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Wiki - Street Fighter</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <span class="menu-item">
+                <a href="~/StreetFighter/Index">Inicio</a>
+            </span>
+            <span class="menu-item">
+                <a href="https://www.google.com.br/search?q=Street+Fighter&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=EP8HWP7oLsPK8geji4GQDg#q=Street+Fighter&tbm=nws">Notícias</a>
+            </span>
+            <span class="menu-item">
+                <a href="~/StreetFighter/FichaTecnica">Ficha Técnica</a>
+            </span>
+            <span class="menu-item">
+                <a href="sobre.html">Sobre</a>
+            </span>
+        </div>
+
+        <div class="conteudo">
+            <div class="conteudo-cabecalho">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            @RenderBody()
+        </div>
+        
+    </div>
+</body>
+</html>
+
+
