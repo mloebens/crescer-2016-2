@@ -143,8 +143,8 @@ namespace Repositorio
                 novaListaDeFuncionarios = Funcionarios.Where(funcionario => funcionario.TurnoTrabalho == turno).ToList();
             }
 
-            double totalSalarios = novaListaDeFuncionarios.Sum(funcionario => funcionario.Cargo.Salario);
-            double mediaSalarios = totalSalarios / novaListaDeFuncionarios.Count();
+            double mediaSalarios = novaListaDeFuncionarios.Average(funcionario => funcionario.Cargo.Salario);
+            
             return mediaSalarios;
         }
 
@@ -158,24 +158,24 @@ namespace Repositorio
         public IList<dynamic> BuscaRapida()
         {
             return Funcionarios.Select(funcionario =>
-            (dynamic) new
+            new
             {
                 NomeFuncionario = funcionario.Nome,
                 TituloCargo = funcionario.Cargo.Titulo
             })
-            .ToList();
+            .ToList<dynamic>();
         }
 
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
         {
             return Funcionarios.GroupBy(funcionario => funcionario.TurnoTrabalho)
                 .Select(g =>
-                (dynamic)new
+                new
                 {
                     Turno = g.Key,
                     Quantidade = g.Count()
                 }
-                ).ToList();
+                ).ToList<dynamic>();
         }
 
         public dynamic FuncionarioMaisComplexo()
