@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    width:620px;
+    width:720px;
     margin: 0 auto;
 }
 
@@ -56,14 +56,16 @@ body {
 }
 
 .informacoes ul {
+    float: left;
     list-style-type: none;
-    margin-left:230px;
+    width: 324px;
 }
 
-.akuma {
-    background-image: url(imagens/akuma.png);
+.informacoes img {
+    float: left;
+    margin-left: 20px
 }
 
-.blanka {
-        background-image: url(imagens/blanka.png);
+.form-horizontal .control-label {
+    text-align: left;
 }

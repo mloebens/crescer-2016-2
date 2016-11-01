@@ -8,26 +8,15 @@
 <div class="conteudo-corpo">
     <h2>@Model.Nome</h2>
 
-    <div class="informacoes @Model.Nome.ToLower()">
+    <div class="informacoes">
+        <img src="@Model.Imagem" />
         <ul>
-            <li><strong>Primeira aparição:</strong> @Model.PrimeiraAparicao</li>
-            <li><strong>Nascimento:</strong> @(Model.Nascimento == new DateTime() ? "Desconhecido" : Model.Nascimento.ToString("dd MMMM yyyy"))</li>
+            <li><strong>Nascimento:</strong> @(Model.Nascimento.ToString("dd 'de' MMMMM 'de' yyyy"))</li>
             <li><strong>Altura:</strong> @(Model.Altura)cm</li>
             <li><strong>Peso:</strong> @(Model.Peso)kg.</li>
-            <li><strong>Medidas:</strong> @Model.Medidas </li>
-            <li><strong>Tipo sanguíneo:</strong> @Model.TipoSanguineo </li>
-            <li><strong>Habilidades especiais:</strong> @Model.HabilidadesEspeciais</li>
-            <li><strong>Gosta:</strong> @Model.Gosta</li>
-            <li><strong>Desgosta:</strong> @Model.Desgosta </li>
-            <li><strong>Estilo de luta:</strong> @Model.EstiloDeLuta </li>
             <li><strong>Origem:</strong> @Model.Origem </li>
-            <li><strong>Uma fala de vitória:</strong> @Model.FalaDaVitoria </li>
-            <li><strong>SSF2 nickname:</strong> @Model.SFF2Nickname</li>
-            <li><strong>SFA3 nickname:</strong> @Model.SFA3Nickname</li>
-            <li><strong>SF4 nickname:</strong> @Model.SF4Nickname</li>
-            <li><strong>SFA3 stage:</strong> @Model.SFA3Stage</li>
-            <li><strong>SF2 stage:</strong> @Model.SF2Stage</li>
             <li><strong>Golpes especiais famosos:</strong> @Model.GolpesEspeciaisFamosos</li>
+            <li><strong>Personagem Oculto:</strong> @Model.PersonagemOculto</li>
         </ul>
     </div>
 </div>

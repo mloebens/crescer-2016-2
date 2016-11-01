@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Ficha Técnica";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<div class="conteudo-corpo">
+    <h2>Sobre</h2>
+
+    <div class="informacoes">
+        <img src="~/Content/imagens/akuma.png" />
+        <ul>
+            <li><strong>Nome:</strong> @Model.Nome</li>
+            <li><strong>Idade:</strong> @(Model.Idade)</li>
+            <li><strong>Peso:</strong> @(Model.Peso)kg</li>
+            <li><strong>Altura:</strong> @(Model.Altura)cm</li>
+            <li><strong>Email:</strong> @Model.Email</li>
+        </ul>
+    </div>
+</div>
+
