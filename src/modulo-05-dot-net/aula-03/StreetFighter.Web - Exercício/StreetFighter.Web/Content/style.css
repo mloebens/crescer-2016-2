@@ -29,6 +29,10 @@ body {
     font-weight: bold;
 }
 
+.conteudo {
+    margin-bottom: 20px;
+}
+
 .conteudo-cabecalho {
     background-color: rgb(68, 65, 65);
     padding: 5px 15px;
@@ -42,17 +46,17 @@ body {
 
 .conteudo-corpo {
     background-color: rgb(236, 235, 235);
-    padding: 10px 15px;
     font-size:14px;
 }
 
 .conteudo-corpo > h2 {
     font-size: 26px;
+    margin: 0;
+    padding: 15px;
 }
 
 .informacoes {
-    background-repeat: no-repeat;
-    height: 480px;
+    margin: 15px;
 }
 
 .informacoes ul {
@@ -63,7 +67,8 @@ body {
 
 .informacoes img {
     float: left;
-    margin-left: 20px
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 .form-horizontal .control-label {
@@ -76,4 +81,9 @@ body {
 
 #PersonagemOculto {
     margin-top: 16px;
+}
+
+.fichatecnica,
+.sobre {
+    overflow: auto;
 }
