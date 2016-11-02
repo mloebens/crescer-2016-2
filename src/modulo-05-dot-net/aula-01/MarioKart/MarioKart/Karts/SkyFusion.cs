@@ -20,7 +20,7 @@ namespace MarioKart.Karts
             {
                 int velocidadeMinimaParaBonus = 13;
                 int bonusExtra = 5;
-                int bonusVelocidade = this.bonusDeEquipamento() + this.bonusDeNivelDeCorredor();
+                int bonusVelocidade = this.bonusDeEquipamento() + this.bonusDeNivelDeCorredor;
                 bool adicionarBonusExtra = bonusVelocidade >= velocidadeMinimaParaBonus;
 
                 if (adicionarBonusExtra)
@@ -39,25 +39,22 @@ namespace MarioKart.Karts
             return umPontoDeBonusPorEquipamento;
         }
 
-        private int bonusDeNivelDeCorredor()
+        private int bonusDeNivelDeCorredor
         {
-            int bonusNoob = 1;
-            int bonusMediano = 2;
-            int bonusProfissional = 3;
-            bool nivelDeHabilidadeNoob = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Noob;
-            bool nivelDeHabilidadeMediano = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Mediano;
-
-            if (nivelDeHabilidadeNoob)
+            get
             {
-                return bonusNoob;
+                switch (this.Corredor.NivelDeHabilidade)
+                {
+                    case NivelDeHabilidade.Noob:
+                        return 1;
+                    case NivelDeHabilidade.Mediano:
+                        return 2;
+                    case NivelDeHabilidade.Profissional:
+                        return 3;
+                    default:
+                        return 1;
+                }
             }
-
-            if (nivelDeHabilidadeMediano)
-            {
-                return bonusMediano;
-            }
-
-            return bonusProfissional;
         }
     }
 }

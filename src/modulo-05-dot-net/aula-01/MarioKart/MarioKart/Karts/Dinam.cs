@@ -17,7 +17,7 @@ namespace MarioKart.Karts
             get
             {
                 //soma o bonus por nivel de habilidade mais uma vez, dobrando assim o valor padrão.
-                int novaVelocidade = base.Velocidade + this.BonusPorNivelDeHabilidade();
+                int novaVelocidade = base.Velocidade + this.BonusPorNivelDeHabilidade;
                 
                 return novaVelocidade;
             }

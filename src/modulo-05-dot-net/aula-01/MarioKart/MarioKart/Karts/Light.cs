@@ -16,23 +16,26 @@ namespace MarioKart.Karts
         {
             get
             {
-                int novaVelocidade = base.Velocidade;
-                int bonusCorredorNoob = 3;
-                int bonusCorredorProfissional = -1;
+                
+                return base.Velocidade + this.BonusPeloCorredor;
+            }
+        }
 
-                bool corredorNivelNoob = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Noob;
-                bool corredorNivelProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
-
-                if (corredorNivelNoob)
+        private int BonusPeloCorredor
+        {
+            get
+            {
+                switch (this.Corredor.NivelDeHabilidade)
                 {
-                    return novaVelocidade += bonusCorredorNoob;
+                    case NivelDeHabilidade.Noob:
+                        return 3;
+                    case NivelDeHabilidade.Mediano:
+                        return 0;
+                    case NivelDeHabilidade.Profissional:
+                        return -1;
+                    default:
+                        return 0;
                 }
-                if (corredorNivelProfissional)
-                {
-                    return novaVelocidade + bonusCorredorProfissional;
-                }
-
-                return novaVelocidade;
             }
         }
     }
