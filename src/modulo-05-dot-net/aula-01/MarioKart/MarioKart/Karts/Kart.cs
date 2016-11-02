@@ -32,7 +32,7 @@ namespace MarioKart
                     bonusDosEquipamentos += equipamento.BonusDeVelocidade;
                 }
 
-                int velocidadeTotal = 3 + bonusDosEquipamentos + BonusPorNivelDeHabilidade();
+                int velocidadeTotal = 3 + bonusDosEquipamentos + BonusPorNivelDeHabilidade;
 
                 return velocidadeTotal;
             }
@@ -49,15 +49,25 @@ namespace MarioKart
 
         //Retorna o bônus de velocidade dependendo da habilidade do corredor
         //Caso o corredor seja Profissional, deve acrescentar 1 ponto de velocidade para cada equipamento.
-        protected int BonusPorNivelDeHabilidade()
+        protected int BonusPorNivelDeHabilidade
         {
-            bool EhCorredorProfissional = this.Corredor.NivelDeHabilidade == NivelDeHabilidade.Profissional;
-            int quantidadeDeEquipamentos = this.Equipamentos.Count;
-            int bonusNivelHabilidade = (int)this.Corredor.NivelDeHabilidade;
-
-            bonusNivelHabilidade += EhCorredorProfissional ? quantidadeDeEquipamentos : 0;
-
-            return bonusNivelHabilidade;
+            get
+            {
+                switch (this.Corredor.NivelDeHabilidade)
+                {
+                    // usamos números fixos aqui ao invés de atribuir valores
+                    // ao enum diretamente para evitar que, se o enum mudar os valores,
+                    // este código passe a funcionar de forma errônea.
+                    case NivelDeHabilidade.Noob:
+                        return 3;
+                    case NivelDeHabilidade.Mediano:
+                        return 5;
+                    case NivelDeHabilidade.Profissional:
+                        return 6 + this.Equipamentos.Count;
+                    default:
+                        return 3;
+                }
+            }
         }
     }
 }

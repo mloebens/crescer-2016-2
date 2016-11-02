@@ -8,8 +8,8 @@ namespace MarioKart
 {
     public enum NivelDeHabilidade
     {
-        Noob = 3,
-        Mediano = 5,
-        Profissional = 6
+        Noob = 1,
+        Mediano = 2,
+        Profissional = 3
     }
 }
