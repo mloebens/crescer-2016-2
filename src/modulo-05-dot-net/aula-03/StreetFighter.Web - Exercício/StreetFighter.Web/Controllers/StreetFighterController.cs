@@ -23,7 +23,7 @@ namespace StreetFighter.Web.Controllers
             personagem.Altura = 192;
             personagem.Peso = 96;
             personagem.Origem = "Brasil (lugar de nascença é provável como sendo Tailândia)";
-            personagem.GolpesEspeciaisFamosos = "Electric Thunder, Rolling Attack";
+            personagem.GolpesEspeciais = "Electric Thunder, Rolling Attack";
             personagem.PersonagemOculto = false;
             personagem.Imagem = "/Content/imagens/blanka.png";
 
@@ -44,11 +44,34 @@ namespace StreetFighter.Web.Controllers
             return View(sobre);
         }
 
-        public ActionResult Cadastro(PersonagemModel personagem)
+        public ActionResult Cadastro()
+        {
+
+            PopularPaises();
+            return View();
+        }
+
+        public ActionResult CadastroPost(PersonagemModel personagem)
         {
 
 
-            return View();
+            PopularPaises();
+            return View("FichaTecnica", personagem);
+        }
+
+
+
+        private void PopularPaises()
+        {
+            //ViewBag.ListaPersonagens
+            ViewBag.ListaPaises = new List<SelectListItem>()
+            {
+                new SelectListItem() { Value = "AR", Text = "Argentina" },
+                new SelectListItem() { Value = "BR", Text = "Brasil" },
+                new SelectListItem() { Value = "EUA", Text = "Estados Unidos" },
+                new SelectListItem() { Value = "FR", Text = "França" },
+                new SelectListItem() { Value = "JP", Text = "Japão" }
+            };
         }
     }
 }

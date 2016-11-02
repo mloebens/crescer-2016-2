@@ -69,3 +69,11 @@ body {
 .form-horizontal .control-label {
     text-align: left;
 }
+
+.row {
+    margin: 0;
+}
+
+#PersonagemOculto {
+    margin-top: 16px;
+}

@@ -15,8 +15,8 @@
             <li><strong>Altura:</strong> @(Model.Altura)cm</li>
             <li><strong>Peso:</strong> @(Model.Peso)kg.</li>
             <li><strong>Origem:</strong> @Model.Origem </li>
-            <li><strong>Golpes especiais famosos:</strong> @Model.GolpesEspeciaisFamosos</li>
-            <li><strong>Personagem Oculto:</strong> @Model.PersonagemOculto</li>
+            <li><strong>Golpes especiais famosos:</strong> @Model.GolpesEspeciais</li>
+            <li><strong>Personagem Oculto:</strong> @(Model.PersonagemOculto ? "Sim" : "Não") </li>
         </ul>
     </div>
 </div>
