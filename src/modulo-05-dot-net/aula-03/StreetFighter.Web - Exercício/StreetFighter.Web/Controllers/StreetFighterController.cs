@@ -54,9 +54,20 @@ namespace StreetFighter.Web.Controllers
         public ActionResult CadastroPost(PersonagemModel personagem)
         {
 
-
             PopularPaises();
-            return View("FichaTecnica", personagem);
+
+            if (ModelState.IsValid)
+            {
+                return View("FichaTecnica", personagem);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
+                return View("Cadastro", personagem);
+            }
+
+            
+            
         }
 
 
