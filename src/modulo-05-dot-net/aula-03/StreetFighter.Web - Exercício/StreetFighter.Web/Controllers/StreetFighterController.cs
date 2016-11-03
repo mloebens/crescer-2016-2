@@ -1,4 +1,6 @@
-﻿using StreetFighter.Web.Models;
+﻿using StreetFighter.Aplicativo;
+using StreetFighter.Dominio;
+using StreetFighter.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,19 +53,23 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult CadastroPost(PersonagemModel personagem)
+        public ActionResult CadastroSalvar(PersonagemModel model)
         {
 
             PopularPaises();
 
             if (ModelState.IsValid)
             {
-                return View("FichaTecnica", personagem);
+                var aplicativo = new PersonagemAplicativo();
+                var personagem = new Personagem(model.Nome, model.Origem);
+                aplicativo.Salvar(personagem);
+
+                return View("FichaTecnica", model);
             }
             else
             {
                 ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
-                return View("Cadastro", personagem);
+                return View("Cadastro", model);
             }
 
             
