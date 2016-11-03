@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreetFighter.Aplicativo;
 using StreetFighter.Dominio;
 using StreetFighter.Repositorio;
+using System;
 using System.Collections.Generic;
 
 namespace StreetFighter.Testes.Aplicativo
@@ -11,20 +12,26 @@ namespace StreetFighter.Testes.Aplicativo
     public class PersonagemAplicativoTest
     {
 
-        [TestMethod]
-        public void SalvarPersonagemComId0DeveInscluir()
-        {
-            var repositorioFake = A.Fake<IPersonagemRepositorio>();
 
-            var aplicativo = new PersonagemAplicativo(repositorioFake);
-            var personagem = new Personagem("João", "São Leopoldo");
+       /*
 
-            aplicativo.Salvar(personagem);
+    [TestMethod]
+    public void SalvarPersonagemComId0DeveInscluir()
+    {
 
-            A.CallTo(() => repositorioFake.IncluirPersonagem(personagem))
-                .MustHaveHappened();
-        }
+          var repositorioFake = A.Fake<IPersonagemRepositorio>();
 
+        var aplicativo = new PersonagemAplicativo(repositorioFake);
+        var personagem = new Personagem("João", "São Leopoldo");
+
+        aplicativo.Salvar(personagem);
+
+        A.CallTo(() => repositorioFake.IncluirPersonagem(personagem))
+            .MustHaveHappened();
+             }
+            */
+
+        /*
         [TestMethod]
         public void SalvarPersonagemComId1DeveEditar()
         {
@@ -38,5 +45,6 @@ namespace StreetFighter.Testes.Aplicativo
             A.CallTo(() => repositorioFake.EditarPersonagem(personagem))
                 .MustHaveHappened();
         }
+        */
     }
 }

@@ -12,41 +12,44 @@ namespace StreetFighter.Repositorio
     {
 
 
-        private const string ArquivoDePersonagens = 
-            @"C:\Users\maicon.loebens\Documents\Crescer\github\crescer-2016-2\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\personagem.csv";
+        private const string ArquivoDePersonagens =
+            @"D:\Crescer\crescer-2016-2\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\personagens.csv";
 
-        public List<Personagem> ListarPersonagens(string filtroNome)
+        public List<Personagem> ListarPersonagens(string filtroNome = null)
         {
+
             List<Personagem> listaDePersonagens = new List<Personagem>();
             string linha;
 
             using (var streamReader = new StreamReader(ArquivoDePersonagens))
             {
-                linha = streamReader.ReadLine();
-                string[] dadosPersonagem = linha.Split(';');
 
-                Personagem personagem = new Personagem(
-                    Convert.ToInt32(dadosPersonagem[0]),
-                    dadosPersonagem[1],
-                    Convert.ToDateTime(dadosPersonagem[2]),
-                    Convert.ToInt32(dadosPersonagem[3]),
-                    Convert.ToDecimal(dadosPersonagem[4]),
-                    dadosPersonagem[5],
-                    dadosPersonagem[6],
-                    Convert.ToBoolean(dadosPersonagem[7]),
-                    dadosPersonagem[8]
-                    );
+                while ((linha = streamReader.ReadLine()) != null)
+                {
+                    string[] dadosPersonagem = linha.Split(';');
 
+                    bool personagemValido = filtroNome == null || filtroNome == dadosPersonagem[1];
 
-                
+                    if (personagemValido)
+                    {
+                        Personagem personagem = new Personagem(
+                            Convert.ToInt32(dadosPersonagem[0]),
+                            dadosPersonagem[1],
+                            Convert.ToDateTime(dadosPersonagem[2]),
+                            Convert.ToInt32(dadosPersonagem[3]),
+                            Convert.ToDecimal(dadosPersonagem[4]),
+                            dadosPersonagem[5],
+                            dadosPersonagem[6],
+                            Convert.ToBoolean(dadosPersonagem[7]),
+                            dadosPersonagem[8]
+                            );
 
-                listaDePersonagens.Add(personagem);
+                        listaDePersonagens.Add(personagem);
+                    }
+                }
 
             }
-
-
-
-                return personagens;
+                return listaDePersonagens;
         }
 
         public void IncluirPersonagem(Personagem personagem)

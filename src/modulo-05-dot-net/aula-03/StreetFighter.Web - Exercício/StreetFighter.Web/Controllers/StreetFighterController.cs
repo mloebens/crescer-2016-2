@@ -67,22 +67,24 @@ namespace StreetFighter.Web.Controllers
         {
 
             PopularPaises();
+            /*
+                        if (ModelState.IsValid)
+                        {
+                            var aplicativo = new PersonagemAplicativo();
+                            var personagem = new Personagem(model.Nome, model.Origem);
+                            aplicativo.Salvar(personagem);
 
-            if (ModelState.IsValid)
-            {
-                var aplicativo = new PersonagemAplicativo();
-                var personagem = new Personagem(model.Nome, model.Origem);
-                aplicativo.Salvar(personagem);
+                            return View("FichaTecnica", model);
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
+                            return View("Cadastro", model);
+                        }
 
-                return View("FichaTecnica", model);
-            }
-            else
-            {
-                ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
-                return View("Cadastro", model);
-            }
+                        */
 
-            
+            return View();
             
         }
 
