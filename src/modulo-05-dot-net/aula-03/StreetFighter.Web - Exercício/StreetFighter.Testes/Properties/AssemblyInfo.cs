@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("StreetFighter.Repositorio")]
+[assembly: AssemblyTitle("StreetFighter.Testes")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("StreetFighter.Repositorio")]
+[assembly: AssemblyProduct("StreetFighter.Testes")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("07f128fa-65ee-466a-a4cc-c182c057599d")]
+[assembly: Guid("b66d1b55-48ec-46bd-9fbe-e79d10f02b8c")]
 
 // Version information for an assembly consists of the following four values:
 //

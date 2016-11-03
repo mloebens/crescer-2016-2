@@ -32,6 +32,16 @@ namespace StreetFighter.Web.Controllers
             return View(personagem);
         }
 
+
+        public ActionResult ListaDePersonagens()
+        {
+
+
+            return View();
+        }
+
+
+
         public ActionResult Sobre()
         {
             var sobre = new SobreModel();

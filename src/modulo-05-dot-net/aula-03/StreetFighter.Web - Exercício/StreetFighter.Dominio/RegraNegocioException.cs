@@ -8,8 +8,7 @@ namespace StreetFighter.Dominio
 {
     public class RegraNegocioException : Exception
     {
-        public RegraNegocioException(string mensagem) : base(mensagem)
-        {
-        }
+        public RegraNegocioException(string mensgagem) : base(mensgagem)
+        { }
     }
 }

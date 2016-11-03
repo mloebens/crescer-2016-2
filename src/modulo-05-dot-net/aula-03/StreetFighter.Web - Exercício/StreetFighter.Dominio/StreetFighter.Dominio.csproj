@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A9346910-EBC5-4065-A5F5-5A852F23200B}</ProjectGuid>
+    <ProjectGuid>{6C669CD8-22F9-4CAA-9A5F-2AFD7F0FB2E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StreetFighter.Dominio</RootNamespace>

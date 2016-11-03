@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{07F128FA-65EE-466A-A4CC-C182C057599D}</ProjectGuid>
+    <ProjectGuid>{B72E3AC8-4B6B-4920-A7DB-775713241C4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StreetFighter.Repositorio</RootNamespace>
-    <AssemblyName>StreetFighter.Repositorio</AssemblyName>
+    <RootNamespace>StreetFighter.Aplicativo</RootNamespace>
+    <AssemblyName>StreetFighter.Aplicativo</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PersonagemRepositorio.cs" />
+    <Compile Include="PersonagemAplicativo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">
       <Project>{6c669cd8-22f9-4caa-9a5f-2afd7f0fb2e2}</Project>
       <Name>StreetFighter.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreetFighter.Repositorio\StreetFighter.Repositorio.csproj">
+      <Project>{07f128fa-65ee-466a-a4cc-c182c057599d}</Project>
+      <Name>StreetFighter.Repositorio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

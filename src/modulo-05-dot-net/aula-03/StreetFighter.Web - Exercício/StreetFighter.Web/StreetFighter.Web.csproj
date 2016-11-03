@@ -143,6 +143,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\StreetFighter\Cadastro.cshtml" />
+    <Content Include="Views\StreetFighter\ListaDePersonagens.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,7 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StreetFighter.Aplicativo\StreetFighter.Aplicativo.csproj">
-      <Project>{305786bd-59dc-41c4-8870-326363512ca3}</Project>
+      <Project>{b72e3ac8-4b6b-4920-a7db-775713241c4b}</Project>
       <Name>StreetFighter.Aplicativo</Name>
     </ProjectReference>
     <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">
