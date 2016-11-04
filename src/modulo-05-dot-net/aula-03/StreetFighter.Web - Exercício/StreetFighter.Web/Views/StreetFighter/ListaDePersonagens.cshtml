@@ -1,13 +1,39 @@
-﻿
+﻿@model StreetFighter.Web.Models.ListaDePersonagensModel
+
 @{
     ViewBag.Title = "Lista De Personagens";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="conteudo-corpo">
-    <h2>Teste</h2>
+    <h2>Selecione um Personagem</h2>
 
     <div class="informacoes">
 
+        <form action="ListaDePersonagens" method="get">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" name="filtro" class="form-control" />
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <ul class="personagens">
+
+                        @foreach (var personagem in Model.Personagens)
+                        {
+                            <li>@Html.ActionLink(personagem.Nome, "FichaTecnica/" + personagem.Id)</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

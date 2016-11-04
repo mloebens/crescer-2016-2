@@ -16,31 +16,21 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult FichaTecnica()
+        public ActionResult FichaTecnica(int id)
         {
-            var personagem = new PersonagemModel();
 
-            personagem.Nome = "Blanka";
-            personagem.Nascimento = new DateTime(1966, 2, 12);
-            personagem.Altura = 192;
-            personagem.Peso = 96;
-            personagem.Origem = "Brasil (lugar de nascença é provável como sendo Tailândia)";
-            personagem.GolpesEspeciais = "Electric Thunder, Rolling Attack";
-            personagem.PersonagemOculto = false;
-            personagem.Imagem = "/Content/imagens/blanka.png";
+            List<PersonagemModel> listaDePersonagens = ListarPersonagens();
+            PersonagemModel personagem =  listaDePersonagens.Where(p => p.Id == id).ToList()[0];
 
             return View(personagem);
         }
 
 
-        public ActionResult ListaDePersonagens()
+        public ActionResult ListaDePersonagens(string filtro)
         {
-
-
-            return View();
+            ListaDePersonagensModel listaDePersonagens = new ListaDePersonagensModel(ListarPersonagens(filtro));
+            return View("ListaDePersonagens",listaDePersonagens);
         }
-
-
 
         public ActionResult Sobre()
         {
@@ -101,6 +91,20 @@ namespace StreetFighter.Web.Controllers
                 new SelectListItem() { Value = "FR", Text = "França" },
                 new SelectListItem() { Value = "JP", Text = "Japão" }
             };
+        }
+
+        private List<PersonagemModel> ListarPersonagens(string filtro = null)
+        {
+            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+            List<Personagem> personagens = aplicativo.ListarPersonagens(filtro);
+            List<PersonagemModel> listaDePersonagens = new List<PersonagemModel>();
+
+            foreach (Personagem personagem in personagens)
+            {
+                listaDePersonagens.Add(new PersonagemModel(personagem.ToString().Split(';')));
+            }
+
+            return listaDePersonagens;
         }
     }
 }

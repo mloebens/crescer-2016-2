@@ -9,8 +9,8 @@ namespace StreetFighter.Testes.Repositorio
     [TestClass]
     public class PersonagemRepositorioText
     {
-
-                    [TestMethod]
+/*
+        [TestMethod]
         public void ListarPersonagensPorNomeBlanka()
         {
             var pr = new PersonagemRepositorio();
@@ -51,5 +51,6 @@ namespace StreetFighter.Testes.Repositorio
             Assert.AreEqual(personagens[1].Nome, "Balrog");
 
         }
+*/
     }
 }

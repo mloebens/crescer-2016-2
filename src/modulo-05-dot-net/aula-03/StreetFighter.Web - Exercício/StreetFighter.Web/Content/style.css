@@ -62,6 +62,10 @@ body {
 .informacoes ul {
     float: left;
     list-style-type: none;
+    
+}
+
+.informacoes ul:not(.personagens){
     width: 324px;
 }
 
@@ -86,4 +90,18 @@ body {
 .fichatecnica,
 .sobre {
     overflow: auto;
+}
+
+.personagens {
+    margin-top: 50px;
+    padding-left: 15px;
+}
+
+.personagens > li {
+    float: left;
+    margin: 10px 15px 10px 0;
+}
+
+.personagens > li:last-child {
+    margin-right: 0px;
 }

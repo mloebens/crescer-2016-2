@@ -38,5 +38,23 @@ namespace StreetFighter.Dominio
             this.PersonagemOculto = personagemOculto;
             this.Imagem = imagem;
         }
+
+        public Personagem(string[] dadosPersonagem) : 
+            this(Convert.ToInt32(dadosPersonagem[0]),
+                            dadosPersonagem[1],
+                            Convert.ToDateTime(dadosPersonagem[2]),
+                            Convert.ToInt32(dadosPersonagem[3]),
+                            Convert.ToDecimal(dadosPersonagem[4]),
+                            dadosPersonagem[5],
+                            dadosPersonagem[6],
+                            Convert.ToBoolean(dadosPersonagem[7]),
+                            dadosPersonagem[8])
+        {
+        }
+
+        public override string ToString()
+        {
+            return $"{Id};{Nome};{Nascimento};{Altura};{Peso};{Origem};{GolpesEspeciais};{PersonagemOculto};{Imagem}";
+        }
     }
 }
