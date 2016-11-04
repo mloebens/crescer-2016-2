@@ -20,17 +20,18 @@ namespace StreetFighter.Web.Controllers
         {
 
             List<PersonagemModel> listaDePersonagens = ListarPersonagens();
-            PersonagemModel personagem =  listaDePersonagens.Where(p => p.Id == id).ToList()[0];
+            PersonagemModel personagem = listaDePersonagens.Where(p => p.Id == id).ToList()[0];
 
             return View(personagem);
         }
 
-
+        [HttpGet]
         public ActionResult ListaDePersonagens(string filtro)
         {
             ListaDePersonagensModel listaDePersonagens = new ListaDePersonagensModel(ListarPersonagens(filtro));
-            return View("ListaDePersonagens",listaDePersonagens);
+            return View("ListaDePersonagens", listaDePersonagens);
         }
+
 
         public ActionResult Sobre()
         {
@@ -48,34 +49,38 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult Cadastro()
         {
-
             PopularPaises();
             return View();
         }
+
 
         public ActionResult CadastroSalvar(PersonagemModel model)
         {
 
             PopularPaises();
             /*
-                        if (ModelState.IsValid)
-                        {
-                            var aplicativo = new PersonagemAplicativo();
-                            var personagem = new Personagem(model.Nome, model.Origem);
-                            aplicativo.Salvar(personagem);
+            if (ModelState.IsValid)
+            {
+                var aplicativo = new PersonagemAplicativo();
+                var personagem = new Personagem(model.ToString().Split(';'));
+                aplicativo.Salvar(personagem);
 
-                            return View("FichaTecnica", model);
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
-                            return View("Cadastro", model);
-                        }
+                return View("FichaTecnica", model);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
+                return View("Cadastro", model);
+            }
+            */
+            return View("Cadastro");
+        }
 
-                        */
 
-            return View();
-            
+        [HttpGet]
+        public ActionResult Teste(PersonagemModel personagem)
+        {
+            return View(personagem);
         }
 
 
@@ -98,12 +103,12 @@ namespace StreetFighter.Web.Controllers
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             List<Personagem> personagens = aplicativo.ListarPersonagens(filtro);
             List<PersonagemModel> listaDePersonagens = new List<PersonagemModel>();
-
+            /*
             foreach (Personagem personagem in personagens)
             {
                 listaDePersonagens.Add(new PersonagemModel(personagem.ToString().Split(';')));
             }
-
+            */
             return listaDePersonagens;
         }
     }

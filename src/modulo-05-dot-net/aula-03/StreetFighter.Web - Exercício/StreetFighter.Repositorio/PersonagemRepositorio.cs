@@ -48,8 +48,13 @@ namespace StreetFighter.Repositorio
         //Realiza a persistencia do objeto personagem dentro de um arquivo CSV
         public void IncluirPersonagem(Personagem personagem)
         {
+
+            List<Personagem> listaDePersonagens = this.ListarPersonagens();
+
+            int novoId = listaDePersonagens.Last().Id + 1;
+
             string personagemCSV = personagem.ToString();
-            File.AppendAllText(ArquivoDePersonagens, Environment.NewLine + personagemCSV);
+            File.AppendAllText(ArquivoDePersonagens, Environment.NewLine + $"{novoId};{personagemCSV}");
         }
 
         //Editar Personagem

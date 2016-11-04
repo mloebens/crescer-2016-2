@@ -41,6 +41,13 @@ namespace StreetFighter.Web.Models
         [DisplayName("Imagem:")]
         public string Imagem { get; set; }
 
+
+        public PersonagemModel()
+        {
+
+        }
+
+
         public PersonagemModel(int id, string nome, DateTime nascimento, int altura, decimal peso, string origem, string golpesEspeciais, bool personagemOculto, string imagem)
             : this(nome, nascimento, altura, peso, origem, golpesEspeciais, personagemOculto, imagem)
         {
@@ -58,7 +65,6 @@ namespace StreetFighter.Web.Models
             this.PersonagemOculto = personagemOculto;
             this.Imagem = imagem;
         }
-
         public PersonagemModel(string[] dadosPersonagem) : 
             this(Convert.ToInt32(dadosPersonagem[0]),
                             dadosPersonagem[1],
@@ -71,7 +77,6 @@ namespace StreetFighter.Web.Models
                             dadosPersonagem[8])
         {
         }
-
         public override string ToString()
         {
             return $"{Id};{Nome};{Nascimento};{Altura};{Peso};{Origem};{GolpesEspeciais};{PersonagemOculto};{Imagem}";
