@@ -11,7 +11,7 @@
     <div class="informacoes">
        @using (Html.BeginForm("CadastroSalvar", "StreetFighter", FormMethod.Post, new { @class = "form-horizontal" }))
        {
-
+        @Html.Raw(ViewBag.Message)
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-horizontal">
                 <div class="row">

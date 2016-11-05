@@ -35,7 +35,7 @@ namespace StreetFighter.Web.Controllers
             bool personagemExcluido = aplicativo.Exluir(personagem);
             if (personagemExcluido)
             {
-                TempData["Mensagem"] = "Personagem excluido com sucesso!";
+                TempData["Mensagem"] = "<script>alert('Personagem excluido com sucesso!')</script>";
             }
             return RedirectToAction("ListaDePersonagens");
         }
@@ -72,14 +72,21 @@ namespace StreetFighter.Web.Controllers
         [HttpPost]
         public ActionResult CadastroSalvar(PersonagemModel model)
         {
-
             PopularPaises();
 
             if (ModelState.IsValid)
             {
                 var aplicativo = new PersonagemAplicativo();
-                var personagem = new Personagem(model.ToString().Split(';'));
-                aplicativo.Salvar(personagem);
+                try
+                {
+                    var personagem = new Personagem(model.ToString().Split(';'));
+                    aplicativo.Salvar(personagem);
+                } catch (RegraNegocioException e)
+                {
+                    ViewBag.Message = $"<script>alert('{e.Message}')</script>";
+                    return View("Cadastro", model);
+                }
+
 
                 return View("FichaTecnica", model);
             }

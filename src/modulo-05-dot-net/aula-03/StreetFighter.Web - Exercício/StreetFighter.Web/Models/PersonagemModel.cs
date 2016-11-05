@@ -81,10 +81,8 @@ namespace StreetFighter.Web.Models
         //Caso o Id seja 0, não adiciona o Id
         public override string ToString()
         {
-            string texto = this.Id != 0 ? $"{this.Id};" : "";
-            texto += $"{this.Nome};{this.Nascimento};{this.Altura};{this.Peso};{this.Origem};{this.GolpesEspeciais};{this.PersonagemOculto};{this.Imagem}";
+           return $"{this.Id};{this.Nome};{this.Nascimento};{this.Altura};{this.Peso};{this.Origem};{this.GolpesEspeciais};{this.PersonagemOculto};{this.Imagem}";
 
-            return texto;
         }
     }
 }

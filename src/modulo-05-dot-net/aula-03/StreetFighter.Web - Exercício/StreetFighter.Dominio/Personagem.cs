@@ -26,7 +26,12 @@ namespace StreetFighter.Dominio
 
         public Personagem(string nome, DateTime nascimento, int altura, decimal peso, string origem, string golpesEspeciais, bool personagemOculto, string imagem)
         {
+            try { 
             this.Restricoes(nome,origem);
+            } catch (RegraNegocioException e)
+            {
+                throw e;
+            }
 
             this.Nome = nome;
             this.Nascimento = nascimento;
