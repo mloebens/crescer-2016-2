@@ -25,6 +25,22 @@ namespace StreetFighter.Web.Controllers
             return View(personagem);
         }
 
+        public ActionResult Excluir(int id)
+        {
+            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+            List<Personagem> personagens = aplicativo.ListarPersonagens();
+
+            Personagem personagem = personagens.FirstOrDefault(p => p.Id == id);
+
+            bool personagemExcluido = aplicativo.Exluir(personagem);
+            if (personagemExcluido)
+            {
+                TempData["Mensagem"] = "Personagem excluido com sucesso!";
+            }
+            return RedirectToAction("ListaDePersonagens");
+        }
+
+
         [HttpGet]
         public ActionResult ListaDePersonagens(string filtro)
         {
@@ -53,12 +69,12 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-
+        [HttpPost]
         public ActionResult CadastroSalvar(PersonagemModel model)
         {
 
             PopularPaises();
-            /*
+
             if (ModelState.IsValid)
             {
                 var aplicativo = new PersonagemAplicativo();
@@ -72,18 +88,7 @@ namespace StreetFighter.Web.Controllers
                 ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
                 return View("Cadastro", model);
             }
-            */
-            return View("Cadastro");
         }
-
-
-        [HttpGet]
-        public ActionResult Teste(PersonagemModel personagem)
-        {
-            return View(personagem);
-        }
-
-
 
         private void PopularPaises()
         {
@@ -94,7 +99,8 @@ namespace StreetFighter.Web.Controllers
                 new SelectListItem() { Value = "BR", Text = "Brasil" },
                 new SelectListItem() { Value = "EUA", Text = "Estados Unidos" },
                 new SelectListItem() { Value = "FR", Text = "França" },
-                new SelectListItem() { Value = "JP", Text = "Japão" }
+                new SelectListItem() { Value = "JP", Text = "Japão" },
+                new SelectListItem() { Value = "MP", Text = "Morro da Pedra" }
             };
         }
 
@@ -103,12 +109,12 @@ namespace StreetFighter.Web.Controllers
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             List<Personagem> personagens = aplicativo.ListarPersonagens(filtro);
             List<PersonagemModel> listaDePersonagens = new List<PersonagemModel>();
-            /*
+
             foreach (Personagem personagem in personagens)
             {
                 listaDePersonagens.Add(new PersonagemModel(personagem.ToString().Split(';')));
             }
-            */
+
             return listaDePersonagens;
         }
     }

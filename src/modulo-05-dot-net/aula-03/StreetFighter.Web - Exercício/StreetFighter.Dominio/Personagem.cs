@@ -26,8 +26,7 @@ namespace StreetFighter.Dominio
 
         public Personagem(string nome, DateTime nascimento, int altura, decimal peso, string origem, string golpesEspeciais, bool personagemOculto, string imagem)
         {
-            if (nome.ToUpperInvariant().Contains("NUNES"))
-                throw new RegraNegocioException("Não é permitido cadastrar um personagem overpowered.");
+            this.Restricoes(nome,origem);
 
             this.Nome = nome;
             this.Nascimento = nascimento;
@@ -52,9 +51,23 @@ namespace StreetFighter.Dominio
         {
         }
 
+        //retorna o Personagem em formato CSV
+        //Caso o Id seja 0, não adiciona o Id
         public override string ToString()
         {
-            return $"{Id};{Nome};{Nascimento};{Altura};{Peso};{Origem};{GolpesEspeciais};{PersonagemOculto};{Imagem}";
+            string texto = this.Id != 0 ? $"{this.Id};" : "";
+            texto += $"{this.Nome};{this.Nascimento};{this.Altura};{this.Peso};{this.Origem};{this.GolpesEspeciais};{this.PersonagemOculto};{this.Imagem}";
+
+            return texto;
+        }
+
+        private void Restricoes(string nome, string origem)
+        {
+            if (nome.ToUpperInvariant().Contains("NUNES"))
+                throw new RegraNegocioException("Não é permitido cadastrar um personagem overpowered.");
+
+            if (origem == "MP" && !nome.ToUpperInvariant().Contains("NUNES"))
+                throw new RegraNegocioException($"Somente um personagem pode ser dessa região e esse personagem não é o { nome }.");
         }
     }
 }

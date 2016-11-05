@@ -23,6 +23,11 @@ namespace StreetFighter.Aplicativo
             return repositorio.ListarPersonagens(filtroNome);
         }
 
+        public bool Exluir(Personagem personagem)
+        {
+            return repositorio.ExcluirPersonagem(personagem);
+        }
+
         public void Salvar(Personagem personagem)
         {
             if (personagem.Id == 0)

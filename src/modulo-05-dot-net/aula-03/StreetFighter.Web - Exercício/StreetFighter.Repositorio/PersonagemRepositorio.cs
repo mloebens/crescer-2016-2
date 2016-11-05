@@ -13,7 +13,7 @@ namespace StreetFighter.Repositorio
 
 
         private const string ArquivoDePersonagens =
-            @"D:\Crescer\crescer-2016-2\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\personagens.csv";
+            @"D:\Crescer\github\crescer20162\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\personagens.csv";
 
 
         //Listar Personagens
@@ -61,35 +61,35 @@ namespace StreetFighter.Repositorio
         public void EditarPersonagem(Personagem personagem)
         {
             List<Personagem> listaDePersonagens = this.ListarPersonagens();
-            List<Personagem> personagemASerRemovido = listaDePersonagens.Where(personagemDaLista => personagemDaLista.Id == personagem.Id).ToList();
 
-            bool personagemExiste = personagemASerRemovido.Count == 1;
-
-            if(personagemExiste)
+            for(int i = 0; i < listaDePersonagens.Count; i++)
             {
-                listaDePersonagens.Remove(personagemASerRemovido[0]);
-                listaDePersonagens.Add(personagem);
-                IncluirListaDePersonagens(listaDePersonagens);
+                if (listaDePersonagens[i].Id == personagem.Id)
+                {
+                    listaDePersonagens.RemoveAt(i);
+                    listaDePersonagens.Insert(i, personagem);
+                    break;
+
+                }
             }
         }
 
         //Excluir Personagem
-        public void ExcluirPersonagem(Personagem personagem)
+        public bool ExcluirPersonagem(Personagem personagem)
         {
             List<Personagem> listaDePersonagens = this.ListarPersonagens();
-            listaDePersonagens.Remove(personagem);
+            Personagem personagemEcontradoNaLista = listaDePersonagens.FirstOrDefault(p => p.Id == personagem.Id);
+
+            bool removeu = listaDePersonagens.Remove(personagemEcontradoNaLista);
+
+            this.IncluirListaDePersonagens(listaDePersonagens);
+
+            return removeu;
         }
 
         private void IncluirListaDePersonagens(List<Personagem> personagens)
         {
-            //Remove o primeiro personagem da lista e insere no arquivo de texto sem quebra de linha.
-            File.AppendAllText(ArquivoDePersonagens, personagens[0].ToString() );
-            personagens.Remove(personagens[0]);
-
-            foreach (Personagem personagem in personagens)
-            {
-                File.AppendAllText(ArquivoDePersonagens, Environment.NewLine + personagem.ToString());
-            }
+            File.WriteAllLines(ArquivoDePersonagens, personagens.Select(p => p.ToString()));
         }
     }
 }

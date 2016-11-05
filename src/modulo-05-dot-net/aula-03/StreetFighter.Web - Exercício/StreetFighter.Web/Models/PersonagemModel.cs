@@ -30,14 +30,14 @@ namespace StreetFighter.Web.Models
         [DisplayName("Origem:")]
         [Required(ErrorMessage = "Campo Origem é obrigatório.")]
         public string Origem { get; set; }
-    
+
         [DisplayName("Golpes Especiais:")]
         [Required(ErrorMessage = "Campo Golpe Especial é obrigatório.")]
         public string GolpesEspeciais { get; set; }
-       
+
         [DisplayName("Personagem Oculto:")]
         public bool PersonagemOculto { get; set; }
-        
+
         [DisplayName("Imagem:")]
         public string Imagem { get; set; }
 
@@ -65,7 +65,7 @@ namespace StreetFighter.Web.Models
             this.PersonagemOculto = personagemOculto;
             this.Imagem = imagem;
         }
-        public PersonagemModel(string[] dadosPersonagem) : 
+        public PersonagemModel(string[] dadosPersonagem) :
             this(Convert.ToInt32(dadosPersonagem[0]),
                             dadosPersonagem[1],
                             Convert.ToDateTime(dadosPersonagem[2]),
@@ -77,9 +77,14 @@ namespace StreetFighter.Web.Models
                             dadosPersonagem[8])
         {
         }
+        //retorna o Personagem em formato CSV
+        //Caso o Id seja 0, não adiciona o Id
         public override string ToString()
         {
-            return $"{Id};{Nome};{Nascimento};{Altura};{Peso};{Origem};{GolpesEspeciais};{PersonagemOculto};{Imagem}";
+            string texto = this.Id != 0 ? $"{this.Id};" : "";
+            texto += $"{this.Nome};{this.Nascimento};{this.Altura};{this.Peso};{this.Origem};{this.GolpesEspeciais};{this.PersonagemOculto};{this.Imagem}";
+
+            return texto;
         }
     }
 }

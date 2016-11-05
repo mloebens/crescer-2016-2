@@ -24,18 +24,20 @@
                 </div>
             </div>
         }
+        <div>@TempData["Mensagem"]</div>
+
+        @foreach (var personagem in Model.Personagens)
+        {
         <div class="row">
             <div class="form-group">
-                <div class="col-sm-12">
-                    <ul class="personagens">
-
-                        @foreach (var personagem in Model.Personagens)
-                        {
-                            <li>@Html.ActionLink(personagem.Nome, "FichaTecnica/" + personagem.Id)</li>
-                        }
-                    </ul>
+                <div class="col-sm-5">
+                        @Html.ActionLink(personagem.Nome, "FichaTecnica/" + personagem.Id)
+                </div>
+                <div class="col-sm-5">
+                    @Html.ActionLink("Excluir", "Excluir/" + personagem.Id)
                 </div>
             </div>
         </div>
+        }
     </div>
 </div>
