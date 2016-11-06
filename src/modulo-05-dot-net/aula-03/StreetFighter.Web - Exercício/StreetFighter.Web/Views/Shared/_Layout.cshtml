@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Wiki - Street Fighter</title>
+    @RenderSection("Css", false)
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
 </head>
@@ -31,8 +32,8 @@
             </div>
             @RenderBody()
         </div>
-        
     </div>
+    @RenderSection("Scripts", false)
 </body>
 </html>
 

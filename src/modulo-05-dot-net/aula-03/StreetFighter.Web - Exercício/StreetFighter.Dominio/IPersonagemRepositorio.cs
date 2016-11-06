@@ -12,5 +12,6 @@ namespace StreetFighter.Dominio
         void IncluirPersonagem(Personagem personagem);
         void EditarPersonagem(Personagem personagem);
         bool ExcluirPersonagem(Personagem personagem);
+        Personagem BuscarPersonagem(int id);
     }
 }

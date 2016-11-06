@@ -17,6 +17,8 @@ namespace StreetFighter.Web.Models
 
         [DisplayName("Nascimento:")]
         [Required(ErrorMessage = "Campo Nascimento é obrigatório.")]
+        [DataType(DataType.Date, ErrorMessage = "A data deve ser no formato dd/mm/aaaa")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Nascimento { get; set; }
 
         [DisplayName("Altura:")]

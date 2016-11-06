@@ -13,7 +13,7 @@ namespace StreetFighter.Repositorio
 
 
         private const string ArquivoDePersonagens =
-            @"D:\Crescer\github\crescer20162\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\personagens.csv";
+            @"D:\Crescer\crescer-2016-2\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\personagens.csv";
 
 
         //Listar Personagens
@@ -21,36 +21,23 @@ namespace StreetFighter.Repositorio
         //Se não, retorna os personagens que contenham o nome passado pelo filtro
         public List<Personagem> ListarPersonagens(string filtroNome = null)
         {
-            List<Personagem> listaDePersonagens = new List<Personagem>();
-
-            string linha;
-            using (var streamReader = new StreamReader(ArquivoDePersonagens))
-            {
-                while ((linha = streamReader.ReadLine()) != null)
-                {
-                    string[] dadosPersonagem = linha.Split(';');
-
-                    string nomePersonagem = dadosPersonagem[1];
-
-                    bool personagemValido = filtroNome == null || 
-                        nomePersonagem.ToUpperInvariant().Contains(filtroNome.ToUpperInvariant());
-
-                    if (personagemValido)
-                    {
-                        listaDePersonagens.Add(new Personagem(dadosPersonagem));
-                    }
-                }
-            }
-                return listaDePersonagens;
+            return this.LePersonagensDoArquivo()
+                    .Where(personagem => 
+                        String.IsNullOrEmpty(filtroNome) || 
+                        personagem.Nome.ToUpperInvariant().Contains(filtroNome.ToUpperInvariant()))
+                    .ToList();
         }
+
+
 
         //Incluir Personagem
         //Realiza a persistencia do objeto personagem dentro de um arquivo CSV
         public void IncluirPersonagem(Personagem personagem)
         {
 
-            List<Personagem> listaDePersonagens = this.ListarPersonagens();
+            List<Personagem> listaDePersonagens = this.LePersonagensDoArquivo();
 
+            //cria o proximo Id
             int novoId = listaDePersonagens.Last().Id + 1;
 
             string personagemCSV = personagem.ToString();
@@ -60,9 +47,9 @@ namespace StreetFighter.Repositorio
         //Editar Personagem
         public void EditarPersonagem(Personagem personagem)
         {
-            List<Personagem> listaDePersonagens = this.ListarPersonagens();
+            List<Personagem> listaDePersonagens = this.LePersonagensDoArquivo();
 
-            for(int i = 0; i < listaDePersonagens.Count; i++)
+            for (int i = 0; i < listaDePersonagens.Count; i++)
             {
                 if (listaDePersonagens[i].Id == personagem.Id)
                 {
@@ -72,12 +59,13 @@ namespace StreetFighter.Repositorio
 
                 }
             }
+            IncluirListaDePersonagens(listaDePersonagens);
         }
 
         //Excluir Personagem
         public bool ExcluirPersonagem(Personagem personagem)
         {
-            List<Personagem> listaDePersonagens = this.ListarPersonagens();
+            List<Personagem> listaDePersonagens = this.LePersonagensDoArquivo();
             Personagem personagemEcontradoNaLista = listaDePersonagens.FirstOrDefault(p => p.Id == personagem.Id);
 
             bool removeu = listaDePersonagens.Remove(personagemEcontradoNaLista);
@@ -87,9 +75,24 @@ namespace StreetFighter.Repositorio
             return removeu;
         }
 
+        //Buscar personagem pelo Id
+        public Personagem BuscarPersonagem(int id)
+        {
+            return LePersonagensDoArquivo().FirstOrDefault(personagem => personagem.Id == id);
+        }
+
+        //Grava uma lista de personagens em um arquivo CSV
         private void IncluirListaDePersonagens(List<Personagem> personagens)
         {
             File.WriteAllLines(ArquivoDePersonagens, personagens.Select(p => p.ToString()));
+        }
+
+        //Le o arquivo de texto CSV e retorna lista de personagens
+        private List<Personagem> LePersonagensDoArquivo()
+        {
+            return File.ReadAllLines(ArquivoDePersonagens)
+                    .Select(personagem => new Personagem(personagem.Split(';')))
+                    .ToList();
         }
     }
 }

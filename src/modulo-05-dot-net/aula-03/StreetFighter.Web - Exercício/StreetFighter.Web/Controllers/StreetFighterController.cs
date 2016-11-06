@@ -18,11 +18,9 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult FichaTecnica(int id)
         {
+            PersonagemModel personagemModel = this.BuscarPersonagemModel(id);
 
-            List<PersonagemModel> listaDePersonagens = ListarPersonagens();
-            PersonagemModel personagem = listaDePersonagens.Where(p => p.Id == id).ToList()[0];
-
-            return View(personagem);
+            return View(personagemModel);
         }
 
         public ActionResult Excluir(int id)
@@ -40,14 +38,12 @@ namespace StreetFighter.Web.Controllers
             return RedirectToAction("ListaDePersonagens");
         }
 
-
         [HttpGet]
         public ActionResult ListaDePersonagens(string filtro)
         {
             ListaDePersonagensModel listaDePersonagens = new ListaDePersonagensModel(ListarPersonagens(filtro));
             return View("ListaDePersonagens", listaDePersonagens);
         }
-
 
         public ActionResult Sobre()
         {
@@ -70,6 +66,7 @@ namespace StreetFighter.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CadastroSalvar(PersonagemModel model)
         {
             PopularPaises();
@@ -83,11 +80,9 @@ namespace StreetFighter.Web.Controllers
                     aplicativo.Salvar(personagem);
                 } catch (RegraNegocioException e)
                 {
-                    ViewBag.Message = $"<script>alert('{e.Message}')</script>";
+                    ModelState.AddModelError("", e.Message);
                     return View("Cadastro", model);
                 }
-
-
                 return View("FichaTecnica", model);
             }
             else
@@ -95,6 +90,14 @@ namespace StreetFighter.Web.Controllers
                 ModelState.AddModelError("", "Ocorreu algum erro. Da uma olhada aí pls :(");
                 return View("Cadastro", model);
             }
+        }
+
+        public ActionResult Editar(int id)
+        {
+            PersonagemModel personagem = this.BuscarPersonagemModel(id);
+            PopularPaises();
+
+            return View("Cadastro", personagem);
         }
 
         private void PopularPaises()
@@ -111,6 +114,7 @@ namespace StreetFighter.Web.Controllers
             };
         }
 
+        //Busca os personagens a partir de um filtro de Nome.
         private List<PersonagemModel> ListarPersonagens(string filtro = null)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
@@ -119,10 +123,24 @@ namespace StreetFighter.Web.Controllers
 
             foreach (Personagem personagem in personagens)
             {
-                listaDePersonagens.Add(new PersonagemModel(personagem.ToString().Split(';')));
+                listaDePersonagens.Add(PersonagemRepositorioParaPersonagemModel(personagem));
             }
 
             return listaDePersonagens;
+        }
+
+        //Transforma o personagem vindo do repositório para o model usado pela camada mvc
+        private PersonagemModel PersonagemRepositorioParaPersonagemModel(Personagem personagem)
+        {
+            return new PersonagemModel(personagem.ToString().Split(';'));
+        }
+
+        //Busca um personagem por id
+        private PersonagemModel BuscarPersonagemModel(int id)
+        {
+            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+            Personagem personagem = aplicativo.BuscarPersonagem(id);
+            return PersonagemRepositorioParaPersonagemModel(personagem);
         }
     }
 }
