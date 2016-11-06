@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Aplicativo\PersonagemAplicativoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorio\PersonagemRepositorioText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

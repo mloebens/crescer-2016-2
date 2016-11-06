@@ -123,3 +123,7 @@ body {
 .novo-personagem a:hover {
     text-decoration: none;
 }
+
+hr {
+    border-top: 1px solid black;
+}

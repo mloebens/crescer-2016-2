@@ -15,8 +15,7 @@ namespace StreetFighter.Testes.Aplicativo
     [TestMethod]
     public void SalvarPersonagemComId0DeveInscluir()
     {
-
-          var repositorioFake = A.Fake<IPersonagemRepositorio>();
+        var repositorioFake = A.Fake<IPersonagemRepositorio>();
 
         var aplicativo = new PersonagemAplicativo(repositorioFake);
         var personagem = new Personagem("Blanka", 
@@ -55,7 +54,5 @@ namespace StreetFighter.Testes.Aplicativo
             A.CallTo(() => repositorioFake.EditarPersonagem(personagem))
                 .MustHaveHappened();
         }
-
-     
     }
 }

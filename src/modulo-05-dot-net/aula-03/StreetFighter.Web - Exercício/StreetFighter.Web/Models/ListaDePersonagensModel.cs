@@ -12,6 +12,6 @@ namespace StreetFighter.Web.Models
             this.Personagens = personagens;
         }
 
-        public List<PersonagemModel> Personagens { get; set; }
+        public List<PersonagemModel> Personagens { get;}
     }
 }
