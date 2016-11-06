@@ -1,11 +1,10 @@
-﻿using StreetFighter.Aplicativo;
-using StreetFighter.Dominio;
+﻿using StreetFighter.Dominio;
+using StreetFighter.Aplicativo;
 using StreetFighter.Web.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using StreetFighter.Filters;
 
 namespace StreetFighter.Web.Controllers
 {
@@ -39,6 +38,7 @@ namespace StreetFighter.Web.Controllers
         }
 
         [HttpGet]
+        [CwiAutorizador()]
         public ActionResult ListaDePersonagens(string filtro)
         {
             ListaDePersonagensModel listaDePersonagens = new ListaDePersonagensModel(ListarPersonagens(filtro));
@@ -59,6 +59,7 @@ namespace StreetFighter.Web.Controllers
             return View(sobre);
         }
 
+        [CwiAutorizador]
         public ActionResult Cadastro()
         {
             PopularPaises();
@@ -67,6 +68,7 @@ namespace StreetFighter.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CwiAutorizador]
         public ActionResult CadastroSalvar(PersonagemModel model)
         {
             PopularPaises();
@@ -92,6 +94,7 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
+        [CwiAutorizador]
         public ActionResult Editar(int id)
         {
             PersonagemModel personagem = this.BuscarPersonagemModel(id);

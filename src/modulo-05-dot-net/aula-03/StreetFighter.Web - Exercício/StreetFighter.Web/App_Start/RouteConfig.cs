@@ -15,7 +15,7 @@ namespace StreetFighter.Web
 
             routes.MapRoute(
                 name: "Default",
-                url: "{action}/{id}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "StreetFighter", action = "Index", id = UrlParameter.Optional }
             );
         }
