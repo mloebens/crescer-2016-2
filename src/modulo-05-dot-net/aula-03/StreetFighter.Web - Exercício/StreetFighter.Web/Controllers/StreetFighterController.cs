@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using StreetFighter.Filters;
+using System;
 
 namespace StreetFighter.Web.Controllers
 {
@@ -72,13 +73,23 @@ namespace StreetFighter.Web.Controllers
         public ActionResult CadastroSalvar(PersonagemModel model)
         {
             PopularPaises();
-
+            
             if (ModelState.IsValid)
             {
                 var aplicativo = new PersonagemAplicativo();
                 try
                 {
-                    var personagem = new Personagem(model.ToString().Split(';'));
+                    var personagem = new Personagem(
+                        Convert.ToInt32(model.Id),
+                        model.Nome,
+                        model.Nascimento,
+                        Convert.ToInt32(model.Altura),
+                        model.Peso,
+                        model.Origem,
+                        model.GolpesEspeciais,
+                        model.PersonagemOculto,
+                        model.Imagem
+                        );
                     aplicativo.Salvar(personagem);
                 } catch (RegraNegocioException e)
                 {
@@ -93,6 +104,8 @@ namespace StreetFighter.Web.Controllers
                 return View("Cadastro", model);
             }
         }
+
+        
 
         [CwiAutorizador]
         public ActionResult Editar(int id)

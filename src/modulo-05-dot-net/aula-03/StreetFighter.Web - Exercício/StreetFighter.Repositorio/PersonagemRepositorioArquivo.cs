@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StreetFighter.Repositorio
 {
-    public class PersonagemRepositorio : IPersonagemRepositorio
+    public class PersonagemRepositorioArquivo : IPersonagemRepositorio
     {
 
 
@@ -91,8 +91,25 @@ namespace StreetFighter.Repositorio
         private List<Personagem> LePersonagensDoArquivo()
         {
             return File.ReadAllLines(ArquivoDePersonagens)
-                    .Select(personagem => new Personagem(personagem.Split(';')))
+                    .Select(personagem => this.StringParaPersonagem(personagem))
                     .ToList();
+        }
+
+        private Personagem StringParaPersonagem(string texto)
+        {
+            string[] personagemArray = texto.Split(';');
+
+
+            return new Personagem(
+                        personagemArray[0],
+                        Convert.ToDateTime(personagemArray[1]),
+                        Convert.ToInt32(personagemArray[2]),
+                        Convert.ToDecimal(personagemArray[3]),
+                        personagemArray[4],
+                        personagemArray[5],
+                        Convert.ToBoolean(personagemArray[6]),
+                        personagemArray[7]);
+
         }
     }
 }

@@ -8,7 +8,6 @@ namespace StreetFighter.Dominio
 {
     public class Usuario
     {
-        private string[] v;
 
         public string Nome { get; set; }
         public string Senha { get; set; }

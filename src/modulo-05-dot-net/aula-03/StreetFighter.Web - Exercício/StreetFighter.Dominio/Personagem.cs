@@ -43,18 +43,7 @@ namespace StreetFighter.Dominio
             this.Imagem = imagem;
         }
 
-        public Personagem(string[] dadosPersonagem) : 
-            this(Convert.ToInt32(dadosPersonagem[0]),
-                            dadosPersonagem[1],
-                            Convert.ToDateTime(dadosPersonagem[2]),
-                            Convert.ToInt32(dadosPersonagem[3]),
-                            Convert.ToDecimal(dadosPersonagem[4]),
-                            dadosPersonagem[5],
-                            dadosPersonagem[6],
-                            Convert.ToBoolean(dadosPersonagem[7]),
-                            dadosPersonagem[8])
-        {
-        }
+
 
         //retorna o Personagem em formato CSV
         //Caso o Id seja 0, não adiciona o Id

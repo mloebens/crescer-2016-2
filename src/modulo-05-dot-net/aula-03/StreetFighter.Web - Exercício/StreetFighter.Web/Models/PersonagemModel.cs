@@ -9,7 +9,7 @@ namespace StreetFighter.Web.Models
 {
     public class PersonagemModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [DisplayName("Nome:")]
         [Required(ErrorMessage = "Campo Nome é obrigatório.")]

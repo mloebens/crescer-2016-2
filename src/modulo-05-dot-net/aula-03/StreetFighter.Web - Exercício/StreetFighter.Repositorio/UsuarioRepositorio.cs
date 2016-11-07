@@ -13,7 +13,7 @@ namespace StreetFighter.Repositorio
     {
 
         private const string ArquivoDeUsuarios=
-            @"D:\Crescer\crescer-2016-2\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\usuarios.csv";
+            @"C:\Users\maicon.loebens\Documents\Crescer\github\crescer-2016-2\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\usuarios.csv";
 
         public Usuario BuscarUsuarioAutenticado(string nome, string senha)
         {
