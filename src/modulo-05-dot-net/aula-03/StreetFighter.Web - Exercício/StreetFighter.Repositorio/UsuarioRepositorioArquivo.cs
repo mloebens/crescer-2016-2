@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace StreetFighter.Repositorio
 {
-    public class UsuarioRepositorio : IUsuarioRepositorio
+    public class UsuarioRepositorioArquivo : IUsuarioRepositorio
     {
 
         private const string ArquivoDeUsuarios=
-            @"C:\Users\maicon.loebens\Documents\Crescer\github\crescer-2016-2\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\usuarios.csv";
+            @"D:\Crescer\github\crescer20162\src\modulo-05-dot-net\aula-03\StreetFighter.Web - Exercício\usuarios.csv";
 
         public Usuario BuscarUsuarioAutenticado(string nome, string senha)
         {

@@ -11,21 +11,16 @@ using System.Transactions;
 
 namespace StreetFighter.Repositorio
 {
-    public class PersonagemRepositorioDB : IPersonagemRepositorio
+    public class PersonagemRepositorioDB : Repositorio, IPersonagemRepositorio
     {
-
         //Listar Personagens
         //Caso nenhum parametro seja passado no filtroNome, retorna todos os personagens
         //Se não, retorna os personagens que contenham o nome passado pelo filtro
         public List<Personagem> ListarPersonagens(string filtroNome)
         {
-
-            string connectionString =
-                ConfigurationManager.ConnectionStrings["StreetFighterConnection"].ConnectionString;
-
             List<Personagem> personagens = new List<Personagem>();
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = Conexao())
             {
                 connection.Open();
                 string sql = $"SELECT idpersonagem, nome, nascimento,altura, peso, origem, golpesespeciais, personagemoculto, imagem FROM Personagem WHERE nome like @param_filtro";
@@ -47,12 +42,9 @@ namespace StreetFighter.Repositorio
 
         public Personagem BuscarPersonagem(int id)
         {
-            string connectionString =
-               ConfigurationManager.ConnectionStrings["StreetFighterConnection"].ConnectionString;
-
             Personagem personagem = null;
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = Conexao())
             {
                 connection.Open();
                 string sql = $"SELECT idpersonagem, nome, nascimento,altura, peso, origem, golpesespeciais, personagemoculto, imagem FROM Personagem WHERE idpersonagem = @param_id";
@@ -87,11 +79,8 @@ namespace StreetFighter.Repositorio
 
         private void IncluirEditarPersonagem(Personagem personagem)
         {
-            string connectionString =
-    ConfigurationManager.ConnectionStrings["StreetFighterConnection"].ConnectionString;
-
             using (var transaction = new TransactionScope(TransactionScopeOption.Required))
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = Conexao())
             {
                 connection.Open();
 
@@ -140,12 +129,26 @@ namespace StreetFighter.Repositorio
             }
         }
 
-
         //Excluir Personagem
         public bool ExcluirPersonagem(Personagem personagem)
         {
-      
-            return false;
+            using (var transaction = new TransactionScope(TransactionScopeOption.Required))
+            using (var connection = Conexao())
+            {
+                connection.Open();
+
+                string sql = $"Delete FROM Personagem WHERE idpersonagem = @param_id";
+                var command = new SqlCommand(sql.ToString(), connection);
+                command.Parameters.Add(new SqlParameter("@param_id", personagem.Id));
+
+                int resultado = command.ExecuteNonQuery();
+                bool deletou = resultado > 0 ? true : false;
+
+                connection.Close();
+                transaction.Complete();
+
+                return deletou;
+            }
         }
 
         private Personagem ConverterReaderParaPersonagem(SqlDataReader reader)
@@ -160,8 +163,6 @@ namespace StreetFighter.Repositorio
                 reader["golpesespeciais"].ToString(),
                 Convert.ToBoolean(reader["personagemoculto"]),
                 reader["imagem"].ToString());
-        }
-
-        
+        }  
     }
 }

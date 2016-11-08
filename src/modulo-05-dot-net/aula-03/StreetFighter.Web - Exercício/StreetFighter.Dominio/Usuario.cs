@@ -8,10 +8,9 @@ namespace StreetFighter.Dominio
 {
     public class Usuario
     {
-
-        public string Nome { get; set; }
-        public string Senha { get; set; }
-        public string[] Permissoes { get; set; }
+        public int Id { get; }
+        public string Nome { get; }
+        public string Senha { get; }
         public Usuario(string nome, string senha)
         {
             this.Nome = nome;
@@ -20,6 +19,12 @@ namespace StreetFighter.Dominio
 
         public Usuario(string[] dadosDoUsuario) : this(dadosDoUsuario[0], dadosDoUsuario[1])
         {
+        }
+
+        public Usuario(int id, string nome)
+        {
+            this.Id = id;
+            this.Nome = nome;
         }
     }
 }

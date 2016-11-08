@@ -32,7 +32,7 @@ namespace StreetFighter.Controllers
             if (usuarioAutenticado != null)
             {
                 ServicoDeAutenticacao.Autenticar(new UsuarioLogadoModel(
-                    usuarioAutenticado.Nome, usuarioAutenticado.Permissoes));
+                    usuarioAutenticado.Nome));
                 return RedirectToAction("ListaDePersonagens","StreetFighter");
             }
 

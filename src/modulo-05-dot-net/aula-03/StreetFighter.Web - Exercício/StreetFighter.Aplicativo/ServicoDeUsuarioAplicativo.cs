@@ -10,7 +10,7 @@ namespace StreetFighter.Aplicacao
 
         public ServicoDeUsuarioAplicativo()
         {
-            this.repositorio = new UsuarioRepositorio();
+            this.repositorio = new UsuarioRepositorioDB();
         }
 
         internal ServicoDeUsuarioAplicativo(IUsuarioRepositorio repositorio)

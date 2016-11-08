@@ -45,7 +45,9 @@
     <Compile Include="PersonagemRepositorioDB.cs" />
     <Compile Include="PersonagemRepositorioArquivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioRepositorio.cs" />
+    <Compile Include="Repositorio.cs" />
+    <Compile Include="UsuarioRepositorioDB.cs" />
+    <Compile Include="UsuarioRepositorioArquivo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">
