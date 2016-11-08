@@ -1,5 +1,5 @@
 ﻿using StreetFighter.Dominio;
-using StreetFighter.Repositorio;
+using StreetFighter.RepositorioEF;
 
 namespace StreetFighter.Aplicacao
 {
@@ -10,7 +10,7 @@ namespace StreetFighter.Aplicacao
 
         public ServicoDeUsuarioAplicativo()
         {
-            this.repositorio = new UsuarioRepositorioDB();
+            this.repositorio = new UsuarioRepositorio();
         }
 
         internal ServicoDeUsuarioAplicativo(IUsuarioRepositorio repositorio)

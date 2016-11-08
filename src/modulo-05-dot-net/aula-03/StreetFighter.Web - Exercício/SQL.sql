@@ -22,3 +22,4 @@ CREATE TABLE Usuario
 
 
 INSERT INTO Personagem VALUES('Blanka','12/02/1966 00:00:00',192,96,'BR','Electric Thunder, Rolling Attack',1,'/Content/imagens/blanka.png')
+insert into usuario values('joao','e1cbc2eb0dba8a24672eda700b01e4bf')

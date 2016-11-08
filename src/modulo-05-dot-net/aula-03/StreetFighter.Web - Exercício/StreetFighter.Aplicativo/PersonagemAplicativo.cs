@@ -1,5 +1,5 @@
 ﻿using StreetFighter.Dominio;
-using StreetFighter.Repositorio;
+using StreetFighter.RepositorioEF;
 using System.Collections.Generic;
 
 namespace StreetFighter.Aplicativo
@@ -10,7 +10,7 @@ namespace StreetFighter.Aplicativo
 
         public PersonagemAplicativo()
         {
-            this.repositorio = new PersonagemRepositorioDB();
+            this.repositorio = new PersonagemRepositorio();
         }
 
         internal PersonagemAplicativo(IPersonagemRepositorio repositorio)

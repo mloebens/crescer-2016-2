@@ -9,7 +9,7 @@ namespace StreetFighter.Repositorio
                 
         public Repositorio()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["StreetFighterCasa"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["StreetFighterCWI"].ConnectionString;
         }
 
         protected SqlConnection Conexao()

@@ -8,15 +8,21 @@ namespace StreetFighter.Dominio
 {
     public class Personagem
     {
-        public int Id { get;}
-        public string Nome { get; }
-        public DateTime Nascimento { get; }
-        public int? Altura { get;}
-        public decimal Peso { get;}
-        public string Origem { get; }
-        public string GolpesEspeciais { get; }
-        public bool PersonagemOculto { get; }
-        public string Imagem { get; }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public DateTime Nascimento { get; set; }
+        public int? Altura { get; set; }
+        public decimal Peso { get; set; }
+        public string Origem { get; set; }
+        public string GolpesEspeciais { get; set; }
+        public bool PersonagemOculto { get; set; }
+        public string Imagem { get; set; }
+
+
+        public Personagem()
+        {
+
+        }
 
         public Personagem(int id, string nome, DateTime nascimento, int altura, decimal peso, string origem, string golpesEspeciais, bool personagemOculto, string imagem)
             : this(nome, nascimento, altura, peso, origem, golpesEspeciais, personagemOculto, imagem)
@@ -41,18 +47,6 @@ namespace StreetFighter.Dominio
             this.GolpesEspeciais = golpesEspeciais;
             this.PersonagemOculto = personagemOculto;
             this.Imagem = imagem;
-        }
-
-
-
-        //retorna o Personagem em formato CSV
-        //Caso o Id seja 0, não adiciona o Id
-        public override string ToString()
-        {
-            string texto = this.Id != 0 ? $"{this.Id};" : "";
-            texto += $"{this.Nome};{this.Nascimento};{this.Altura};{this.Peso};{this.Origem};{this.GolpesEspeciais};{this.PersonagemOculto};{this.Imagem}";
-
-            return texto;
         }
 
         private void Restricoes(string nome, string origem)

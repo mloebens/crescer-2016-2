@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreetFighter.Testes", "Str
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreetFighter.Infra", "StreetFighter.Infra\StreetFighter.Infra.csproj", "{62BE02EF-D568-4FFC-B690-53E3DE8BDF18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreetFighter.ReposEF", "StreetFighter.ReposEF\StreetFighter.ReposEF.csproj", "{7274FF28-A2C6-4457-83EB-7930ED6DE47E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{62BE02EF-D568-4FFC-B690-53E3DE8BDF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62BE02EF-D568-4FFC-B690-53E3DE8BDF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62BE02EF-D568-4FFC-B690-53E3DE8BDF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7274FF28-A2C6-4457-83EB-7930ED6DE47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7274FF28-A2C6-4457-83EB-7930ED6DE47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7274FF28-A2C6-4457-83EB-7930ED6DE47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7274FF28-A2C6-4457-83EB-7930ED6DE47E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
