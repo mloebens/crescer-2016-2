@@ -1,6 +1,7 @@
 ﻿using StreetFighter.Dominio;
 using StreetFighter.ReposEF;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 
@@ -15,7 +16,7 @@ namespace StreetFighter.RepositorioEF
         {
             using (var context = new DatabaseContext())
             {
-                return context.Personagem.ToList();
+                return context.Personagem.Where(personagem => filtroNome == null || personagem.Nome.Contains(filtroNome)).ToList();
             }
         }
 
@@ -31,20 +32,36 @@ namespace StreetFighter.RepositorioEF
         //Incluir Personagem
         public void IncluirPersonagem(Personagem personagem)
         {
-          
+            using (var context = new DatabaseContext())
+            {
+                context.Entry<Personagem>(personagem).State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
 
         //Editar Personagem
         public void EditarPersonagem(Personagem personagem)
         {
-          
+            using (var context = new DatabaseContext())
+            {
+                context.Entry<Personagem>(personagem).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
     
         //Excluir Personagem
         public bool ExcluirPersonagem(Personagem personagem)
         {
-            return false;
+            int resultado = 0;
+            using (var context = new DatabaseContext())
+            {
+                context.Entry<Personagem>(personagem).State = EntityState.Deleted;
+                resultado = context.SaveChanges();
+            }
+
+            bool removeu = resultado > 0 ? true : false;
+            return removeu;
         }
     }
 }

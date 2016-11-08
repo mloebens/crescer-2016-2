@@ -6,7 +6,7 @@ namespace StreetFighter.ReposEF
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext() : base("StreetFighterCWIEF")
+        public DatabaseContext() : base("StreetFighterCasaEF")
         {
 
         }

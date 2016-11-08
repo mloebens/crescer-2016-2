@@ -17,9 +17,12 @@ CREATE TABLE Usuario
 	IdUsuario			BIGINT IDENTITY,
 	Nome				VARCHAR(80) NOT NULL,
 	Senha				VARCHAR(255),
-	constraint PK_Personagem primary key (IdUsuario)
+	constraint PK_Usuario primary key (IdUsuario)
 )
 
 
 INSERT INTO Personagem VALUES('Blanka','12/02/1966 00:00:00',192,96,'BR','Electric Thunder, Rolling Attack',1,'/Content/imagens/blanka.png')
-insert into usuario values('joao','e1cbc2eb0dba8a24672eda700b01e4bf')
+INSERT INTO Usuario VALUES('joao','8283f6ae9d4a9747fff1c715672a0fc6')
+
+
+SELECT idusuario, nome FROM Usuario WHERE nome = 'joao' AND senha = '8283f6ae9d4a9747fff1c715672a0fc6'

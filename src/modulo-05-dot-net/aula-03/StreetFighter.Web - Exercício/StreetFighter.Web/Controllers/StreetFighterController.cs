@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using StreetFighter.Filters;
 using System;
+using AutoMapper;
 
 namespace StreetFighter.Web.Controllers
 {
@@ -105,7 +106,6 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
-        
 
         [CwiAutorizador]
         public ActionResult Editar(int id)
@@ -148,7 +148,7 @@ namespace StreetFighter.Web.Controllers
         //Transforma o personagem vindo do repositório para o model usado pela camada mvc
         private PersonagemModel PersonagemRepositorioParaPersonagemModel(Personagem personagem)
         {
-            return new PersonagemModel(personagem.ToString().Split(';'));
+            return Mapper.Map<Personagem, PersonagemModel>(personagem);
         }
 
         //Busca um personagem por id
