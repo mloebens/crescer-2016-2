@@ -1,4 +1,5 @@
-﻿
+﻿@model Loja.Web.Models.UsuarioModel
+
 @{
     ViewBag.Title = "Index";
 }
@@ -8,9 +9,21 @@
 @using (Html.BeginForm("Entrar", "Login", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
-    @Html.TextBox("email", "", new { placeholder = "email" })
-    @Html.Password("senha", "", new { placeholder = "senha" })
+    <div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        @Html.TextBoxFor(model => model.Email, new { placeholder = "E-mail" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div>
+        @Html.PasswordFor(model => model.Senha, new { placeholder = "Senha" })
+    </div>
 
     <button type="submit">Entrar</button>
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }

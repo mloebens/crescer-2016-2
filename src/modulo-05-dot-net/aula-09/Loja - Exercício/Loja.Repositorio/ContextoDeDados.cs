@@ -11,7 +11,7 @@ namespace Loja.Repositorio
 {
     public class ContextoDeDados : DbContext
     {
-        public ContextoDeDados() : base("Loja")
+        public ContextoDeDados() : base("LojaCWI")
         {
 
         }

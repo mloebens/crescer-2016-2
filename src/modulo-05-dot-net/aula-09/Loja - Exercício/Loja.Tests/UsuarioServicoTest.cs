@@ -20,7 +20,28 @@ namespace Loja.Tests
                 new ServicoDeCriptografiaMock());
 
             Usuario usuario = usuarioServico.BuscarPorAutenticacao(
-                "goku@bol.com", "abc123");
+                new Usuario()
+                {
+                   Email = "goku@bol.com",
+                    Senha = "abc123"
+                });
+
+            Assert.IsNotNull(usuario);
+        }
+
+        [TestMethod]
+        public void NaoAutenticarAutenticar()
+        {
+            var usuarioServico = new UsuarioServico(
+                new UsuarioRepositorioMock(),
+                new ServicoDeCriptografiaMock());
+
+            Usuario usuario = usuarioServico.BuscarPorAutenticacao(
+                new Usuario()
+                {
+                    Email = "goku@bol.com",
+                    Senha = "abc123"
+                });
 
             Assert.IsNotNull(usuario);
         }

@@ -1,7 +1,11 @@
-﻿using Loja.Dominio;
+﻿using AutoMapper;
+using Loja.Dominio;
 using Loja.Infraestrutura;
 using Loja.Repositorio;
+using Loja.Web.Models;
 using Loja.Web.Servicos;
+using StreetFighter.Models;
+using StreetFighter.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +24,24 @@ namespace Loja.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Entrar(string email, string senha)
+        public ActionResult Entrar(UsuarioModel usuarioModel)
         {
-            UsuarioServico usuarioServico = ServicoDeDependencias.MontarUsuarioServico();
+            if(ModelState.IsValid)
+            {
+                UsuarioServico usuarioServico = ServicoDeDependencias.MontarUsuarioServico();
+                Usuario usuario = Mapper.Map<UsuarioModel, Usuario>(usuarioModel);
+                Usuario usuarioAutenticado = usuarioServico.BuscarPorAutenticacao(usuario);
 
-            Usuario usuario = usuarioServico.BuscarPorAutenticacao(email, senha);
-            
-            return null;
+                if (usuarioAutenticado != null)
+                {
+                    ServicoDeAutenticacao.Autenticar(new UsuarioLogadoModel(
+                        usuarioAutenticado.Email));
+                    return RedirectToAction("Listar", "Produto");
+                }
+            }
+
+            ModelState.AddModelError("", "Usuário/Senha inválida");
+            return View("Index");
         }
     }
 }

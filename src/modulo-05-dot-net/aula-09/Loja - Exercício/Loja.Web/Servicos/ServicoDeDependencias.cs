@@ -19,5 +19,15 @@ namespace Loja.Web.Servicos
 
             return usuarioServico;
         }
+        /*
+        public static ProdutoServico MontarProdutoServico()
+        {
+            ProdutoServico produtoServico =
+                new ProdutoServico(
+                        new ProdutoRepositorio(),
+                        new ServicoDeCriptografia()
+                    );
+            return produtoServico;
+        }*/
     }
 }
