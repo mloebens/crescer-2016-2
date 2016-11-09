@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04FB644A-F0D8-18C8-8369-5F02916D7E79" name="Zona">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:59:31 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDZona" id="FFAC8C5A-09C6-FD4B-4831-667340D7A382">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:00:38 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Codigo" id="54A706A1-1C7D-3FBC-4D9B-186496925F89">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:00:38 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="09FBB4B7-80C4-BF2A-1E48-4197916E33E8" name="Zona_PK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:00:38 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FFAC8C5A-09C6-FD4B-4831-667340D7A382"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4CAF3726-DE15-B09C-4807-A8EBC6B4FF6D" name="UK_Zona">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:09:18 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="54A706A1-1C7D-3FBC-4D9B-186496925F89"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

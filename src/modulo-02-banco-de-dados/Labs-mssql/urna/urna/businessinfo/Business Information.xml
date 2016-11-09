@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="2F611660-35E9-C639-9A4C-E79A9C969029">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:42:44 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

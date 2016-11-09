@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FB94CEEF-3E4B-63BC-0525-808765079F6C" name="TipoCargo">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:54:26 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDTipoCargo" id="8775BFEC-1504-9BF2-8943-AFEF2F690D4E">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:55:07 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="017979D4-241F-FC45-C822-8D87FCAB33BC">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:55:07 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60</dataTypeSize>
+<ownDataTypeParameters>60,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DC14E70D-EDA7-E296-199E-C5A794BC3E6A" name="TipoCargo_PK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:55:07 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8775BFEC-1504-9BF2-8943-AFEF2F690D4E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

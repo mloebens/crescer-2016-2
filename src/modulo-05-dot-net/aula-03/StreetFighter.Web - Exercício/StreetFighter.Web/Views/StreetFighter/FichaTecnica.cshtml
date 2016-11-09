@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Ficha Técnica";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<div class="conteudo-corpo">
+    <h2>@Model.Nome</h2>
+
+    <div class="informacoes fichatecnica">
+        <img src="@Model.Imagem" />
+        <ul>
+            <li><strong>Nascimento:</strong> @(Model.Nascimento.ToString("dd 'de' MMMMM 'de' yyyy"))</li>
+            <li><strong>Altura:</strong> @(Model.Altura)cm</li>
+            <li><strong>Peso:</strong> @(Model.Peso)kg.</li>
+            <li><strong>Origem:</strong> @Model.Origem </li>
+            <li><strong>Golpes especiais famosos:</strong> @Model.GolpesEspeciais</li>
+            <li><strong>Personagem Oculto:</strong> @(Model.PersonagemOculto ? "Sim" : "Não") </li>
+        </ul>
+    </div>
+</div>
+

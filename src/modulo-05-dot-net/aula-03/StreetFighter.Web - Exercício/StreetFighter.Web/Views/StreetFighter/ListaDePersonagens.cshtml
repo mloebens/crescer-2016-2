@@ -1,0 +1,57 @@
+﻿@model StreetFighter.Web.Models.ListaDePersonagensModel
+
+@{
+    ViewBag.Title = "Lista De Personagens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css {
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+}
+<div class="conteudo-corpo">
+    <div class="informacoes">
+
+        @using (Html.BeginForm("ListaDePersonagens", "StreetFighter", FormMethod.Get, new { @class = "form-horizontal" }))
+        {
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.TextBox("filtro", "", new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+        }
+        @Html.Raw(TempData["Mensagem"])
+
+        <div class="row col-sm-12 novo-personagem">
+            <a href="~/StreetFighter/Cadastro">
+                <i class="fa fa-plus-circle fa-2" aria-hidden="true"></i>
+                <span>Novo Personagem</span>
+            </a>
+        </div>
+
+
+        @foreach (var personagem in Model.Personagens)
+        {
+        <div class="row listar-personagem">
+            <div class="form-group">
+                <div class="col-sm-10">
+                        @Html.ActionLink(personagem.Nome, "/FichaTecnica/" + personagem.Id)
+                </div>
+                <div class="col-sm-1">
+                    <a href="~/StreetFighter/Editar/@personagem.Id">
+                        <i class="fa fa-pencil fa-2" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-sm-1">
+                    <a href="~/StreetFighter/Excluir/@personagem.Id">
+                        <i class="fa fa-trash fa-2" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

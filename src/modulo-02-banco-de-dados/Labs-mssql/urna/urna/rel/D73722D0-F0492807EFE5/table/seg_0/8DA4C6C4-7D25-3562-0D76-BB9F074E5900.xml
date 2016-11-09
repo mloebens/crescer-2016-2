@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8DA4C6C4-7D25-3562-0D76-BB9F074E5900" name="Eleitor">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:56:10 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDEleitor" id="BFAEC01E-9A20-FA01-E90E-D7DCA1EF48D1">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:56:51 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NomeCompleto" id="719A1346-7DAB-ABAE-67B2-1E56FD98DD00">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:56:51 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80</dataTypeSize>
+<ownDataTypeParameters>80,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TituloEleitor" id="3775CE16-5D7C-31D6-8268-C0F94C550261">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:57:20 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RG" id="2DB70EC9-43B9-4C5D-5FEE-4838C1F1E297">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:57:45 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataNascimento" id="20C9F08E-FD9F-6A63-7DA7-9C41F130C642">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:57:58 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDSecaoZona" id="1612A297-E95D-E0A7-D8F2-4036F19152EC">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:05:59 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F1CA370F-AD10-CBBC-8744-C28858EF936A" referredColumn="737C1EB3-7910-0421-7FB9-A24E237BA152"/>
+</associations>
+</Column>
+<Column name="Voto" id="BF3B0C78-3AED-73CC-46E6-BC572730FFEA">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:17:45 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0355FBC3-D38C-5B66-3381-8A56C5AD84B0" name="Eleitor_PK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:56:51 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BFAEC01E-9A20-FA01-E90E-D7DCA1EF48D1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1F4CA445-F963-5CE8-3337-1A32C8DCDB64" name="UK_Eleitor_TituloEleitor">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:07:30 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3775CE16-5D7C-31D6-8268-C0F94C550261"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6BA80943-BB83-4A4C-FE8F-542A9EEE373A" name="UK_Eleitor_RG">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:07:30 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2DB70EC9-43B9-4C5D-5FEE-4838C1F1E297"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F23F30D0-A198-82C7-686F-F45982A7DBFB" name="Eleitor_SecaoZona_FK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:06:17 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1612A297-E95D-E0A7-D8F2-4036F19152EC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

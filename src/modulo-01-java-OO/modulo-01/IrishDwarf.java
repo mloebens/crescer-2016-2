@@ -1,17 +1,19 @@
-public class IrishDwarf extends Dwarf {
-
-    public IrishDwarf() {
-        this(null, new DataTerceiraEra(1,1,1));
+public class IrishDwarf extends Dwarf
+{
+    public IrishDwarf(){
+        this(null,new DataTerceiraEra(1,1,1));
     }
 
-    public IrishDwarf(String nome, DataTerceiraEra dataNascimento) {
+    public IrishDwarf(String nome, DataTerceiraEra dataNascimento){
         super(nome, dataNascimento);
+        this.vida = 110;
     }
     
-    public void tentarSorte() {
-        boolean temSorte = getNumeroSorte() == -3333;
-        if (temSorte) {
-            inventario.aumentarUnidadesProporcionalQuantidadePorItem();
+    public void tentarSorte(){
+        boolean teveSorte = getNumeroSorte() == -3333.0;
+        
+        if(teveSorte){           
+            this.inventario.aumentarUnidadesProporcionalQuantidadePorItem();
         }
-    }
+    }   
 }

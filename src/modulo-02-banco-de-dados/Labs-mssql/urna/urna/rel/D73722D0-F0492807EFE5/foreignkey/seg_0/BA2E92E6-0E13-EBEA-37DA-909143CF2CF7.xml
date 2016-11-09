@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BA2E92E6-0E13-EBEA-37DA-909143CF2CF7" containerWithKeyObject="575667DF-F36A-C683-094E-FD4E45489E2D" localFKIndex="53BCB9E9-F59A-B532-5F43-52CB93FD8136" name="FK_Cidade_Estado">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:51:25 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A5274346-028B-9C5E-38BA-885495605186</referredTableID>
+<keyObject>CBDD3EDB-11F2-308D-CCD4-4E9EBDA7D229</keyObject>
+<referredKeyID>CBDD3EDB-11F2-308D-CCD4-4E9EBDA7D229</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

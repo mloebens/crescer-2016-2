@@ -6,42 +6,44 @@ import org.junit.Test;
 public class DataTerceiraEraTest
 {
     @Test
-    public void criarAno3019QueNaoEhBissexto() {
-        // Arrange
-        DataTerceiraEra data = new DataTerceiraEra(1, 10, 3019);
-        // Act
-        boolean obtido = data.ehBissexto();
-        // Assert
-        assertFalse(obtido);
+    public void ehBissexto2000(){
+        DataTerceiraEra dataTerceiraEra = new DataTerceiraEra(1, 10, 2000);
+
+        assertTrue(dataTerceiraEra.ehBissexto());
     }
-    
+
     @Test
-    public void criarAno2000QueEhBissexto() {
-        // Arrange
-        DataTerceiraEra data = new DataTerceiraEra(1, 1, 2000);
-        // Act
-        boolean obtido = data.ehBissexto();
-        // Assert
-        assertTrue(obtido);
+    public void ehBissexto1384(){
+        DataTerceiraEra dataTerceiraEra = new DataTerceiraEra(1, 10, 1384);
+
+        assertTrue(dataTerceiraEra.ehBissexto());
     }
-    
+
     @Test
-    public void criarAno1900NaoEhBissexto() {
-        assertFalse(new DataTerceiraEra(1,1,1900).ehBissexto());
+    public void ehBissexto1216(){
+        DataTerceiraEra dataTerceiraEra = new DataTerceiraEra(1, 10, 1216);
+
+        assertTrue(dataTerceiraEra.ehBissexto());
     }
-    
+
     @Test
-    public void criarAno2012QueEhBissexto() {
-        assertTrue(new DataTerceiraEra(04, 05, 2012).ehBissexto());
+    public void ehBissexto1900(){
+        DataTerceiraEra dataTerceiraEra = new DataTerceiraEra(1, 10, 1900);
+
+        assertFalse(dataTerceiraEra.ehBissexto());
     }
-    
+
     @Test
-    public void criarAno2200QueNaoEhBissexto() {
-        assertFalse(new DataTerceiraEra(04, 05, 2200).ehBissexto());
+    public void ehBissexto1217(){
+        DataTerceiraEra dataTerceiraEra = new DataTerceiraEra(1, 10, 1217);
+
+        assertFalse(dataTerceiraEra.ehBissexto());
     }
-    
+
     @Test
-    public void criarAno2015QueNaoEhBissexto() {
-        assertFalse(new DataTerceiraEra(04, 05, 2015).ehBissexto());
+    public void ehBissexto2017(){
+        DataTerceiraEra dataTerceiraEra = new DataTerceiraEra(1, 10, 2017);
+
+        assertFalse(dataTerceiraEra.ehBissexto());
     }
 }

@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="E64BC58B-A23E-C30C-3151-CDA4C8F6AE6A">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:42:44 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

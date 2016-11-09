@@ -3,59 +3,54 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ItemTest {
-    
+public class ItemTest
+{
     @Test
-    public void aumentar1000UnidadesItem() {
+    public void aumentar1000unidadesItemFatorSomaFalse(){
         Item elderScroll = new Item("Elder Scroll", 7);
         elderScroll.aumentarUnidades(1000);
         assertEquals(1007, elderScroll.getQuantidade());
     }
-    
+
     @Test
-    public void aumentar0UnidadesItem() {
+    public void aumentar1000unidadesItemFatorSomaTrue(){
         Item elderScroll = new Item("Elder Scroll", 7);
-        elderScroll.aumentarUnidades(0);
-        assertEquals(7, elderScroll.getQuantidade());
+        elderScroll.aumentarProporcionalQuantidade();
+        assertEquals(28007, elderScroll.getQuantidade());
     }
-    
+
     @Test
-    public void aumentarUnidadeNegativaItem() {
+    public void aumentarMenosOitounidadesItemFatorSomaFalse(){
+        Item elderScroll = new Item("Elder Scroll", -8);
+        elderScroll.aumentarUnidades(1000);
+        assertEquals(992, elderScroll.getQuantidade());
+    }
+
+    @Test
+    public void aumentarMenosOitounidadesItemFatorSomaTrue(){
+        Item elderScroll = new Item("Elder Scroll", -5);
+        elderScroll.aumentarProporcionalQuantidade();
+        assertEquals(14995, elderScroll.getQuantidade());
+    }
+
+    @Test
+    public void aumentarUnidadeNegativaItemFatorSomaFalse() {
         Item elderScroll = new Item("Elder Scroll", 7);
         elderScroll.aumentarUnidades(-1);
         assertEquals(6, elderScroll.getQuantidade());
     }
     
     @Test
-    public void aumentarProporcionalQuantidade3() {
-        Item item = new Item("Chapéu", 3);
-        item.aumentarProporcionalQuantidade();
-        assertEquals(6003, item.getQuantidade());
+    public void igualdadeItens(){
+        assertEquals(new Item("Espada Z", 1), new Item("Espada Z",1));
     }
     
-    @Test
-    public void aumentarProporcionalQuantidade1() {
-        Item item = new Item("Elder Scroll", 1);
-        item.aumentarProporcionalQuantidade();
-        assertEquals(1001, item.getQuantidade());
-    }
     
+    /*
     @Test
-    public void aumentarProporcionalQuantidade0() {
-        Item item = new Item("Elder Scroll", 0);
-        item.aumentarProporcionalQuantidade();
-        assertEquals(0, item.getQuantidade());
-    }
-    
-    @Test
-    public void aumentarProporcionalQuantidade20() {
-        Item item = new Item("Semente dos Deuses", 20);
-        item.aumentarProporcionalQuantidade();
-        assertEquals(210020, item.getQuantidade());
-    }
-    
-    @Test
-    public void igualdadeDeItens() {
-        assertEquals(new Item("Espada Z", 1), new Item("Espada Z", 1));
-    }
+    public void aumentarUnidadeNegativaItemFatorSomaTrue() {
+    Item elderScroll = new Item("Elder Scroll", 7);
+    elderScroll.aumentarUnidades(-1, true);
+    assertEquals(6, elderScroll.getQuantidade());
+    }*/
 }

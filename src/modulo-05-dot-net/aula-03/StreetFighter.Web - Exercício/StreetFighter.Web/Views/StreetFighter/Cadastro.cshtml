@@ -1,0 +1,110 @@
+﻿@model StreetFighter.Web.Models.PersonagemModel
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="conteudo-corpo">
+    <h2>Cadastro de Personagem</h2>
+
+    <div class="informacoes">
+        @using (Html.BeginForm("CadastroSalvar", "StreetFighter", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Nome, new { @class = "col-sm-2 form-control" })
+                            @Html.ValidationMessageFor(model => model.Nome)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nascimento, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Nascimento, "{0:dd/MM/yyyy}", new { @class = "form-control", data_val_date = "A data de nascimento deve ser no formato dd/mm/aaaa." })
+                            @Html.ValidationMessageFor(model => model.Nascimento)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Altura, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Altura, new { @class = "form-control", data_val_number = "A altura deve ser um valor inteiro." })
+                            @Html.ValidationMessageFor(model => model.Altura)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Peso, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Peso, new { @class = "form-control", data_val_number = "O peso deve ser um número, podendo ter duas casas decimais" })
+                            @Html.ValidationMessageFor(model => model.Peso)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Origem, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(model => model.Origem, (IEnumerable<SelectListItem>)ViewBag.ListaPaises, "Selecione...", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Origem)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GolpesEspeciais, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.GolpesEspeciais, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GolpesEspeciais)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Imagem, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Imagem, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Imagem)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonagemOculto, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.CheckBoxFor(model => model.PersonagemOculto)
+                            @Html.ValidationMessageFor(model => model.PersonagemOculto)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-default">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+@section Scripts { 
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jQuery.validate.rules.js"></script>
+}

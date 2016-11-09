@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CD7740C8-2942-A8F8-83BC-352AFCDE005F" name="Secao">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:00:58 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDSecao" id="F3680F87-B241-762A-A413-D5C1C7AE9D5D">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:01:19 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Codigo" id="D3712288-D968-D27E-77A3-71B941FC83A6">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:01:34 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="194C55C1-3B5F-7D44-83CA-89AE193393F5" name="Secao_PK">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:01:19 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3680F87-B241-762A-A413-D5C1C7AE9D5D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BD6237D7-1504-D222-DE4D-BE2C6C4F7742" name="UK_Secao">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 19:09:39 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D3712288-D968-D27E-77A3-71B941FC83A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="urna" id="02EBC60D-34F4-2F7D-D3A1-BBAC4631EFB4" version="3.5">
+<createdBy>maicon.loebens</createdBy>
+<createdTime>2016-10-18 18:42:44 UTC</createdTime>
+<ownerDesignName>urna</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>02EBC60D-34F4-2F7D-D3A1-BBAC4631EFB4</designId>
+</OSDM_Design>

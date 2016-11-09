@@ -1,9 +1,12 @@
-import java.util.List;
+import java.util.ArrayList;
 
-public interface Exercito {
+public interface Exercito
+{
     Elfo[] getContingente();
-    void alistar(Elfo elfo) throws NaoPodeAlistarException;
+
+    void alistar(Elfo elfo);
+
     Elfo buscar(String nome);
-    List<Elfo> buscar(Status status);
-    void atacar();
+
+    ArrayList<Elfo> buscar(Status status);
 }

@@ -2,283 +2,317 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.*;
 
-public class InventarioTest {
+public class InventarioTest
+{
     @Test
-    public void adicionarItemNoInventario() {
+    public void adicionarUmItem(){
         Inventario inventario = new Inventario();
-        Item espadaZ = new Item("Espada Z", 1);
-        inventario.adicionarItem(espadaZ);
-        assertTrue(inventario.getItens().contains(espadaZ));
+        inventario.adicionarItem(new Item("Espada Z",1));
+
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
+
+        assertEquals("Espada Z", todosItensDoInventario.get(0).getDescricao());
+        assertEquals(1, todosItensDoInventario.get(0).getQuantidade());  
     }
 
     @Test
-    public void inventarioSemAdicionarItem() {
+    public void adicionarDoisItens(){
         Inventario inventario = new Inventario();
-        Item espadaZ = new Item("Espada Z", 1);
-        assertFalse(inventario.getItens().contains(espadaZ));
+        inventario.adicionarItem(new Item("Espada Z",1));
+        inventario.adicionarItem(new Item("Espada Comum",2));
+
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
+
+        assertEquals("Espada Z", todosItensDoInventario.get(0).getDescricao());
+        assertEquals(1, todosItensDoInventario.get(0).getQuantidade()); 
+        assertEquals("Espada Comum", todosItensDoInventario.get(1).getDescricao());
+        assertEquals(2, todosItensDoInventario.get(1).getQuantidade()); 
+
     }
 
     @Test
-    public void adicionarDoisItensNoInventario() {
+    public void adicionarSeisItens(){
         Inventario inventario = new Inventario();
-        Item espadaZ = new Item("Espada Z", 1);
-        Item botasDeFerro = new Item("Iron Boots", 1);
-        inventario.adicionarItem(espadaZ);
-        inventario.adicionarItem(botasDeFerro);
-        assertTrue(inventario.getItens().contains(espadaZ));
-        assertTrue(inventario.getItens().contains(botasDeFerro));
+        inventario.adicionarItem(new Item("Espada Z",1));
+        inventario.adicionarItem(new Item("Massamune",1));
+        inventario.adicionarItem(new Item("Arco",4));
+        inventario.adicionarItem(new Item("Cajado",3));
+        inventario.adicionarItem(new Item("Bastão",10));
+        inventario.adicionarItem(new Item("Flechas",5));
+
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
+
+        assertEquals("Espada Z", todosItensDoInventario.get(0).getDescricao());
+        assertEquals(1, todosItensDoInventario.get(0).getQuantidade()); 
+        assertEquals("Massamune", todosItensDoInventario.get(1).getDescricao());
+        assertEquals(1, todosItensDoInventario.get(1).getQuantidade()); 
+        assertEquals("Arco", todosItensDoInventario.get(2).getDescricao()); 
+        assertEquals(4, todosItensDoInventario.get(2).getQuantidade()); 
+        assertEquals("Cajado", todosItensDoInventario.get(3).getDescricao());
+        assertEquals(3, todosItensDoInventario.get(3).getQuantidade()); 
+        assertEquals("Bastão", todosItensDoInventario.get(4).getDescricao());
+        assertEquals(10, todosItensDoInventario.get(4).getQuantidade()); 
+        assertEquals("Flechas", todosItensDoInventario.get(5).getDescricao()); 
+        assertEquals(5, todosItensDoInventario.get(5).getQuantidade()); 
     }
 
     @Test
-    public void adicionarCincoItensNoInventario() {
+    public void removerUmItemDeUm(){
         Inventario inventario = new Inventario();
-        Item espadaZ = new Item("Espada Z", 1);
-        Item botasDeFerro = new Item("Iron Boots", 1);
-        inventario.adicionarItem(espadaZ);
-        inventario.adicionarItem(botasDeFerro);
-        inventario.adicionarItem(botasDeFerro);
-        inventario.adicionarItem(botasDeFerro);
-        inventario.adicionarItem(botasDeFerro);
-        assertTrue(inventario.getItens().contains(espadaZ));
-        assertTrue(inventario.getItens().contains(botasDeFerro));
-        assertEquals(5, inventario.getItens().size());
-    }
+        Item espadaZ = new Item("Espada Z",1);
 
-    @Test
-    public void adicionarItemNoInventarioEDepoisRemovelo() {
-        Inventario inventario = new Inventario();
-        Item espadaZ = new Item("Espada Z", 1);
         inventario.adicionarItem(espadaZ);
         inventario.removerItem(espadaZ);
-        assertFalse(inventario.getItens().contains(espadaZ));
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
+
+        assertFalse(todosItensDoInventario.contains(espadaZ));
     }
 
     @Test
-    public void adicionarDoisItensNoInventarioERemoverApenasUm() {
+    public void removerUmItemDeDois(){
         Inventario inventario = new Inventario();
-        Item espadaZ = new Item("Espada Z", 1);
-        Item bastaoMagico = new Item("Bastão Mágico", 1);
+        Item espadaZ = new Item("Espada Z",1);
+        Item espadaBronze = new Item("Espada de Bronze",5);
+
         inventario.adicionarItem(espadaZ);
-        inventario.adicionarItem(bastaoMagico);
+        inventario.adicionarItem(espadaBronze);
         inventario.removerItem(espadaZ);
-        assertFalse(inventario.getItens().contains(espadaZ));
-        assertTrue(inventario.getItens().contains(bastaoMagico));
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
+
+        assertFalse(todosItensDoInventario.contains(espadaZ));
     }
 
     @Test
-    public void removerItemSemAdicionaloAntes() {
+    public void removerTresItemDeSeis(){
         Inventario inventario = new Inventario();
-        Item espadaZ = new Item("Espada Z", 1);
+        Item espadaZ = new Item("Espada Z",1);
+        Item espadaBronze = new Item("Espada de Bronze",5);
+        Item bastao = new Item("Bastão",10);
+
+        inventario.adicionarItem(espadaZ);
+        inventario.adicionarItem(new Item("Arco",4));
+        inventario.adicionarItem(new Item("Cajado",3));
+        inventario.adicionarItem(espadaBronze);
+        inventario.adicionarItem(bastao);
+        inventario.adicionarItem(new Item("Flechas",5));
+
         inventario.removerItem(espadaZ);
-        assertFalse(inventario.getItens().contains(espadaZ));
+        inventario.removerItem(espadaBronze);
+        inventario.removerItem(bastao);
+
+        ArrayList<Item> todosItensDoInventario = inventario.getItens();
+
+        assertFalse(todosItensDoInventario.contains(espadaZ));
+        assertFalse(todosItensDoInventario.contains(espadaBronze));
+        assertFalse(todosItensDoInventario.contains(bastao));
     }
 
     @Test
-    public void getDescricoesItensComVariosItens() {
+    public void imprimirDescricoesUmItens(){
+        Inventario inv = new Inventario();
+
+        inv.adicionarItem(new Item("Escudo",1));
+
+        assertEquals("Escudo",inv.getDescricoesItens());  
+    }
+
+    @Test
+    public void imprimirDescricoesDoisItens(){
+        Inventario inv = new Inventario();
+
+        inv.adicionarItem(new Item("Machado",1));
+        inv.adicionarItem(new Item("Escudo",1));
+
+        assertEquals("Machado,Escudo",inv.getDescricoesItens());  
+    }
+
+    @Test
+    public void imprimirDescricoesTresItens(){
+        Inventario inv = new Inventario();
+
+        inv.adicionarItem(new Item("Machado",1));
+        inv.adicionarItem(new Item("Escudo",1));
+        inv.adicionarItem(new Item("Martelo",1));
+
+        assertEquals("Machado,Escudo,Martelo",inv.getDescricoesItens());  
+    }
+
+    @Test
+    public void imprimirDescricoesNenhumItens(){
+        Inventario inv = new Inventario();
+        assertEquals("",inv.getDescricoesItens());  
+    }
+
+    @Test
+    public void itemMaisPopularSemItem(){
         Inventario inventario = new Inventario();
-        inventario.adicionarItem(new Item("Adaga", 14));
-        inventario.adicionarItem(new Item("Escudo", 2));
-        inventario.adicionarItem(new Item("Bracelete", 56));
-        assertEquals("Adaga,Escudo,Bracelete", inventario.getDescricoesItens());
+
+        assertEquals(null, inventario.getItemMaisPopular());
     }
 
     @Test
-    public void getDescricoesItensComApenasUmItem() {
+    public void itemMaisPopularDeDoisItens(){
         Inventario inventario = new Inventario();
-        inventario.adicionarItem(new Item("Bracelete", 56));
-        assertEquals("Bracelete", inventario.getDescricoesItens());
+        Item excalibur = new Item("Excalibur",1);
+        Item sementeDeuses = new Item("Semente dos Deuses",55);
+
+        inventario.adicionarItem(excalibur);
+        inventario.adicionarItem(sementeDeuses);
+
+        assertEquals(sementeDeuses, inventario.getItemMaisPopular());
     }
 
     @Test
-    public void getDescricoesItensSemItens() {
+    public void itemMaisPopularDeQuatroItens(){
         Inventario inventario = new Inventario();
-        assertEquals("", inventario.getDescricoesItens());
+        Item excalibur = new Item("Excalibur",1);
+        Item sementeDeuses = new Item("Semente dos Deuses",55);
+        Item flecha = new Item("Flecha",20);
+        Item lanca = new Item("Lança",54);
+
+        inventario.adicionarItem(excalibur);
+        inventario.adicionarItem(sementeDeuses);
+        inventario.adicionarItem(flecha);
+        inventario.adicionarItem(lanca);
+
+        assertEquals(sementeDeuses, inventario.getItemMaisPopular());
     }
 
     @Test
-    public void aumentar1000UnidadesDosItens() {
-        Inventario inventario = criarInventarioCom3Itens();
-        inventario.aumentarUnidadesDosItens(1000);
-        assertEquals(1002, inventario.getItens().get(0).getQuantidade());
-        assertEquals(1045, inventario.getItens().get(1).getQuantidade());
-        assertEquals(1003, inventario.getItens().get(2).getQuantidade());
-    }
-
-    @Test
-    public void aumentar1UnidadeDosItens() {
-        Inventario inventario = criarInventarioCom3Itens();
-        inventario.aumentarUnidadesDosItens(1);
-        assertEquals(3, inventario.getItens().get(0).getQuantidade());
-        assertEquals(46, inventario.getItens().get(1).getQuantidade());
-        assertEquals(4, inventario.getItens().get(2).getQuantidade());
-    }
-
-    @Test
-    public void aumentar0UnidadeDosItens() {
-        Inventario inventario = criarInventarioCom3Itens();
-        inventario.aumentarUnidadesDosItens(0);
-        assertEquals(2, inventario.getItens().get(0).getQuantidade());
-        assertEquals(45, inventario.getItens().get(1).getQuantidade());
-        assertEquals(3, inventario.getItens().get(2).getQuantidade());
-    }
-
-    @Test
-    public void aumentarUnidadeSemItens() {
-        Inventario inventario = new Inventario();
-        inventario.aumentarUnidadesDosItens(1000);
-        assertEquals(0, inventario.getItens().size());
-    }
-
-    @Test
-    public void itemComMaiorQuantidadeCom3Itens() {
-        Inventario inventario = criarInventarioCom3Itens();
-        Item item = inventario.getItemComMaiorQuantidade();
-        assertEquals("Poção polissuco", item.getDescricao());
-        assertEquals(45, item.getQuantidade());
-    }
-
-    @Test
-    public void itemComMaiorQuantidadeCom3ItensDeQuantidadesIguais() {
-        Inventario inventario = new Inventario();
-        inventario.adicionarItem(new Item("Espada de aço", 2));
-        inventario.adicionarItem(new Item("Poção polissuco", 2));
-        inventario.adicionarItem(new Item("Lucky egg", 2));
-        Item item = inventario.getItemComMaiorQuantidade();
-        assertEquals("Espada de aço", item.getDescricao());
-        assertEquals(2, item.getQuantidade());
-    }
-
-    @Test
-    public void itemComMaiorQuantidadeComInventarioVazio() {
-        Inventario inventario = new Inventario();
-        Item item = inventario.getItemComMaiorQuantidade();
-        assertNull(item);
-    }
-
-    @Test
-    public void ordenarItensBaguncados() {
-        // Arrange
-        Inventario mochila = new Inventario();
-        Item armadura = new Item("Armadura", 9);
-        Item escudo = new Item("Escudo", 99);
-        Item canivete = new Item("Canivete suíço", 2);
-        mochila.adicionarItem(armadura);
-        mochila.adicionarItem(escudo);
-        mochila.adicionarItem(canivete);
-        // Act
-        mochila.ordenarItens();
-        // Assert
-        assertEquals(canivete, mochila.getItens().get(0));
-        assertEquals(armadura, mochila.getItens().get(1));
-        assertEquals(escudo, mochila.getItens().get(2));
-    }
-
-    @Test
-    public void ordenarItensComMesmaQuantidade() {
-        // Arrange
-        Inventario mochila = new Inventario();
-        Item elderScroll = new Item("Elder Scroll", 9);
-        Item escudo = new Item("Escudo", 9);
-        Item canivete = new Item("Canivete suíço", 9);
-        mochila.adicionarItem(elderScroll);
-        mochila.adicionarItem(escudo);
-        mochila.adicionarItem(canivete);
-        // Act
-        mochila.ordenarItens();
-        // Assert
-        assertEquals(elderScroll, mochila.getItens().get(0));
-        assertEquals(escudo, mochila.getItens().get(1));
-        assertEquals(canivete, mochila.getItens().get(2));
-    }
-
-    @Test
-    public void ordenarItensVazio() {
-        // Arrange
-        Inventario mochila = new Inventario();
-        // Act
-        mochila.ordenarItens();
-        // Assert
-        assertEquals(0, mochila.getItens().size());
-    }
-
-    @Test
-    public void aumentarUnidadesProporcionalComInventarioVazio() {
-        Inventario inventario = new Inventario();
-        inventario.aumentarUnidadesProporcionalQuantidadePorItem();
-        assertTrue(inventario.getItens().isEmpty());
-    }
-
-    @Test
-    public void aumentarUnidadesProporcionalComApenasUmItem() {
+    public void ordernarInventarioUmItem(){
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Espada", 1));
-        inventario.aumentarUnidadesProporcionalQuantidadePorItem();
-        assertEquals(1001, inventario.getItens().get(0).getQuantidade());
+
+        inventario.ordenarItens();
+
+        assertEquals("Espada", inventario.getDescricoesItens());
     }
 
     @Test
-    public void aumentarUnidadesProporcionalComApenasDoisItens() {
+    public void ordernarInventario3Item(){
+        Inventario inventario = criarInventarioCom3Itens();
+
+        inventario.ordenarItens();
+
+        assertEquals("Espada de aço,Lucky egg,Poção polissuco", inventario.getDescricoesItens());
+    }
+
+    @Test
+    public void ordernarInventarioUmItemAscendente(){
         Inventario inventario = new Inventario();
-        inventario.adicionarItem(new Item("Balas .44", 2));
-        inventario.adicionarItem(new Item("Balas .12", 3));
+        inventario.adicionarItem(new Item("Espada", 1));
+
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+
+        assertEquals("Espada", inventario.getDescricoesItens());
+
+    }
+
+    @Test
+    public void ordernarInventario3ItemAscendente(){
+        Inventario inventario = criarInventarioCom3Itens();
+
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+
+        assertEquals("Espada de aço,Lucky egg,Poção polissuco", inventario.getDescricoesItens());
+    }
+
+    @Test
+    public void ordernarInventario5ItemAscendente(){
+        Inventario inventario = criarInventarioCom3Itens();
+        inventario.adicionarItem(new Item("Pedra",5));
+        inventario.adicionarItem(new Item("Martelo", 1));
+
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+
+        assertEquals("Martelo,Espada de aço,Lucky egg,Pedra,Poção polissuco", inventario.getDescricoesItens());
+    }
+
+    @Test
+    public void ordernarInventarioUmItemDescendente(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 1));
+
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+
+        assertEquals("Espada", inventario.getDescricoesItens());
+
+    }
+
+    @Test
+    public void ordernarInventario3ItemDescendente(){
+        Inventario inventario = criarInventarioCom3Itens();
+
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+
+        assertEquals("Poção polissuco,Lucky egg,Espada de aço", inventario.getDescricoesItens());
+    }
+
+    @Test
+    public void ordernarInventario5ItemDescendente(){
+        Inventario inventario = criarInventarioCom3Itens();
+        inventario.adicionarItem(new Item("Pedra",5));
+        inventario.adicionarItem(new Item("Martelo", 1));
+
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        assertEquals("Poção polissuco,Pedra,Lucky egg,Espada de aço,Martelo", inventario.getDescricoesItens());
+    }
+
+    @Test
+    public void aumentar1000unidadesItemFatorSomaFalse(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", 7));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        inventario.aumentarUnidadesDosItens(1000);
+
+        assertEquals(1007, itens.get(0).getQuantidade());
+    }
+
+    @Test
+    public void aumentar1000unidadesItemFatorSomaTrue(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", 7));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarProporcionalQuantidade();
+
+        assertEquals(28007, itens.get(0).getQuantidade());
+    }
+
+    @Test
+    public void aumentarMenosOitounidadesItemFatorSomaFalse(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", -8));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarUnidades(1000);
+
+        assertEquals(992, itens.get(0).getQuantidade());
+    }
+
+    @Test
+    public void aumentarMenosOitounidadesItemFatorSomaTrue(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", -8));
+
+        ArrayList<Item> itens  = inventario.getItens();
         inventario.aumentarUnidadesProporcionalQuantidadePorItem();
-        assertEquals(3002, inventario.getItens().get(0).getQuantidade());
-        assertEquals(6003, inventario.getItens().get(1).getQuantidade());
+
+        assertEquals(35992, itens.get(0).getQuantidade());
     }
-    
+
     @Test
-    public void ordenarItensDescendenteComItensOrdenadosAscendente() {
-        // Arrange
-        Inventario mochila = new Inventario();
-        Item elderScroll = new Item("Elder Scroll", 1);
-        Item escudo = new Item("Escudo", 2);
-        Item canivete = new Item("Canivete suíço", 3);
-        mochila.adicionarItem(elderScroll);
-        mochila.adicionarItem(escudo);
-        mochila.adicionarItem(canivete);
-        // Act
-        mochila.ordenarItens(TipoOrdenacao.DESCENDENTE);
-        // Assert
-        assertEquals(canivete, mochila.getItens().get(0));
-        assertEquals(escudo, mochila.getItens().get(1));
-        assertEquals(elderScroll, mochila.getItens().get(2));
-    }
-    
-    @Test
-    public void ordenarItensDescendenteComItensMesmaQuantidade() {
-        // Arrange
-        Inventario mochila = new Inventario();
-        Item elderScroll = new Item("Elder Scroll", 1);
-        Item escudo = new Item("Escudo", 1);
-        Item canivete = new Item("Canivete suíço", 1);
-        mochila.adicionarItem(elderScroll);
-        mochila.adicionarItem(escudo);
-        mochila.adicionarItem(canivete);
-        // Act
-        mochila.ordenarItens(TipoOrdenacao.DESCENDENTE);
-        // Assert
-        assertEquals(elderScroll, mochila.getItens().get(0));
-        assertEquals(escudo, mochila.getItens().get(1));
-        assertEquals(canivete, mochila.getItens().get(2));
-    }
-    
-    @Test
-    public void ordenarItensDescendenteJaOrdenado() {
-        // Arrange
-        Inventario mochila = new Inventario();
-        Item elderScroll = new Item("Elder Scroll", 3);
-        Item escudo = new Item("Escudo", 2);
-        Item canivete = new Item("Canivete suíço", 1);
-        mochila.adicionarItem(elderScroll);
-        mochila.adicionarItem(escudo);
-        mochila.adicionarItem(canivete);
-        // Act
-        mochila.ordenarItens(TipoOrdenacao.DESCENDENTE);
-        // Assert
-        assertEquals(elderScroll, mochila.getItens().get(0));
-        assertEquals(escudo, mochila.getItens().get(1));
-        assertEquals(canivete, mochila.getItens().get(2));
+    public void aumentarUnidadeNegativaItemFatorSomaFalse() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Elder Scroll", 7));
+
+        ArrayList<Item> itens  = inventario.getItens();
+        itens.get(0).aumentarUnidades(-1);
+
+        assertEquals(6, itens.get(0).getQuantidade());
     }
 
     private Inventario criarInventarioCom3Itens() {
@@ -288,5 +322,5 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Lucky egg", 3));
         return inventario;
     }
-}
 
+}

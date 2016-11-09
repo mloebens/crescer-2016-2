@@ -1,0 +1,129 @@
+body {
+    background-image: url("imagens/streetfighter.jpg");
+    background-size:100% auto;
+    font-family: arial;
+    background-repeat: no-repeat;
+}
+
+.container {
+    width:720px;
+    margin: 0 auto;
+}
+
+.menu {
+    width: 365px;
+    background-color: rgba(160,160,160,0.6);
+    margin: 200px auto 50px auto;
+    padding: 15px 0px;
+    border-radius: 14px;
+    border: 1px solid rgb(236, 235, 235);
+}
+
+.menu > .menu-item {
+    padding-left: 30px;
+}
+
+.menu > .menu-item > a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.conteudo {
+    margin-bottom: 20px;
+}
+
+.conteudo-cabecalho {
+    background-color: rgb(68, 65, 65);
+    padding: 5px 15px;
+    color: #fff;
+}
+
+.conteudo-cabecalho > h1 {
+    font-size: 22px;
+    color:rgb(236, 235, 235);
+}
+
+.conteudo-corpo {
+    background-color: rgb(236, 235, 235);
+    font-size:14px;
+    padding: 15px;
+}
+
+.conteudo-corpo > h2 {
+    font-size: 26px;
+    margin: 0;
+    padding: 15px;
+}
+
+.informacoes {
+    margin: 15px;
+}
+
+.informacoes ul {
+    float: left;
+    list-style-type: none;
+    
+}
+
+.informacoes ul:not(.personagens){
+    width: 324px;
+}
+
+.informacoes img {
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.row {
+    margin: 0;
+}
+
+#PersonagemOculto {
+    margin-top: 16px;
+}
+
+.fichatecnica,
+.sobre {
+    overflow: auto;
+}
+
+.personagens {
+    margin-top: 50px;
+    padding-left: 15px;
+}
+
+.personagens > li {
+    float: left;
+    margin: 10px 15px 10px 0;
+}
+
+.personagens > li:last-child {
+    margin-right: 0px;
+}
+
+.fa-plus-circle {
+    color: green;
+}
+
+.fa-trash {
+    color: darkred;
+}
+
+.novo-personagem,
+.listar-personagem {
+    margin-bottom: 10px;
+}
+
+.novo-personagem a:hover {
+    text-decoration: none;
+}
+
+hr {
+    border-top: 1px solid black;
+}

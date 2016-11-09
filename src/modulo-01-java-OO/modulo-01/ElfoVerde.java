@@ -12,7 +12,7 @@ public class ElfoVerde extends Elfo {
 
     @Override
     public void atirarFlecha(Dwarf dwarf) {
-        super.atirarFlechas(dwarf, 2);
+       atirarFlechas(dwarf, 2);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class ElfoVerde extends Elfo {
         boolean podeAdicionar = item != null && new ArrayList<>(Arrays.asList(validas)).contains(item.getDescricao());
 
         if (podeAdicionar) {
-            super.adicionarItem(item);
+            this.inventario.adicionarItem(item);
         }
     }
 
