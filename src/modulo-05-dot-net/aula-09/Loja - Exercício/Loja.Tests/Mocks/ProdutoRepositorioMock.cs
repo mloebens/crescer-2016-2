@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Loja.Tests.Mocks
 {
-    class ProdutoRepositorioMock : IProdutoRespositorio
+    class ProdutoRepositorioMock : IProdutoRepositorio
     {
-        private IList<Produto> produtos;
+
+        public IList<Produto> produtos;
 
         public ProdutoRepositorioMock()
         {
@@ -34,6 +35,16 @@ namespace Loja.Tests.Mocks
             });
         }
 
+        public Produto BuscarProdutoPeloId(int id)
+        {
+            return produtos.FirstOrDefault(p => p.Id == id);
+        }
+
+        public Produto BuscarProdutoPeloNome(string nome)
+        {
+            return produtos.FirstOrDefault(p => p.Nome.ToUpperInvariant().Equals(nome.ToUpperInvariant()));
+        }
+
         public IList<Produto> BuscarProdutos(string filtro)
         {
             return produtos.Where(p => filtro == null || 
@@ -44,17 +55,19 @@ namespace Loja.Tests.Mocks
 
         public void Editar(Produto produto)
         {
-            
+            Produto produtoParaEditar = produtos.FirstOrDefault(p => p.Id == produto.Id);
+            produtoParaEditar.Nome = produto.Nome;
+            produtoParaEditar.Valor = produto.Valor;
         }
 
         public void Excluir(Produto produto)
         {
-            throw new NotImplementedException();
+            produtos.Remove(produto);
         }
 
         public void Inserir(Produto produto)
         {
-            throw new NotImplementedException();
+            produtos.Add(produto);
         }
     }
 }

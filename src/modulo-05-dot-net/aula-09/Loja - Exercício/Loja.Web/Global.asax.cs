@@ -20,7 +20,13 @@ namespace Loja.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Mapper.Initialize(config => config.CreateMap<UsuarioModel, Usuario>());
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<UsuarioModel, Usuario>();
+                config.CreateMap<ProdutoModel, Produto>();
+                config.CreateMap<Produto, ProdutoModel>();
+            });
+
         }
     }
 }

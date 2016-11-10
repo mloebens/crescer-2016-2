@@ -50,11 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextoDeDados.cs" />
-    <Compile Include="Migrations\201611091702280_initial.cs" />
-    <Compile Include="Migrations\201611091702280_initial.Designer.cs">
-      <DependentUpon>201611091702280_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611092134234_Initial.cs" />
+    <Compile Include="Migrations\201611092134234_Initial.Designer.cs">
+      <DependentUpon>201611092134234_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611092254346_Implementar Produto.cs" />
+    <Compile Include="Migrations\201611092254346_Implementar Produto.Designer.cs">
+      <DependentUpon>201611092254346_Implementar Produto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ProdutoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioRepositorio.cs" />
   </ItemGroup>
@@ -69,8 +74,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611091702280_initial.resx">
-      <DependentUpon>201611091702280_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611092134234_Initial.resx">
+      <DependentUpon>201611092134234_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611092254346_Implementar Produto.resx">
+      <DependentUpon>201611092254346_Implementar Produto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

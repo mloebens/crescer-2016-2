@@ -16,5 +16,10 @@ namespace Loja.Repositorio
                 return context.Usuario.FirstOrDefault(u => u.Email.Equals(email));
             }
         }
+
+        public void InserirUsuario(Usuario usuario)
+        {
+            
+        }
     }
 }

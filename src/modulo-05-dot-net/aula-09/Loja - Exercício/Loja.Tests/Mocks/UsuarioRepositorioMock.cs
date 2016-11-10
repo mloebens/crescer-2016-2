@@ -26,5 +26,10 @@ namespace Loja.Tests.Mocks
         {
             return this.usuarios.FirstOrDefault(u => u.Email.Equals(email));
         }
+
+        public void InserirUsuario(Usuario usuario)
+        {
+            
+        }
     }
 }

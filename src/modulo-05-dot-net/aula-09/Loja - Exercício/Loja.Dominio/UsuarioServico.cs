@@ -34,8 +34,7 @@ namespace Loja.Dominio
         public void InserirUsuario(Usuario usuario)
         {
             ValidarUsuario(usuario);
-
-            //TODO
+            usuarioRepositorio.InserirUsuario(usuario);
         }
 
         private void ValidarUsuario(Usuario usuario)
@@ -46,8 +45,8 @@ namespace Loja.Dominio
 
             Usuario usuarioEncontrado = this.usuarioRepositorio.BuscarPorEmail(usuario.Email);
             bool emailJaCadastrado = usuarioEncontrado != null;
-            if(emailJaCadastrado)
-                throw new UsuarioException("E-mail já cadastrado.")
+            if (emailJaCadastrado)
+                throw new UsuarioException("E-mail já cadastrado.");
 
         }
     }

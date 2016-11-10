@@ -1,0 +1,45 @@
+﻿@model IList<Loja.Dominio.Produto>
+
+@{
+    ViewBag.Title = "ListaDeProdutos";
+}
+
+<h2>ListaDeProdutos</h2>
+
+
+<form method="get" action="~/Produto/Listar" class="form-inline filtro-pesquisa">
+    <div class="form-group">
+        <input type="text" name="filtro" class="form-control" placeholder="Nome do produto">
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+
+<div style="text-align: right; margin: 20px 10px;">
+    <a href="~/Produto/Inserir" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Novo</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th style="width: 40px;">Editar</th>
+            <th style="width: 40px;">Excluir</th>
+        </tr>
+    </thead>
+    @foreach (var produto in Model)
+    {
+        <tr>
+
+            <td>
+                @produto.Nome
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-pencil" href="~/Produto/Editar/@produto.Id"></a>
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-trash" href="~/Produto/Excluir/@produto.Id"></a>
+            </td>
+        </tr>
+    }
+</table>

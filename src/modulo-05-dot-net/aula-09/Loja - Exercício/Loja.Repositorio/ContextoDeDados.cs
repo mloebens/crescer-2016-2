@@ -11,12 +11,14 @@ namespace Loja.Repositorio
 {
     public class ContextoDeDados : DbContext
     {
-        public ContextoDeDados() : base("LojaCWI")
+        public ContextoDeDados() : base("LojaCasa")
         {
 
         }
 
         public DbSet<Usuario> Usuario { get; set; }
+
+        public DbSet<Produto> Produto { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
