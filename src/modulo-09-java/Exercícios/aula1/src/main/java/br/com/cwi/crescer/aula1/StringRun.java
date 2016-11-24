@@ -84,7 +84,6 @@ class StringRun {
         } catch (ParseException e){
             System.out.println("erro");
         }
-
     }
           
 }
