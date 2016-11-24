@@ -17,5 +17,6 @@ namespace LojaDeItens.Dominio.ItemMagico
         IList<ItemMagicoEntidade> BuscarPorRaridade(bool raro);
 
         void Excluir(ItemMagicoEntidade item);
+        int QuantidadeTotal();
     }
 }

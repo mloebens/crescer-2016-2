@@ -42,8 +42,20 @@ namespace LojaDeItens.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Salvar(ItemParaEdicaoViewModel model)
+        public JsonResult Salvar(ItemParaEdicaoViewModel modelView)
         {
+
+            var model = new ItemMagicoEntidade()
+            {
+                Id = modelView.Id.HasValue ? modelView.Id.Value : 0,
+                Descricao = modelView.Descricao,
+                Nome = modelView.Nome,
+                Estoque = modelView.Estoque,
+                Preco = modelView.Preco,
+                Raro = modelView.Raro
+            };
+
+            this.itemMagicoServico.Salvar(model);
             return Json(new { Mensagem = "Cadastro efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
         }
 
@@ -92,7 +104,9 @@ namespace LojaDeItens.Web.Controllers
             {
                 model.PaginaAtual = pagina.Value;
             }
+            int quantidadeTotalDeItensMagicos = this.itemMagicoServico.QuantidadeTotal();
 
+            model.QuantidadeTotalDeItens = quantidadeTotalDeItensMagicos;
             model.QuantidadeDeItensPorPagina = this.servicoDeConfiguracao.QuantidadeDeItensPorPagina;
             return model;
         }

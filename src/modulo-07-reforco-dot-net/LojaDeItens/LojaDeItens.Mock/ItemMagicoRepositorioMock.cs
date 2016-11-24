@@ -117,5 +117,10 @@ namespace LojaDeItens.Mock
             ItemMagicoEntidade itemSalvo = itens.First(i => i.Id == item.Id);
             itens.Remove(itemSalvo);
         }
+
+        public int QuantidadeTotal()
+        {
+            return itens.Count;
+        }
     }
 }

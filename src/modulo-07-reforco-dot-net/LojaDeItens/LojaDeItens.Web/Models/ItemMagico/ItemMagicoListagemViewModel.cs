@@ -18,11 +18,13 @@ namespace LojaDeItens.Web.Models.ItemMagico
         public int PaginaAtual { get; set; }
         public int QuantidadeDeItensPorPagina { get; set; }
 
+        public int QuantidadeTotalDeItens { get; set; }
+
         public bool UltimaPagina
         {
             get
             {
-                return Itens.Count < this.QuantidadeDeItensPorPagina;
+                return QuantidadeTotalDeItens - (this.QuantidadeDeItensPorPagina * (this.PaginaAtual+1) ) <= 0;
             }
         }
 

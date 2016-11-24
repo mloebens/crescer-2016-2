@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.erros {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.erros > .validation-summary-errors{
+    padding: 15px 0px;
+}
+
+.erros ul {
+   list-style-type: none;
+}
+
+.erros ul li:before {
+   content: "- ";
+}

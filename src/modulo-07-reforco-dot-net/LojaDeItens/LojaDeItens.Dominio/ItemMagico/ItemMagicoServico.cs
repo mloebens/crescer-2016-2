@@ -74,7 +74,9 @@ namespace LojaDeItens.Dominio.ItemMagico
                 itemSalvo.DataUltimaAtualizacao = DateTime.Now;
                 itemSalvo.Nome = item.Nome;
                 itemSalvo.Raro = item.Raro;
-                //...
+                itemSalvo.Descricao = item.Descricao;
+                itemSalvo.Preco = item.Preco;
+                itemSalvo.Estoque = item.Estoque;
                 this.itemMagicoRepositorio.Atualizar(itemSalvo);
             }
             else
@@ -82,6 +84,11 @@ namespace LojaDeItens.Dominio.ItemMagico
                 item.DataCriacao = item.DataUltimaAtualizacao = DateTime.Now;
                 this.itemMagicoRepositorio.Criar(item);
             }
+        }
+
+        public int QuantidadeTotal()
+        {
+            return this.itemMagicoRepositorio.QuantidadeTotal();
         }
 
         private void ValidarItemMagico(ItemMagicoEntidade item)

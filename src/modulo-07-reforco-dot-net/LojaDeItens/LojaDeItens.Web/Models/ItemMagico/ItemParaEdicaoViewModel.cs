@@ -31,15 +31,16 @@ namespace LojaDeItens.Web.Models.ItemMagico
         public string Nome { get; set; }
 
         [Required]
-        [DisplayName("Decrição")]
+        [DisplayName("Descrição")]
         public string Descricao { get; set; }
 
         [Required]
         [DisplayName("Preço")]
+        [DataType(DataType.Currency)]
         public decimal Preco { get; set; }
 
         [Required]
-        [Range(0, 50000, ErrorMessage = "A quantidade de estoque deve estar entre 0 e 50000")]
+        [Range(0, 99999, ErrorMessage = "A quantidade de estoque deve estar entre 0 e 99999")]
         public int Estoque { get; set; }
 
         [Required]
