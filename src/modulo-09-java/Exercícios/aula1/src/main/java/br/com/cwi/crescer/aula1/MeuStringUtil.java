@@ -33,12 +33,10 @@ public class MeuStringUtil {
         return Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 
-    public static void main(String args[]) {
-        MeuStringUtil stringUtil = new MeuStringUtil();
-        
-        Method[] methods = stringUtil.getClass().getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            System.out.println(methods[i]);
+    public static void main(String args[]) {      
+        Method[] methods = new MeuStringUtil().getClass().getMethods();
+        for (Method method : methods) {
+            System.out.println(method);
         }
     }
 }
