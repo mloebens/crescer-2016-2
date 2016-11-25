@@ -20,8 +20,8 @@ public class MeuStringUtil {
         return sb.reverse().toString();
     }
 
-    public boolean palavraEhPalindrome(String palavra) {
-        String palavraNormalizada = normalize(palavra);
+    public boolean ehPalindromo(String palavra) {
+        String palavraNormalizada = normalize(palavra).replaceAll("[ -]", "");
         StringBuilder sb = new StringBuilder(palavraNormalizada);
         String palavraNormalizadaInvertida = sb.reverse().toString();
         boolean ehPalindrome = palavraNormalizada.equals(palavraNormalizadaInvertida);
