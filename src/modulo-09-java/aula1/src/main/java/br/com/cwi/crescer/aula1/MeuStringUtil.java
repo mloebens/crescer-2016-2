@@ -6,7 +6,7 @@ import java.text.Normalizer;
 public class MeuStringUtil {
 
     public boolean stringVazia(String texto) {
-        if (texto != null){
+        if (texto == null){
             return true;
         }
         return texto.isEmpty();
