@@ -6,6 +6,9 @@ import java.text.Normalizer;
 public class MeuStringUtil {
 
     public boolean stringVazia(String texto) {
+        if (texto != null){
+            return true;
+        }
         return texto.isEmpty();
     }
 
@@ -33,10 +36,4 @@ public class MeuStringUtil {
         return Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 
-    public static void main(String args[]) {      
-        Method[] methods = new MeuStringUtil().getClass().getMethods();
-        for (Method method : methods) {
-            System.out.println(method);
-        }
-    }
 }
