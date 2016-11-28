@@ -13,7 +13,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  *
@@ -63,20 +66,20 @@ public class MeuSQLUtils {
                 while (resultado.next()) {
                     listaDeValores.add(new ArrayList<>());
                     for (int i = 0; i <= cabecalho.length; i++) {
-                        String valor = tipoDosDados[i].equals("NUMBER") ?  Long.toString(resultado.getLong(i+1)) : resultado.getString(i+1);
+                        String valor = tipoDosDados[i].equals("NUMBER") ? Long.toString(resultado.getLong(i + 1)) : resultado.getString(i + 1);
                         listaDeValores.get(contador).add(valor);
                     }
                     contador++;
                 }
-                
+
                 //transforma os valores em objeto para ser exibidos na tela
                 Object[][] dados = new Object[listaDeValores.size()][columnCount];
-                for(int i = 0 ; i < listaDeValores.size();i++){
+                for (int i = 0; i < listaDeValores.size(); i++) {
                     for (int j = 0; j <= cabecalho.length; j++) {
                         dados[i][j] = listaDeValores.get(i).get(j);
                     }
                 }
-                
+
                 //exibe valores na tela
                 TextTable tabelaDeResultados = new TextTable(cabecalho, dados);
                 tabelaDeResultados.printTable();
@@ -89,7 +92,33 @@ public class MeuSQLUtils {
         }
     }
 
-    private void executeUpdate(String sql) {
+    public void importarCSV(File csv) {
+        Map<Integer, String> dados = lerArquivoCSV(csv);
+        if (dados != null) {
+            try (Connection connection = ConnectionUtils.getConnection()) {
+                try (final Statement statement = connection.createStatement();) {
+
+                    for(Entry valores : dados.entrySet()){
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("Insert into Pessoa values(");
+                        sb.append(valores.getKey());
+                        sb.append(",'");
+                        sb.append(valores.getValue());
+                        sb.append("')");
+                        
+                        statement.executeUpdate(sb.toString());
+                    }  
+                } catch (final SQLException e) {
+                    System.err.format("SQLException: %s", e);
+                }
+            } catch (final SQLException e) {
+                System.err.format("SQLException: %s", e);
+            }
+        }
+    }
+
+
+private void executeUpdate(String sql) {
         try (Connection connection = ConnectionUtils.getConnection()) {
             try (final Statement statement = connection.createStatement();) {
                 statement.executeUpdate(sql);
@@ -120,5 +149,32 @@ public class MeuSQLUtils {
             }
         }
         return null;
+    }
+
+    private Map<Integer, String> lerArquivoCSV(File csv) {
+        Map<Integer, String> dados = new HashMap<Integer, String>();
+        if (csv != null) {
+            boolean ehCSV = csv.getName().contains(".csv");
+            if (ehCSV) {
+                try (
+                        Reader reader = new FileReader(csv);
+                        BufferedReader bufferReader = new BufferedReader(reader);) {
+
+                    //pular linha de cabeçalho
+                    bufferReader.readLine();
+                    String linha;
+                    while ((linha = bufferReader.readLine()) != null) {
+
+                        String[] resultado = linha.split(";");
+                        dados.put(Integer.parseInt(resultado[0]), resultado[1]);
+                    }
+                } catch (FileNotFoundException e) {
+                    System.out.println("Arquivo não econtrado.");
+                } catch (IOException ex) {
+                    System.out.println("Não foi possível ler o arquivo.");
+                }
+            }
+        }
+        return dados;
     }
 }
