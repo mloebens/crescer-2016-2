@@ -27,7 +27,8 @@ public class MeuSQLUtils {
 
     public static void main(String[] args) {
         //new MeuSQLUtils().executarComandosSql(new File("teste.sql"));
-        new MeuSQLUtils().exibirDados("select * from pessoa");
+        //new MeuSQLUtils().importarCSV(new File("base.csv"));
+        //new MeuSQLUtils().exibirDados("select * from pessoa");
     }
 
     public void executarComandosSql(File sqlFile) {
@@ -99,7 +100,7 @@ public class MeuSQLUtils {
             try (Connection connection = ConnectionUtils.getConnection()) {
                 try (final PreparedStatement preparedStatement = connection.prepareStatement(insert);) {
                     for (Entry linha : dados.entrySet()) {
-                        preparedStatement.setLong(1, (long)linha.getKey());
+                        preparedStatement.setLong(1, (int)linha.getKey());
                         preparedStatement.setString(2,linha.getValue().toString());
                         preparedStatement.executeUpdate();
                     }
