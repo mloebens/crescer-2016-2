@@ -1,0 +1,124 @@
+package br.com.cwi.crescer.aula2;
+
+import dnl.utils.text.table.TextTable;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Máicon Loebens
+ */
+public class MeuSQLUtils {
+
+    public static void main(String[] args) {
+        //new MeuSQLUtils().executarComandosSql(new File("teste.sql"));
+        new MeuSQLUtils().exibirDados("select * from pessoa");
+    }
+
+    public void executarComandosSql(File sqlFile) {
+        boolean ehSQL = sqlFile.getName().toLowerCase().contains(".sql");
+        if (ehSQL) {
+            String[] comandos = lerComandosDoArquivo(sqlFile);
+            if (comandos != null) {
+                for (String comandoSQL : comandos) {
+                    executeUpdate(comandoSQL);
+                }
+            }
+        }
+    }
+
+    /*
+       Utilizado biblioteca j-text-utils(https://code.google.com/archive/p/j-text-utils/) para exibir a tabela
+     */
+    public void exibirDados(String sql) {
+        try (Connection connection = ConnectionUtils.getConnection()) {
+            try (final Statement statement = connection.createStatement();) {
+                ResultSet resultado = statement.executeQuery(sql);
+
+                ResultSetMetaData metaData = resultado.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                String[] cabecalho = new String[columnCount];
+                String[] tipoDosDados = new String[columnCount];
+
+                //armazena nome das colunas e o tipo de dado
+                for (int i = 1; i <= columnCount; i++) {
+                    cabecalho[i - 1] = metaData.getColumnName(i);
+                    tipoDosDados[i - 1] = metaData.getColumnTypeName(i);
+                }
+
+                //armazena os valores em um lista
+                List<List<String>> listaDeValores = new ArrayList<>();
+                int contador = 0;
+                while (resultado.next()) {
+                    listaDeValores.add(new ArrayList<>());
+                    for (int i = 0; i <= cabecalho.length; i++) {
+                        String valor = tipoDosDados[i].equals("NUMBER") ?  Long.toString(resultado.getLong(i+1)) : resultado.getString(i+1);
+                        listaDeValores.get(contador).add(valor);
+                    }
+                    contador++;
+                }
+                
+                //transforma os valores em objeto para ser exibidos na tela
+                Object[][] dados = new Object[listaDeValores.size()][columnCount];
+                for(int i = 0 ; i < listaDeValores.size();i++){
+                    for (int j = 0; j <= cabecalho.length; j++) {
+                        dados[i][j] = listaDeValores.get(i).get(j);
+                    }
+                }
+                
+                //exibe valores na tela
+                TextTable tabelaDeResultados = new TextTable(cabecalho, dados);
+                tabelaDeResultados.printTable();
+
+            } catch (final SQLException e) {
+                System.err.format("SQLException: %s", e);
+            }
+        } catch (final SQLException e) {
+            System.err.format("SQLException: %s", e);
+        }
+    }
+
+    private void executeUpdate(String sql) {
+        try (Connection connection = ConnectionUtils.getConnection()) {
+            try (final Statement statement = connection.createStatement();) {
+                statement.executeUpdate(sql);
+            } catch (final SQLException e) {
+                System.err.format("SQLException: %s", e);
+            }
+        } catch (final SQLException e) {
+            System.err.format("SQLException: %s", e);
+        }
+    }
+
+    public String[] lerComandosDoArquivo(File sqlFile) {
+        if (sqlFile != null) {
+            try (
+                    Reader reader = new FileReader(sqlFile);
+                    BufferedReader bufferReader = new BufferedReader(reader);) {
+
+                StringBuilder sb = new StringBuilder();
+                //concatena todas as linhas do sql, os comandos podem estar em mais de uma linha
+                bufferReader.lines().forEach(linha -> sb.append(linha));
+                //quebra os comandos em linhas
+                return sb.toString().split(";");
+
+            } catch (FileNotFoundException e) {
+                System.out.println("Arquivo não econtrado.");
+            } catch (IOException ex) {
+                System.out.println("Não foi possível ler o arquivo.");
+            }
+        }
+        return null;
+    }
+}
