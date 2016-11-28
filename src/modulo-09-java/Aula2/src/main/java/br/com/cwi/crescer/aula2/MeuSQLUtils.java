@@ -52,12 +52,10 @@ public class MeuSQLUtils {
                 ResultSetMetaData metaData = resultado.getMetaData();
                 int columnCount = metaData.getColumnCount();
                 String[] cabecalho = new String[columnCount];
-                String[] tipoDosDados = new String[columnCount];
 
-                //armazena nome das colunas e o tipo de dado
+                //armazena nome das colunas
                 for (int i = 1; i <= columnCount; i++) {
                     cabecalho[i - 1] = metaData.getColumnName(i);
-                    tipoDosDados[i - 1] = metaData.getColumnTypeName(i);
                 }
 
                 //armazena os valores em um lista
@@ -65,19 +63,16 @@ public class MeuSQLUtils {
                 int contador = 0;
                 while (resultado.next()) {
                     listaDeValores.add(new ArrayList<>());
-                    for (int i = 0; i <= cabecalho.length; i++) {
-                        String valor = tipoDosDados[i].equals("NUMBER") ? Long.toString(resultado.getLong(i + 1)) : resultado.getString(i + 1);
-                        listaDeValores.get(contador).add(valor);
-                    }
+                    listaDeValores.get(contador).add(Long.toString(resultado.getLong(1)));
+                    listaDeValores.get(contador).add(resultado.getString(2));
                     contador++;
                 }
 
                 //transforma os valores em objeto para ser exibidos na tela
-                Object[][] dados = new Object[listaDeValores.size()][columnCount];
+                Object[][] dados = new Object[listaDeValores.size()][cabecalho.length];
                 for (int i = 0; i < listaDeValores.size(); i++) {
-                    for (int j = 0; j <= cabecalho.length; j++) {
-                        dados[i][j] = listaDeValores.get(i).get(j);
-                    }
+                        dados[i][0] = listaDeValores.get(i).get(0);
+                        dados[i][1] = listaDeValores.get(i).get(1);
                 }
 
                 //exibe valores na tela
@@ -97,17 +92,18 @@ public class MeuSQLUtils {
         if (dados != null) {
             try (Connection connection = ConnectionUtils.getConnection()) {
                 try (final Statement statement = connection.createStatement();) {
+                    //TODO adicionar preparedstatment.
 
-                    for(Entry valores : dados.entrySet()){
+                    for (Entry valores : dados.entrySet()) {
                         StringBuilder sb = new StringBuilder();
                         sb.append("Insert into Pessoa values(");
                         sb.append(valores.getKey());
                         sb.append(",'");
                         sb.append(valores.getValue());
                         sb.append("')");
-                        
+
                         statement.executeUpdate(sb.toString());
-                    }  
+                    }
                 } catch (final SQLException e) {
                     System.err.format("SQLException: %s", e);
                 }
@@ -117,8 +113,7 @@ public class MeuSQLUtils {
         }
     }
 
-
-private void executeUpdate(String sql) {
+    private void executeUpdate(String sql) {
         try (Connection connection = ConnectionUtils.getConnection()) {
             try (final Statement statement = connection.createStatement();) {
                 statement.executeUpdate(sql);
