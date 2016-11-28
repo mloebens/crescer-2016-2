@@ -17,16 +17,6 @@
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.3</version>
         </dependency>
-        <dependency>
-            <groupId>dnl.utils</groupId>
-            <artifactId>j-text-utils</artifactId>
-            <version>0.3.3</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
     </dependencies>
     <repositories> 
         <repository>

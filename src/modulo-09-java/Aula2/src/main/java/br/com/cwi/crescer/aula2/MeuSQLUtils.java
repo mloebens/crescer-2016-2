@@ -1,21 +1,21 @@
 package br.com.cwi.crescer.aula2;
 
-import dnl.utils.text.table.TextTable;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -29,6 +29,7 @@ public class MeuSQLUtils {
         //new MeuSQLUtils().executarComandosSql(new File("teste.sql"));
         //new MeuSQLUtils().importarCSV(new File("base.csv"));
         //new MeuSQLUtils().exibirDados("select * from pessoa");
+        new MeuSQLUtils().exportarCSV();
     }
 
     public void executarComandosSql(File sqlFile) {
@@ -47,61 +48,27 @@ public class MeuSQLUtils {
        Utilizado biblioteca j-text-utils(https://code.google.com/archive/p/j-text-utils/) para exibir a tabela
      */
     public void exibirDados(String sql) {
-        try (Connection connection = ConnectionUtils.getConnection()) {
-            try (final Statement statement = connection.createStatement();) {
-                ResultSet resultado = statement.executeQuery(sql);
+        Map<String, String> dados = consultar(sql);
 
-                ResultSetMetaData metaData = resultado.getMetaData();
-                int columnCount = metaData.getColumnCount();
-                String[] cabecalho = new String[columnCount];
-
-                //armazena nome das colunas
-                for (int i = 1; i <= columnCount; i++) {
-                    cabecalho[i - 1] = metaData.getColumnName(i);
-                }
-
-                //armazena os valores em um lista
-                List<List<String>> listaDeValores = new ArrayList<>();
-                int contador = 0;
-                while (resultado.next()) {
-                    listaDeValores.add(new ArrayList<>());
-                    listaDeValores.get(contador).add(Long.toString(resultado.getLong(1)));
-                    listaDeValores.get(contador).add(resultado.getString(2));
-                    contador++;
-                }
-
-                //transforma os valores em objeto para ser exibidos na tela
-                Object[][] dados = new Object[listaDeValores.size()][cabecalho.length];
-                for (int i = 0; i < listaDeValores.size(); i++) {
-                        dados[i][0] = listaDeValores.get(i).get(0);
-                        dados[i][1] = listaDeValores.get(i).get(1);
-                }
-
-                //exibe valores na tela
-                TextTable tabelaDeResultados = new TextTable(cabecalho, dados);
-                tabelaDeResultados.printTable();
-
-            } catch (final SQLException e) {
-                System.err.format("SQLException: %s", e);
-            }
-        } catch (final SQLException e) {
-            System.err.format("SQLException: %s", e);
+        for (Entry<String, String> entry : dados.entrySet()) {
+            System.out.format("%15s%5s%15s\n", entry.getKey(), "|", entry.getValue());
+            System.out.println("----------------------------------------------");
         }
     }
 
     public void importarCSV(File csv) {
         Map<Integer, String> dados = lerArquivoCSV(csv);
         if (dados != null) {
-            
+
             final String insert = "INSERT INTO PESSOA("
                     + "ID_PESSOA, NM_PESSOA ) "
                     + "VALUES (?, ?)";
-            
+
             try (Connection connection = ConnectionUtils.getConnection()) {
                 try (final PreparedStatement preparedStatement = connection.prepareStatement(insert);) {
                     for (Entry linha : dados.entrySet()) {
-                        preparedStatement.setLong(1, (int)linha.getKey());
-                        preparedStatement.setString(2,linha.getValue().toString());
+                        preparedStatement.setLong(1, (int) linha.getKey());
+                        preparedStatement.setString(2, linha.getValue().toString());
                         preparedStatement.executeUpdate();
                     }
                 } catch (final SQLException e) {
@@ -111,6 +78,57 @@ public class MeuSQLUtils {
                 System.err.format("SQLException: %s", e);
             }
         }
+    }
+
+    public void exportarCSV() {
+        Map<String, String> dados = consultar("SELECT * FROM PESSOA");
+        if (dados != null) {
+            final String nomeArquivo = "exportacao.csv";
+            
+            try (
+                    Writer writer = new FileWriter(nomeArquivo, true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);) 
+                {
+                for (Entry entry : dados.entrySet()) {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(entry.getKey());
+                    sb.append(";");
+                    sb.append(entry.getValue());
+                    bufferedWriter.append(sb.toString());
+                    bufferedWriter.newLine();
+                }
+                new File(nomeArquivo).createNewFile();
+                bufferedWriter.flush();
+            } catch (IOException ex) {
+                System.out.println("Não foi possível gravar o arquivo.");
+            }
+        } else {
+            System.out.println("Nenhum registro encontrado");
+        }
+    }
+
+    private Map<String, String> consultar(String sql) {
+        Map<String, String> dados = new HashMap<>();
+        try (Connection connection = ConnectionUtils.getConnection()) {
+            try (final Statement statement = connection.createStatement();) {
+                ResultSet resultado = statement.executeQuery(sql);
+                ResultSetMetaData metaData = resultado.getMetaData();
+
+                //armazena nome das colunas
+                dados.put(metaData.getColumnName(1), metaData.getColumnName(2));
+
+                //armazena os valores em um lista
+                while (resultado.next()) {
+                    dados.put(Long.toString(resultado.getLong(1)), resultado.getString(2));
+                }
+
+            } catch (final SQLException e) {
+                System.err.format("SQLException: %s", e);
+            }
+        } catch (final SQLException e) {
+            System.err.format("SQLException: %s", e);
+        }
+        return dados;
     }
 
     private void executeUpdate(String sql) {
