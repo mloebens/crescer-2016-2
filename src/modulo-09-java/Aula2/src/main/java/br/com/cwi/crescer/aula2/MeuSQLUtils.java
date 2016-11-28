@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -90,19 +91,17 @@ public class MeuSQLUtils {
     public void importarCSV(File csv) {
         Map<Integer, String> dados = lerArquivoCSV(csv);
         if (dados != null) {
+            
+            final String insert = "INSERT INTO PESSOA("
+                    + "ID_PESSOA, NM_PESSOA ) "
+                    + "VALUES (?, ?)";
+            
             try (Connection connection = ConnectionUtils.getConnection()) {
-                try (final Statement statement = connection.createStatement();) {
-                    //TODO adicionar preparedstatment.
-
-                    for (Entry valores : dados.entrySet()) {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append("Insert into Pessoa values(");
-                        sb.append(valores.getKey());
-                        sb.append(",'");
-                        sb.append(valores.getValue());
-                        sb.append("')");
-
-                        statement.executeUpdate(sb.toString());
+                try (final PreparedStatement preparedStatement = connection.prepareStatement(insert);) {
+                    for (Entry linha : dados.entrySet()) {
+                        preparedStatement.setLong(1, (long)linha.getKey());
+                        preparedStatement.setString(2,linha.getValue().toString());
+                        preparedStatement.executeUpdate();
                     }
                 } catch (final SQLException e) {
                     System.err.format("SQLException: %s", e);
@@ -147,7 +146,7 @@ public class MeuSQLUtils {
     }
 
     private Map<Integer, String> lerArquivoCSV(File csv) {
-        Map<Integer, String> dados = new HashMap<Integer, String>();
+        Map<Integer, String> dados = new HashMap<>();
         if (csv != null) {
             boolean ehCSV = csv.getName().contains(".csv");
             if (ehCSV) {
