@@ -150,6 +150,11 @@ public class Servico implements Serializable, ICSVExportavel {
     }
 
     @Override
+    public String toCabecalhoCSV(){
+        return "idServico;dsDescricao;dsPeriodicidade;dsSimboloMoeda;dsSituacao;dsWebsite;nmServico;vlMensalUSD;vlTotalServico;usuarioIdUsuario";
+    }
+    
+    @Override
     public String toCSV() {
         StringBuilder sb = new StringBuilder();
         

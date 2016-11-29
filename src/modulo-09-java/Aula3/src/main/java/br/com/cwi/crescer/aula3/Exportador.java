@@ -1,14 +1,11 @@
 package br.com.cwi.crescer.aula3;
 
-import br.com.cwi.crescer.aula3.DAO.ServicoDao;
-import br.com.cwi.crescer.aula3.Entity.Servico;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
  *
@@ -16,27 +13,16 @@ import javax.persistence.EntityManager;
  */
 public class Exportador {
 
-    final EntityManager entityManager;
-
-    public Exportador(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
-    public void exportarServico() {
-        final List<Servico> servicos = new ServicoDao(entityManager).list();
-        final String cabecalho = "idServico;dsDescricao;dsPeriodicidade;dsSimboloMoeda;dsSituacao;dsWebsite;nmServico;vlMensalUSD;vlTotalServico;usuarioIdUsuario";
-        
-        if (servicos != null) {
-            final String nomeArquivo = "servico.csv";
-
+    public void exportarCSV(List<String> dados) {
+       
+        if (dados != null) {
+            final String nomeArquivo = "exportacao.csv";
             try (
                     Writer writer = new FileWriter(nomeArquivo);
                     BufferedWriter bufferedWriter = new BufferedWriter(writer);) {
                 
-                bufferedWriter.append(cabecalho);
-                bufferedWriter.newLine();
-                for (Servico servico : servicos) {
-                    bufferedWriter.append(servico.toCSV());
+                for (String valor : dados) {
+                    bufferedWriter.append(valor);
                     bufferedWriter.newLine();
                 }
 

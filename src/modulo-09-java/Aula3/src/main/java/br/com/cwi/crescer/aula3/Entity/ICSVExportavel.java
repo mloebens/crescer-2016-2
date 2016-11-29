@@ -11,4 +11,5 @@ package br.com.cwi.crescer.aula3.Entity;
  */
 public interface ICSVExportavel {
     String toCSV();
+    String toCabecalhoCSV();
 }
