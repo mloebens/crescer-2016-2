@@ -1,6 +1,6 @@
 package br.com.cwi.crescer.aula3.DAO;
 
-import br.com.cwi.crescer.aula3.Entity.Pessoa;
+import br.com.cwi.crescer.aula3.Entity.Servico;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -8,15 +8,15 @@ import javax.persistence.EntityManager;
  *
  * @author maicon.loebens
  */
-public class PessoaDao implements IDAO<Pessoa, Long> {
+public class ServicoDao implements IDAO<Servico, Long> {
         private final EntityManager entityManager;
         
-    public PessoaDao(EntityManager entityManager){
+    public ServicoDao(EntityManager entityManager){
         this.entityManager = entityManager;
     }
     
     @Override
-    public void insert(Pessoa pessoa) {
+    public void insert(Servico pessoa) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
@@ -29,7 +29,7 @@ public class PessoaDao implements IDAO<Pessoa, Long> {
     }
 
     @Override
-    public void delete(Pessoa pessoa) {
+    public void delete(Servico pessoa) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
@@ -42,14 +42,13 @@ public class PessoaDao implements IDAO<Pessoa, Long> {
     }
 
     @Override
-    public Pessoa find(Long id) {
-        final Pessoa pessoa = entityManager.find(Pessoa.class, id);     
+    public Servico find(Long id) {
+        final Servico pessoa = entityManager.find(Servico.class, id);     
         return pessoa;
     }
 
     @Override
-    public List<Pessoa> findAll() {
-        return entityManager.createQuery("select p from Pessoa p").getResultList();
+    public List<Servico> findAll() {
+        return entityManager.createQuery("select p from Servico p").getResultList();
     }
-
 }
