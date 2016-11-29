@@ -16,11 +16,11 @@ public class CurrencyExchangeDao implements IDAO<CurrencyExchange, Long> {
     }
     
     @Override
-    public void insert(CurrencyExchange pessoa) {
+    public void insert(CurrencyExchange currencyExchange) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.persist(pessoa);
+                entityManager.persist(currencyExchange);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -29,11 +29,11 @@ public class CurrencyExchangeDao implements IDAO<CurrencyExchange, Long> {
     }
 
     @Override
-    public void delete(CurrencyExchange pessoa) {
+    public void delete(CurrencyExchange currencyExchange) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.remove(pessoa);
+                entityManager.remove(currencyExchange);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -43,12 +43,12 @@ public class CurrencyExchangeDao implements IDAO<CurrencyExchange, Long> {
 
     @Override
     public CurrencyExchange find(Long id) {
-        final CurrencyExchange pessoa = entityManager.find(CurrencyExchange.class, id);     
-        return pessoa;
+        final CurrencyExchange currencyExchange = entityManager.find(CurrencyExchange.class, id);     
+        return currencyExchange;
     }
 
     @Override
-    public List<CurrencyExchange> findAll() {
+    public List<CurrencyExchange> list() {
         return entityManager.createQuery("select p from CurrencyExchange p").getResultList();
     }
 }

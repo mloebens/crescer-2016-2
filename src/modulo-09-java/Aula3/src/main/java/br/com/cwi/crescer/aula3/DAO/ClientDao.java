@@ -48,7 +48,7 @@ public class ClientDao implements IDAO<Client, Long> {
     }
 
     @Override
-    public List<Client> findAll() {
+    public List<Client> list() {
         return entityManager.createQuery("select p from Client p").getResultList();
     }
 

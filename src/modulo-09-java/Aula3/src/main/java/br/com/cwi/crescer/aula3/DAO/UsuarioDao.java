@@ -16,11 +16,11 @@ public class UsuarioDao implements IDAO<Usuario, Long> {
     }
     
     @Override
-    public void insert(Usuario pessoa) {
+    public void insert(Usuario usuario) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.persist(pessoa);
+                entityManager.persist(usuario);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -29,11 +29,11 @@ public class UsuarioDao implements IDAO<Usuario, Long> {
     }
 
     @Override
-    public void delete(Usuario pessoa) {
+    public void delete(Usuario usuario) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.remove(pessoa);
+                entityManager.remove(usuario);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -43,12 +43,12 @@ public class UsuarioDao implements IDAO<Usuario, Long> {
 
     @Override
     public Usuario find(Long id) {
-        final Usuario pessoa = entityManager.find(Usuario.class, id);     
-        return pessoa;
+        final Usuario usuario = entityManager.find(Usuario.class, id);     
+        return usuario;
     }
 
     @Override
-    public List<Usuario> findAll() {
+    public List<Usuario> list() {
         return entityManager.createQuery("select p from Usuario p").getResultList();
     }
 

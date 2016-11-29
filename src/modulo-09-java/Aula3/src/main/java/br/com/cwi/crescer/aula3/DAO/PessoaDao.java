@@ -48,7 +48,7 @@ public class PessoaDao implements IDAO<Pessoa, Long> {
     }
 
     @Override
-    public List<Pessoa> findAll() {
+    public List<Pessoa> list() {
         return entityManager.createQuery("select p from Pessoa p").getResultList();
     }
 

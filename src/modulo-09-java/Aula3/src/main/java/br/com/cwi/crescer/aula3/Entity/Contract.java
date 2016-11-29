@@ -31,24 +31,23 @@ public class Contract implements Serializable {
     @Basic(optional = false)
     @Column(name = "DS_DESCRIPTION")
     private String dsDescrition;
-    
+
     @Basic(optional = false)
     @Column(name = "DS_STATE")
     private String dsState;
-    
+
     @Basic(optional = false)
     @Column(name = "DS_WEBSITE")
     private String dsWebsite;
-    
+
     @Basic(optional = false)
     @Column(name = "NM_CONTRACT")
     private String nmContract;
-    
+
+
     @ManyToOne
-    @JoinColumn(name = "ID_CLIENT")
+    @JoinColumn(name = "CLIENT_ID_CLIENT")
     private Client client;
-    
-    @OneToOne(mappedBy = "ContractValue")
 
     public Long getIdContract() {
         return idContract;
@@ -98,5 +97,4 @@ public class Contract implements Serializable {
         this.client = client;
     }
 
-    
 }

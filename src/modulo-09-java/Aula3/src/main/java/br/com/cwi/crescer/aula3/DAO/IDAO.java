@@ -12,6 +12,6 @@ public interface IDAO<T, ID> {
     void insert(T t);
     void delete(T t);
     T find(ID id);
-    List<T> findAll();
+    List<T> list();
     
 }

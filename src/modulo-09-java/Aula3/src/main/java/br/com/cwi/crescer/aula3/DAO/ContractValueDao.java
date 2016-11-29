@@ -16,11 +16,11 @@ public class ContractValueDao implements IDAO<ContractValue, Long> {
     }
     
     @Override
-    public void insert(ContractValue pessoa) {
+    public void insert(ContractValue contractValue) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.persist(pessoa);
+                entityManager.persist(contractValue);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -29,11 +29,11 @@ public class ContractValueDao implements IDAO<ContractValue, Long> {
     }
 
     @Override
-    public void delete(ContractValue pessoa) {
+    public void delete(ContractValue contractValue) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.remove(pessoa);
+                entityManager.remove(contractValue);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -43,12 +43,12 @@ public class ContractValueDao implements IDAO<ContractValue, Long> {
 
     @Override
     public ContractValue find(Long id) {
-        final ContractValue pessoa = entityManager.find(ContractValue.class, id);     
-        return pessoa;
+        final ContractValue contractValue = entityManager.find(ContractValue.class, id);     
+        return contractValue;
     }
 
     @Override
-    public List<ContractValue> findAll() {
+    public List<ContractValue> list() {
         return entityManager.createQuery("select p from ContractValue p").getResultList();
     }
 

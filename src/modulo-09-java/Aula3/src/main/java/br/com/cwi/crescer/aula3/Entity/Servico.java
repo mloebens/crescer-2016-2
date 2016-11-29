@@ -66,7 +66,7 @@ public class Servico implements Serializable {
     private BigDecimal vlTotalServico;
 
     @ManyToOne
-    @JoinColumn(name = "ID_USUARIO")
+    @JoinColumn(name = "USUARIO_ID_USUARIO")
     private Usuario usuario;
 
     public Long getIdServico() {

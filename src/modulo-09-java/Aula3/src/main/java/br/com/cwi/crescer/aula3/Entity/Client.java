@@ -55,7 +55,7 @@ public class Client implements Serializable {
     @Column(name = "TP_PERMISSION")
     private String tpPermission;
     
-    @OneToMany(mappedBy = "Contract")
+    @OneToMany(mappedBy = "client")
     private List<Contract> contracts;
 
     public void setIdClient(Long idClient) {

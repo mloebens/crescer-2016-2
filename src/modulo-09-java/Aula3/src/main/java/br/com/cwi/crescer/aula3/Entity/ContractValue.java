@@ -46,8 +46,9 @@ public class ContractValue implements Serializable {
     private BigDecimal vlMonthlyUSD;
 
     @OneToOne
-    @JoinColumn(name = "ID_CONTRACT")
-    private Contract Contract;
+    @JoinColumn(name = "CONTRACT_ID_CONTRACT")
+    private Contract contract;
+  
 
     public Long getIdContractValue() {
         return idContractValue;
@@ -90,10 +91,11 @@ public class ContractValue implements Serializable {
     }
 
     public Contract getContract() {
-        return Contract;
+        return contract;
     }
 
-    public void setContract(Contract Contract) {
-        this.Contract = Contract;
-    }    
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
 }

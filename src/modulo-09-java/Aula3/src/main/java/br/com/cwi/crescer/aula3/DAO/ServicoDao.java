@@ -16,11 +16,11 @@ public class ServicoDao implements IDAO<Servico, Long> {
     }
     
     @Override
-    public void insert(Servico pessoa) {
+    public void insert(Servico servico) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.persist(pessoa);
+                entityManager.persist(servico);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -29,11 +29,11 @@ public class ServicoDao implements IDAO<Servico, Long> {
     }
 
     @Override
-    public void delete(Servico pessoa) {
+    public void delete(Servico servico) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.remove(pessoa);
+                entityManager.remove(servico);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -43,12 +43,12 @@ public class ServicoDao implements IDAO<Servico, Long> {
 
     @Override
     public Servico find(Long id) {
-        final Servico pessoa = entityManager.find(Servico.class, id);     
-        return pessoa;
+        final Servico servico = entityManager.find(Servico.class, id);     
+        return servico;
     }
 
     @Override
-    public List<Servico> findAll() {
+    public List<Servico> list() {
         return entityManager.createQuery("select p from Servico p").getResultList();
     }
 }

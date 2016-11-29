@@ -16,11 +16,11 @@ public class CotacaoDao implements IDAO<Cotacao, Long> {
     }
     
     @Override
-    public void insert(Cotacao pessoa) {
+    public void insert(Cotacao cotacao) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.persist(pessoa);
+                entityManager.persist(cotacao);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -29,11 +29,11 @@ public class CotacaoDao implements IDAO<Cotacao, Long> {
     }
 
     @Override
-    public void delete(Cotacao pessoa) {
+    public void delete(Cotacao cotacao) {
         if (entityManager.isOpen()) {
             entityManager.getTransaction().begin();
             try {
-                entityManager.remove(pessoa);
+                entityManager.remove(cotacao);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
                 entityManager.getTransaction().rollback();
@@ -43,12 +43,12 @@ public class CotacaoDao implements IDAO<Cotacao, Long> {
 
     @Override
     public Cotacao find(Long id) {
-        final Cotacao pessoa = entityManager.find(Cotacao.class, id);     
-        return pessoa;
+        final Cotacao cotacao = entityManager.find(Cotacao.class, id);     
+        return cotacao;
     }
 
     @Override
-    public List<Cotacao> findAll() {
+    public List<Cotacao> list() {
         return entityManager.createQuery("select p from Cotacao p").getResultList();
     }
 

@@ -28,22 +28,30 @@ public class Usuario implements Serializable {
     private Long idUsuario;
 
     @Basic(optional = false)
-    @Column(name = "DS_DESCRIPTION")
-    private String dsDescrition;
+    @Column(name = "DS_EMAIL")
+    private String dsEmail;
 
     @Basic(optional = false)
-    @Column(name = "DS_STATE")
-    private String dsState;
+    @Column(name = "DS_SENHA")
+    private String dsSenha;
 
     @Basic(optional = false)
-    @Column(name = "DS_WEBSITE")
-    private String dsWebsite;
+    @Column(name = "DS_SITUACAO")
+    private String dsSituacao;
 
     @Basic(optional = false)
-    @Column(name = "NM_CONTRACT")
-    private String nmContract;
+    @Column(name = "DS_USER_NAME")
+    private String dsUserName;
 
-    @OneToMany(mappedBy = "Servico")
+    @Basic(optional = false)
+    @Column(name = "NM_USUARIO")
+    private String nmUsuario;
+
+    @Basic(optional = false)
+    @Column(name = "TP_PERMISSAO")
+    private String tpPermissao;
+
+    @OneToMany(mappedBy = "usuario")
     private List<Servico> servicos;
 
     public Long getIdUsuario() {
@@ -54,36 +62,52 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public String getDsDescrition() {
-        return dsDescrition;
+    public String getDsEmail() {
+        return dsEmail;
     }
 
-    public void setDsDescrition(String dsDescrition) {
-        this.dsDescrition = dsDescrition;
+    public void setDsEmail(String dsEmail) {
+        this.dsEmail = dsEmail;
     }
 
-    public String getDsState() {
-        return dsState;
+    public String getDsSenha() {
+        return dsSenha;
     }
 
-    public void setDsState(String dsState) {
-        this.dsState = dsState;
+    public void setDsSenha(String dsSenha) {
+        this.dsSenha = dsSenha;
     }
 
-    public String getDsWebsite() {
-        return dsWebsite;
+    public String getDsSituacao() {
+        return dsSituacao;
     }
 
-    public void setDsWebsite(String dsWebsite) {
-        this.dsWebsite = dsWebsite;
+    public void setDsSituacao(String dsSituacao) {
+        this.dsSituacao = dsSituacao;
     }
 
-    public String getNmContract() {
-        return nmContract;
+    public String getDsUserName() {
+        return dsUserName;
     }
 
-    public void setNmContract(String nmContract) {
-        this.nmContract = nmContract;
+    public void setDsUserName(String dsUserName) {
+        this.dsUserName = dsUserName;
+    }
+
+    public String getNmUsuario() {
+        return nmUsuario;
+    }
+
+    public void setNmUsuario(String nmUsuario) {
+        this.nmUsuario = nmUsuario;
+    }
+
+    public String getTpPermissao() {
+        return tpPermissao;
+    }
+
+    public void setTpPermissao(String tpPermissao) {
+        this.tpPermissao = tpPermissao;
     }
 
     public List<Servico> getServicos() {
@@ -95,5 +119,4 @@ public class Usuario implements Serializable {
     }
     
     
-
 }
