@@ -9,7 +9,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CONTRACT")
-public class Contract implements Serializable {
+public class Contract implements Serializable, ICSVExportavel {
 
     @Id
     @Basic(optional = false)
@@ -43,7 +42,6 @@ public class Contract implements Serializable {
     @Basic(optional = false)
     @Column(name = "NM_CONTRACT")
     private String nmContract;
-
 
     @ManyToOne
     @JoinColumn(name = "CLIENT_ID_CLIENT")
@@ -95,6 +93,25 @@ public class Contract implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    @Override
+    public String toCSV() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(idContract);
+        sb.append(";");
+        sb.append(dsDescrition);
+        sb.append(";");
+        sb.append(dsState);
+        sb.append(";");
+        sb.append(dsWebsite);
+        sb.append(";");
+        sb.append(nmContract);
+        sb.append(";");
+        sb.append(client.getIdClient());
+
+        return sb.toString();
+
     }
 
 }

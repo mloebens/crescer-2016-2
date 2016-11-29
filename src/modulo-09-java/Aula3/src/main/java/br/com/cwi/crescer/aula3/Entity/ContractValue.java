@@ -20,7 +20,7 @@ import javax.persistence.SequenceGenerator;
  *
  * @author Máicon Loebens
  */
-public class ContractValue implements Serializable {
+public class ContractValue implements Serializable, ICSVExportavel {
 
     @Id // Identifica a PK
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CONTRACT_VALUE")
@@ -96,6 +96,24 @@ public class ContractValue implements Serializable {
 
     public void setContract(Contract contract) {
         this.contract = contract;
+    }
+
+    @Override
+    public String toCSV() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(idContractValue);
+        sb.append(";");
+        sb.append(dsCoin);
+        sb.append(";");
+        sb.append(dsPeriodicity);
+        sb.append(";");
+        sb.append(vlAmountContractValue);
+        sb.append(";");
+        sb.append(vlMonthlyUSD);
+        sb.append(";");
+        sb.append(contract);
+        
+        return sb.toString();
     }
 
 }

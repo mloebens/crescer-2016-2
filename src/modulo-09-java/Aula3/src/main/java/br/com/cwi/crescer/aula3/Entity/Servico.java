@@ -24,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SERVICO")
-public class Servico implements Serializable {
+public class Servico implements Serializable, ICSVExportavel {
 
     @Id // Identifica a PK
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_SERVICO")
@@ -148,6 +148,31 @@ public class Servico implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
+
+    @Override
+    public String toCSV() {
+        StringBuilder sb = new StringBuilder();
+        
+    sb.append(idServico);
+    sb.append(";");
+    sb.append(dsDescricao);
+    sb.append(";");
+    sb.append(dsPeriodicidade);
+    sb.append(";");
+    sb.append(dsSimboloMoeda);
+    sb.append(";");
+    sb.append(dsSituacao);
+    sb.append(";");
+    sb.append(dsWebsite);
+    sb.append(";");
+    sb.append(nmServico);
+    sb.append(";");
+    sb.append(vlMensalUSD);
+    sb.append(";");
+    sb.append(vlTotalServico);
+    sb.append(";");
+    sb.append(usuario.getIdUsuario());
+    return sb.toString();
+}
+
 }

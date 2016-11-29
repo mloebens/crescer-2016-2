@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "COTACAO")
-public class Cotacao implements Serializable {
+public class Cotacao implements Serializable, ICSVExportavel {
 
     @Id // Identifica a PK
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_COTACAO")
@@ -146,6 +146,30 @@ public class Cotacao implements Serializable {
     public void setDtCotacao(byte[] dtCotacao) {
         this.dtCotacao = dtCotacao;
     }
-    
-    
+
+    @Override
+    public String toCSV() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(idCotacao);
+        sb.append(";");
+        sb.append(dsCotacaoDollarAustraliano);
+        sb.append(";");
+        sb.append(dsCotacaoDollarCanadense);
+        sb.append(";");
+        sb.append(dsCotacaoEuro);
+        sb.append(";");
+        sb.append(dsCotacaoFrancoSuico);
+        sb.append(";");
+        sb.append(dsCotacaoLibra);
+        sb.append(";");
+        sb.append(dsCotacaoReal);
+        sb.append(";");
+        sb.append(dsCotacaoYen);
+        sb.append(";");
+        sb.append(dsCotacaoYuan);
+        sb.append(";");
+        sb.append(dtCotacao);
+
+        return sb.toString();
+    }
 }
