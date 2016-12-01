@@ -12,14 +12,14 @@
 
         <div class="form-group"> 
             <h:outputLabel for="nome" value="#{bundle.idioma_idioma}"></h:outputLabel>
-            <h:inputText id="nome" value="#{cadidioma.idioma.idioma}" styleClass="form-control"/>
+            <h:inputText id="nome" value="#{cadastroIdioma.idioma.idioma}" styleClass="form-control"/>
         </div>
 
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadidioma.adicionar}">    
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroIdioma.adicionar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
-        <h:dataTable id="idiomas" value="#{cadidioma.idiomas}" var="idioma" styleClass="table table-hover">
+        <h:dataTable id="idiomas" value="#{cadastroIdioma.idiomas}" var="idioma" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.idioma_id}"/>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.cwi.crescer.filme.Entity;
 
 import java.io.Serializable;
@@ -13,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -29,7 +23,7 @@ public class Classificacao implements Serializable {
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLASSIFICACAO")
     @SequenceGenerator(name = "SEQ_CLASSIFICACAO", sequenceName = "SEQ_CLASSIFICACAO", allocationSize = 1)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID_CLASSIFICACAO")
     private Long id;
     
     @Basic(optional = false)
@@ -40,7 +34,6 @@ public class Classificacao implements Serializable {
     @Column(name = "IDADE", nullable = false)
     private int idade;
     
-    @OneToMany(mappedBy = "classificacao")
     private List<Filme> filmes;
 
     public Long getId() {

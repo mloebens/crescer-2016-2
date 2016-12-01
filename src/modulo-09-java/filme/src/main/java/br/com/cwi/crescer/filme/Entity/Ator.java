@@ -24,22 +24,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ATOR")
 public class Ator implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ATOR")
-    @SequenceGenerator(name = "SEQ_ATOR", sequenceName = "SEQ_ATOR", allocationSize = 1) 
+    @SequenceGenerator(name = "SEQ_ATOR", sequenceName = "SEQ_ATOR", allocationSize = 1)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID_ATOR")
     private Long id;
 
     @Basic(optional = false)
     @Column(name = "NOME", nullable = false)
     private String nome;
-    
-    @ManyToOne
-    @JoinColumn(name = "ID_ELENCO")
-    private Elenco elenco;
-    
+
     public Long getId() {
         return id;
     }
@@ -55,12 +51,4 @@ public class Ator implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public Elenco getElenco() {
-        return elenco;
-    }
-
-    public void setElenco(Elenco elenco) {
-        this.elenco = elenco;
-    }    
 }

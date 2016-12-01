@@ -13,39 +13,39 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-public class CadIdioma {
+public class CadastroAtor {
 
     @EJB
-    private AtorBean idiomaBean;
+    private AtorBean atorBean;
     
-    private Ator idioma;
-    private List<Ator> idiomas;
+    private Ator ator;
+    private List<Ator> atores;
 
     @PostConstruct
     public void init() {
-        this.idioma = new Ator();
-        this.idiomas = idiomaBean.findAll();
-        this.idiomas.sort((a,b)-> a.getId().compareTo(b.getId()));
+        this.ator = new Ator();
+        this.atores = atorBean.findAll();
+        this.atores.sort((a,b)-> a.getId().compareTo(b.getId()));
     }
 
     public Ator getAtor() {
-        return idioma;
+        return ator;
     }
 
-    public void setAtor(Ator idioma) {
-        this.idioma = idioma;
+    public void setAtor(Ator ator) {
+        this.ator = ator;
     }
 
     public List<Ator> getAtores() {
-        return idiomas;
+        return atores;
     }
 
-    public void setAtores(List<Ator> idiomas) {
-        this.idiomas = idiomas;
+    public void setAtores(List<Ator> atores) {
+        this.atores = atores;
     }
 
     public void adicionar() {
-        idiomaBean.insert(idioma);
+        atorBean.insert(ator);
         this.init();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Teste", "teste"));
     }

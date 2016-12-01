@@ -13,7 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -29,20 +28,16 @@ public class Elenco implements Serializable {
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ELENCO")
     @SequenceGenerator(name = "SEQ_ELENCO", sequenceName = "SEQ_ELENCO", allocationSize = 1)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID_ELENCO")
     private Long id;
 
     @Basic(optional = false)
     @Column(name = "NOME", nullable = false)
     private String nome;
     
-    @OneToMany(mappedBy = "elenco")
     private List<Ator> atores;
-
-    @OneToMany(mappedBy = "elenco")
     private List<Filme> filmes;
-    
-    
+       
     public Long getId() {
         return id;
     }
@@ -65,5 +60,15 @@ public class Elenco implements Serializable {
 
     public void setAtores(List<Ator> atores) {
         this.atores = atores;
+    }
+    
+    public String getAtoresNomes(){
+        StringBuilder nomes = new StringBuilder();
+        for (Ator ator : atores) {
+            nomes.append(ator.getNome());
+            nomes.append(",");
+        }
+        
+        return nomes.toString().substring(0, nomes.length()-1);
     }
 }

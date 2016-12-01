@@ -12,14 +12,14 @@
 
         <div class="form-group"> 
             <h:outputLabel for="nome" value="#{bundle.genero_descricao}"></h:outputLabel>
-            <h:inputText id="nome" value="#{cadgenero.genero.descricao}" styleClass="form-control"/>
+            <h:inputText id="nome" value="#{cadastroGenero.genero.descricao}" styleClass="form-control"/>
         </div>
 
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadgenero.adicionar}">    
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroGenero.adicionar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
-        <h:dataTable id="generos" value="#{cadgenero.generos}" var="genero" styleClass="table table-hover">
+        <h:dataTable id="generos" value="#{cadastroGenero.generos}" var="genero" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.genero_id}"/>
@@ -34,7 +34,5 @@
             </h:column>
 
         </h:dataTable>
-
     </ui:define>
-
 </ui:composition>

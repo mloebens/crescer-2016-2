@@ -29,15 +29,12 @@ public class Genero implements Serializable {
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_GENERO")
     @SequenceGenerator(name = "SEQ_GENERO", sequenceName = "SEQ_GENERO", allocationSize = 1)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID_GENERO")
     private Long id;
 
     @Basic(optional = false)
     @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
-
-    @OneToMany(mappedBy = "genero")
-    private List<Filme> filmes;
     
     public Long getId() {
         return id;
@@ -54,13 +51,4 @@ public class Genero implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public List<Filme> getFilmes() {
-        return filmes;
-    }
-
-    public void setFilmes(List<Filme> filmes) {
-        this.filmes = filmes;
-    }
-
 }

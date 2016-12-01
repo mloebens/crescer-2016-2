@@ -29,15 +29,12 @@ public class Idioma implements Serializable {
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_IDIOMA")
     @SequenceGenerator(name = "SEQ_IDIOMA", sequenceName = "SEQ_IDIOMA", allocationSize = 1)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID_IDIOMA")
     private Long id;
     
     @Basic(optional = false)
     @Column(name = "IDIOMA", nullable = false)
     private String idioma;
-    
-    @OneToMany(mappedBy = "idioma")
-    private List<Filme> filmes;
 
     public Long getId() {
         return id;
@@ -54,14 +51,4 @@ public class Idioma implements Serializable {
     public void setIdioma(String idioma) {
         this.idioma = idioma;
     }   
-
-    public List<Filme> getFilmes() {
-        return filmes;
-    }
-
-    public void setFilmes(List<Filme> filmes) {
-        this.filmes = filmes;
-    }
-
-    
 }

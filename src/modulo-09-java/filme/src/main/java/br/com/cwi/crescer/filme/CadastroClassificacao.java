@@ -13,7 +13,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-public class CadClassificacao {
+public class CadastroClassificacao {
 
     @EJB
     private ClassificacaoBean classificacaoBean;
@@ -36,11 +36,11 @@ public class CadClassificacao {
         this.classificacao = classificacao;
     }
 
-    public List<Classificacao> getClassificacaoes() {
+    public List<Classificacao> getClassificacoes() {
         return classificacoes;
     }
 
-    public void setClassificacaoes(List<Classificacao> classificacoes) {
+    public void setClassificaoes(List<Classificacao> classificacoes) {
         this.classificacoes = classificacoes;
     }
 

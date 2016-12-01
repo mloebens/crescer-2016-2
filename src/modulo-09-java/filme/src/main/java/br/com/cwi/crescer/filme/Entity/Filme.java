@@ -32,7 +32,7 @@ public class Filme implements Serializable {
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FILME")
     @SequenceGenerator(name = "SEQ_FILME", sequenceName = "SEQ_FILME", allocationSize = 1) 
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID_FILME")
     private Long id;
     
     @Basic(optional = false)
@@ -127,6 +127,4 @@ public class Filme implements Serializable {
     public void setIdioma(Idioma idioma) {
         this.idioma = idioma;
     }
-    
-    
 }

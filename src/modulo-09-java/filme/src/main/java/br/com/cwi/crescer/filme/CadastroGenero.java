@@ -13,7 +13,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-public class CadGenero {
+public class CadastroGenero {
 
     @EJB
     private GeneroBean generoBean;
@@ -36,11 +36,11 @@ public class CadGenero {
         this.genero = genero;
     }
 
-    public List<Genero> getGeneroes() {
+    public List<Genero> getGeneros() {
         return generos;
     }
 
-    public void setGeneroes(List<Genero> generos) {
+    public void setGeneros(List<Genero> generos) {
         this.generos = generos;
     }
 
