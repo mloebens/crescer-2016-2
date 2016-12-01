@@ -33,7 +33,7 @@ public class Idioma implements Serializable {
     private Long id;
     
     @Basic(optional = false)
-    @Column(name = "IDIOMA")
+    @Column(name = "IDIOMA", nullable = false)
     private String idioma;
     
     @OneToMany(mappedBy = "idioma")

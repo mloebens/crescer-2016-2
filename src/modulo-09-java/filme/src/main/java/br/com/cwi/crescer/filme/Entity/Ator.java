@@ -33,7 +33,7 @@ public class Ator implements Serializable {
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "NOME")
+    @Column(name = "NOME", nullable = false)
     private String nome;
     
     @ManyToOne
@@ -55,6 +55,12 @@ public class Ator implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    
+
+    public Elenco getElenco() {
+        return elenco;
+    }
+
+    public void setElenco(Elenco elenco) {
+        this.elenco = elenco;
+    }    
 }

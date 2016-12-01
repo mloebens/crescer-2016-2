@@ -33,11 +33,11 @@ public class Classificacao implements Serializable {
     private Long id;
     
     @Basic(optional = false)
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
     
     @Basic(optional = true)
-    @Column(name = "IDADE")
+    @Column(name = "IDADE", nullable = false)
     private int idade;
     
     @OneToMany(mappedBy = "classificacao")

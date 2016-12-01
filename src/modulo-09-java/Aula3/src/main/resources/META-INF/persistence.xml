@@ -11,7 +11,7 @@
     <class>br.com.cwi.crescer.aula3.Entity.Servico</class>
     <class>br.com.cwi.crescer.aula3.Entity.Usuario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:32775:XE"/>
       <property name="javax.persistence.jdbc.user" value="crescer"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
       <property name="javax.persistence.jdbc.password" value="crescer"/>

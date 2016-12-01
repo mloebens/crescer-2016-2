@@ -11,34 +11,29 @@
     <ui:define name="form">
 
         <div class="form-group"> 
-            <h:outputLabel for="nome" value="#{bundle.pessoa_nome}"></h:outputLabel>
-            <h:inputText id="nome" value="#{hello.pessoa.nmPessoa}" styleClass="form-control"/>
+            <h:outputLabel for="nome" value="#{bundle.idioma_idioma}"></h:outputLabel>
+            <h:inputText id="nome" value="#{cadidioma.idioma.idioma}" styleClass="form-control"/>
         </div>
 
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{hello.adicionar}">    
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadidioma.adicionar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
-        <h:dataTable id="pessoas" value="#{hello.pessoas}" var="pessoa" styleClass="table table-hover">
+        <h:dataTable id="idiomas" value="#{cadidioma.idiomas}" var="idioma" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="#{bundle.pessoa_id}"/>
+                    <h:outputText value="#{bundle.idioma_id}"/>
                 </f:facet>
-                <h:outputText value="#{pessoa.idPessoa}"/>
+                <h:outputText value="#{idioma.id}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="#{bundle.pessoa_nome}"/>
+                    <h:outputText value="#{bundle.idioma_idioma}"/>
                 </f:facet>
-                <h:outputText value="#{pessoa.nmPessoa}"/>
+                <h:outputText value="#{idioma.idioma}"/>
             </h:column>
 
         </h:dataTable>
-
-        <h:messages id="messages">
-
-        </h:messages>
-
 
     </ui:define>
 

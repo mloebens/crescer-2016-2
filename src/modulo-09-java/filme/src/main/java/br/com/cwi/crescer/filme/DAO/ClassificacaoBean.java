@@ -1,6 +1,6 @@
 package br.com.cwi.crescer.filme.DAO;
 
-import br.com.cwi.crescer.filme.Entity.Elenco;
+import br.com.cwi.crescer.filme.Entity.Classificacao;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,13 +10,13 @@ import javax.persistence.PersistenceContext;
  * @author Carlos H. Nonnemacher
  */
 @Stateless
-public class ClassificacaoBean extends AbstractDao<Elenco, Long>{
+public class ClassificacaoBean extends AbstractDao<Classificacao, Long>{
 
     @PersistenceContext(unitName = "crescer")
     private EntityManager entityManager;
 
     public ClassificacaoBean() {
-        super(Elenco.class);
+        super(Classificacao.class);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ClassificacaoBean extends AbstractDao<Elenco, Long>{
     }
 
     @Override
-    public List<Elenco> findAll() {
-        return this.getEntityManager().createQuery("select p from Elenco p").getResultList();
+    public List<Classificacao> findAll() {
+        return this.getEntityManager().createQuery("select p from Classificacao p").getResultList();
     } 
 }

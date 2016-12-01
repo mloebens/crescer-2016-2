@@ -33,7 +33,7 @@ public class Elenco implements Serializable {
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "NOME")
+    @Column(name = "NOME", nullable = false)
     private String nome;
     
     @OneToMany(mappedBy = "elenco")

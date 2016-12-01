@@ -33,7 +33,7 @@ public class Genero implements Serializable {
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
 
     @OneToMany(mappedBy = "genero")

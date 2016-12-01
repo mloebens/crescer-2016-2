@@ -36,7 +36,7 @@ public class Filme implements Serializable {
     private Long id;
     
     @Basic(optional = false)
-    @Column(name = "TITULO")    
+    @Column(name = "TITULO", nullable = false)    
     private String titulo;
     
     @ManyToOne
@@ -44,12 +44,12 @@ public class Filme implements Serializable {
     private Genero genero;
     
     @Basic(optional = false)
-    @Column(name = "DIRETOR")
+    @Column(name = "DIRETOR", nullable = false)
     private String diretor;
     
     @Temporal(TemporalType.DATE)
     @Basic(optional = false)
-    @Column(name = "DATA_DE_LANCAMENTO")
+    @Column(name = "DATA_DE_LANCAMENTO", nullable = false)
     private Date dataDeLancamento;
     
     @ManyToOne
