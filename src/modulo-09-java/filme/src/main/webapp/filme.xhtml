@@ -12,24 +12,36 @@
             <h:outputLabel for="titulo" value="#{bundle.filme_titulo}"></h:outputLabel>
             <h:inputText id="titulo" value="#{cadastroFilme.filme.titulo}" styleClass="form-control"/>
 
-             <h:outputLabel for="genero" value="#{bundle.filme_genero}" ></h:outputLabel>
-             <h:selectOneListbox id="genero" value="#{cadastroFilme.filme.genero}" styleClass="form-control" converter="javax.faces.Long">
+            <h:outputLabel for="genero" value="#{bundle.filme_genero}" ></h:outputLabel>
+            <h:selectOneListbox id="genero" value="#{cadastroFilme.idGenero}" styleClass="form-control" converter="javax.faces.Long">
                 <f:selectItems value="#{cadastroGenero.generos}" var="genero" 
                                itemLabel="#{genero.descricao}" itemValue="#{genero.id}"/>							
             </h:selectOneListbox>
-             
-             
-             <h:outputLabel for="genero" value="#{bundle.filme_elenco}" ></h:outputLabel>
-             <h:selectOneListbox id="genero" value="#{cadastroFilme.filme.elenco}" styleClass="form-control" converter="javax.faces.Long">
+
+            <h:outputLabel for="diretor" value="#{bundle.filme_diretor}"></h:outputLabel>
+            <h:inputText id="diretor" value="#{cadastroFilme.filme.diretor}" styleClass="form-control"/>
+
+            <h:outputLabel for="dataDeLancamento" value="#{bundle.filme_dataDeLancamento}"></h:outputLabel>
+            <h:inputText id="dataDeLancamento" value="#{cadastroFilme.filme.dataDeLancamento}" styleClass="form-control">  
+                <f:convertDateTime pattern="dd/MM/yyyy"/>  
+            </h:inputText>
+
+            <h:outputLabel for="elenco" value="#{bundle.filme_elenco}" ></h:outputLabel>
+            <h:selectOneListbox id="elenco" value="#{cadastroFilme.idElenco}" styleClass="form-control" converter="javax.faces.Long">
                 <f:selectItems value="#{cadastroElenco.elencos}" var="elenco" 
                                itemLabel="#{elenco.nome}" itemValue="#{elenco.id}"/>							
             </h:selectOneListbox>
-             
-             
-             <h:outputLabel for="classificacao" value="#{bundle.filme_classificacao}" ></h:outputLabel>
-             <h:selectOneListbox id="classificacao" value="#{cadastroFilme.filme.classificacao}" styleClass="form-control" converter="javax.faces.Long">
-                 <f:selectItems value="#{cadastroClassificacao.classificacoes}" var="classificacao" 
-                                itemLabel="#{classificacao.descricao}" itemValue="#{classificacao.id}"/>							
+
+            <h:outputLabel for="classificacao" value="#{bundle.filme_classificacao}" ></h:outputLabel>
+            <h:selectOneListbox id="classificacao" value="#{cadastroFilme.idClassificacao}" styleClass="form-control" converter="javax.faces.Long">
+                <f:selectItems value="#{cadastroClassificacao.classificacoes}" var="classificacao" 
+                               itemLabel="#{classificacao.descricao}" itemValue="#{classificacao.id}"/>							
+            </h:selectOneListbox>
+
+            <h:outputLabel for="idioma" value="#{bundle.filme_idioma}" ></h:outputLabel>
+            <h:selectOneListbox id="idioma" value="#{cadastroFilme.idIdioma}" styleClass="form-control" converter="javax.faces.Long">
+                <f:selectItems value="#{cadastroIdioma.idiomas}" var="idioma" 
+                               itemLabel="#{idioma.idioma}" itemValue="#{idioma.id}"/>							
             </h:selectOneListbox>
 
         </div>
@@ -50,7 +62,7 @@
                 </f:facet>
                 <h:outputText value="#{filme.titulo}"/>
             </h:column>
-       
+
         </h:dataTable>
 
     </ui:define>
