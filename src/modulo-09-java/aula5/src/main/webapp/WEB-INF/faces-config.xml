@@ -14,8 +14,7 @@
             <supported-locale>en_US</supported-locale>
         </locale-config>
     </application>
-
-    
+   
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
@@ -32,5 +31,12 @@
         </navigation-case>
     </navigation-rule>
     
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>criarusuario</from-outcome>
+            <to-view-id>/faces/usuario.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     
 </faces-config>

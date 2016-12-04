@@ -43,6 +43,12 @@ public class SessionFilter implements Filter {
     private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final HttpSession session = request.getSession();
         final UserDetails user = (UserDetails) session.getAttribute(USER_AUTH);
+        
+        //criação de usuário pode ser acessada mesmo quando não autenticado
+        if (request.getRequestURI().contains("usuario.xhtml")) {
+            return;
+        }
+
         if (!request.getRequestURI().contains("login.xhtml") && user == null) {
             response.sendRedirect(request.getContextPath() + "/faces/login.xhtml");
         }

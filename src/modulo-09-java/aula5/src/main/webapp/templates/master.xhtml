@@ -11,29 +11,36 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <title>Aula 5</title>
     </h:head>
 
     <h:body>
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <div class="navbar-brand">
-                        <span class="glyphicon glyphicon-th"> </span>
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid container">
+                    <div class="navbar-header">
+                        <div class="navbar-brand">
+                            <span class="glyphicon glyphicon-th"> </span>
+                        </div>
                     </div>
+                    <h:form>
+                        <h:commandLink value="Logout" action="#{loginMBean.logout()}" styleClass="navbar-text navbar-right logout" />
+                    </h:form>
+                    <p class="navbar-text navbar-right">Logado como <a href="#" class="navbar-link">#{loginMBean.usuarioLogadoNome}</a></p>
+
                 </div>
-                <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p> 
+            </nav>
+            <div class="container-fluid">
+                <h1 class="page-header">
+                    JSF AULA 5
+                </h1>
+                <h:form>
+                    <div class="row">
+                        <ui:insert name="content"/>
+                    </div>
+                </h:form>
             </div>
-        </nav>
-        <div class="container-fluid">
-            <h1 class="page-header">
-                JSF AULA 5
-            </h1>
-            <h:form>
-                <div class="row">
-                    <ui:insert name="content"/>
-                </div>
-            </h:form>
         </div>
     </h:body>
 </html>

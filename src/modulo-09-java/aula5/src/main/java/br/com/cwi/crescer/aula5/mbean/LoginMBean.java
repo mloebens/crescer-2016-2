@@ -40,10 +40,10 @@ public class LoginMBean implements Serializable {
         this.usuario = usuario;
     }
 
-    public String getLoggedUsername() {
+    public String getUsuarioLogadoNome() {
         final UserDetails userDetails;
         userDetails = (UserDetails) FacesUtils.getSession().getAttribute(USER_AUTH);
-        return userDetails == null ? null : userDetails.getEmail();
+        return userDetails == null ? null : userDetails.getNome();
     }
 
     public String login() {
@@ -53,7 +53,8 @@ public class LoginMBean implements Serializable {
 
             if (senhaValida) {
                 UsuarioLogado user = new UsuarioLogado();
-                user.setEmail(usuario.getEmail());
+                user.setEmail(usuarioEncontrado.getEmail());
+                user.setNome(usuarioEncontrado.getNome());
                 FacesUtils.getSession().setAttribute(USER_AUTH, user);
                 return "index";
             }
@@ -66,6 +67,6 @@ public class LoginMBean implements Serializable {
 
     public String logout() {
         FacesUtils.getSession().invalidate();
-        return "logout";
+        return "login";
     }
 }

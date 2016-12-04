@@ -8,7 +8,7 @@ import br.com.cwi.crescer.aula5.utils.UserDetails;
 public class UsuarioLogado implements UserDetails {
 
     private String email;
-    private String senha;
+    private String nome;
 
     @Override
     public String getEmail() {
@@ -19,12 +19,12 @@ public class UsuarioLogado implements UserDetails {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    @Override
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-
 }
