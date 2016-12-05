@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h1 class="page-header">
-                    <h:outputText value="#{bundle.login_title}"/>
+                    <h:outputText value="#{bundle.usuario_title}"/>
                 </h1> 
             </div>
         </div>
@@ -24,26 +24,27 @@
 
                     <div class="panel-body">
                         <div class="form-group">
-                            <h:outputLabel for="email" value="#{bundle.login_email}"/>
-                            <h:inputText id="email" styleClass="form-control" value="#{loginMBean.usuario.email}" required="true" validator="emailValidator"/>
+                            <h:outputLabel for="email" value="#{bundle.usuario_email}"/>
+                            <h:inputText id="email" styleClass="form-control" value="#{usuarioMBean.entity.email}" required="true" validator="emailValidator"/>
                         </div>
                         <div class="form-group">
-                            <h:outputLabel for="senha" value="#{bundle.login_senha}"/>
-                            <h:inputSecret id="senha" styleClass="form-control" label="#{bundle['page.template.senha']}" value="#{loginMBean.usuario.senha}" required="true"/>
+                            <h:outputLabel for="senha" value="#{bundle.usuario_senha}"/>
+                            <h:inputSecret id="senha" styleClass="form-control" label="#{bundle['page.template.senha']}" value="#{usuarioMBean.entity.senha}" required="true"/>
                         </div>
                         <div class="form-group">
-                            <h:commandButton styleClass="btn btn-success" value="#{bundle.login_enviar}" action="#{loginMBean.login}"/>
+                            <h:commandButton styleClass="btn btn-success" value="#{bundle.usuario_enviar}" action="#{usuarioMBean.login}"/>
                         </div>
                         <div class="messages">
                             <h:messages errorClass="alert alert-danger"/>
+                        </div>
+                        <div>
+                            <h:link value="Criar usuário" outcome="criarusuario" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <h:link value="Criar usuário" outcome="criarusuario" />
-        </div>
+
 
     </ui:define>
 

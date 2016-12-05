@@ -3,10 +3,35 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
-    template="/templates/template.xhtml"    >
+    template="/templates/template.xhtml"    
+    xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
-        <h2>hello</h2>
+        <div class="panel-body">
+            <div class="form-group">
+                <h:outputLabel for="nome" value="#{bundle.usuario_nome}"/>
+                <h:inputText id="nome" styleClass="form-control" value="#{usuarioMBean.entity.nome}" required="true" />
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="email" value="#{bundle.usuario_email}"/>
+                <h:inputText id="email" styleClass="form-control" value="#{usuarioMBean.entity.email}" required="true" validator="emailValidator"/>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="senha" value="#{bundle.usuario_senha}"/>
+                <h:inputSecret id="senha" styleClass="form-control" label="#{bundle['page.template.senha']}" value="#{usuarioMBean.entity.senha}" required="true"/>
+            </div>
+            
+            <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{usuarioMBean.adicionar}">    
+                <f:ajax execute="@form" render="@form" />
+            </h:commandButton>
+            
+
+            <h:link value="Voltar" outcome="login" styleClass="btn btn-primary pull-right" />
+
+            <h:messages styleClass="alert" errorClass="alert-danger"/>
+            
+
+        </div>
     </ui:define>
 
 </ui:composition>
