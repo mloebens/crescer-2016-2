@@ -31,7 +31,7 @@ public class Usuario implements Serializable {
     private String nome;
 
     @Basic(optional = false)
-    @Column(name = "DS_EMAIL", unique=true)
+    @Column(name = "DS_EMAIL", unique = true)
     private String email;
 
     @Basic(optional = false)

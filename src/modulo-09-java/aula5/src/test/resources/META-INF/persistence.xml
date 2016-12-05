@@ -5,6 +5,12 @@
     <class>br.com.cwi.crescer.aula4.Filho</class>
     <class>br.com.cwi.crescer.aula4.Pessoa</class>
     <class>br.com.cwi.crescer.aula5.entity.Usuario</class>
+    <class>br.com.cwi.crescer.aula5.entity.Ator</class>
+    <class>br.com.cwi.crescer.aula5.entity.Classificacao</class>
+    <class>br.com.cwi.crescer.aula5.entity.Elenco</class>
+    <class>br.com.cwi.crescer.aula5.entity.Filme</class>
+    <class>br.com.cwi.crescer.aula5.entity.Genero</class>
+    <class>br.com.cwi.crescer.aula5.entity.Idioma</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;MODE=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>
