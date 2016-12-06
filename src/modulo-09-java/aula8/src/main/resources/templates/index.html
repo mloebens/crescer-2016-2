@@ -3,8 +3,39 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
     <body>
-        <h1 th:text="${name}"></h1>
+        <div class="container">
+        <div>
+            <h1>Cadastrar Pessoa</h1>
+            <form method="POST" class="form-vertical">
+                <div class="form-group">
+                    <label for="nome"></label>
+                    <input name="nome" type="text" class="form-control"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+        <div>
+            <table class="table table-stript">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Nascimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p : ${pessoa}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.nome}"></td>
+                        <td th:text="${#calendars.format(p.nascimento,'dd/MM/yyyy')}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+            </div>
     </body>
 </html>

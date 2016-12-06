@@ -1,23 +1,28 @@
 package br.com.cwi.crescer.aula8.controller;
 
-import java.util.Date;
+import br.com.cwi.crescer.aula8.entity.Pessoa;
+import br.com.cwi.crescer.aula8.service.PessoaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * @author Carlos H. Nonnemacher
- */
 @Controller
 @RequestMapping(value = "/")
 public class Exemplo {
+    
+    @Autowired
+    private PessoaService pessoaService;
 
+    @RequestMapping(method = RequestMethod.POST)
+    String salvar(Pessoa pessoa) {
+        pessoaService.inserir(pessoa);
+        return "redirect:/";
+    }
     @RequestMapping(method = RequestMethod.GET)
-    String toIndex(Model model, @RequestParam(required = false) String name) {
-        model.addAttribute("name", name == null ? "Máicon Loebens" : name);
+    String toIndex(Model model, Pessoa pessoa) {
+        model.addAttribute("pessoa", pessoaService.list());
         return "index";
     }
 }
